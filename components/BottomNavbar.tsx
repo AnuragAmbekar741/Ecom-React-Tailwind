@@ -1,11 +1,8 @@
 import Image from 'next/image';
 import React from 'react'
-import { BiHomeAlt2 } from 'react-icons/bi';
-import { FcAbout } from 'react-icons/fc';
-import { HiOutlineShoppingBag } from 'react-icons/hi';
-import { GiClothes } from 'react-icons/gi';
 
-
+import { BsBag } from 'react-icons/bs';
+import { navLinks } from '@/lib/data';
 
 
 const BottomNavbar:React.FC = () => {
@@ -18,11 +15,13 @@ const BottomNavbar:React.FC = () => {
                 height={30}
                 className='h-[80px] fixed top-10 left-5 md:hidden'
             />
-        <nav className='flex w-full justify-between fixed bottom-0 right-0 left-0 py-3 px-12 md:hidden bg-black opacity-50'>
-            <BiHomeAlt2 className="text-4xl text-white"/>
-            <FcAbout className="text-4xl text-white"/> 
-            <GiClothes className="text-4xl text-white"/>
-            <HiOutlineShoppingBag className="text-4xl text-white"/>
+        <nav className='flex w-full justify-between fixed bottom-0 right-0 left-0 py-2 px-12 md:hidden bg-black opacity-50'>
+            {navLinks.map((link)=>{
+                return(
+                    <p className='text-white text-sm font-light mx-4 py-2 cursor-pointer'>{link.name}</p>
+                )
+            })}
+            <BsBag className="text-3xl text-white font-thin"/>
         </nav>
     </header>
   )
