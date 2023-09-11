@@ -1,20 +1,30 @@
+"use client"
+
 import Image from 'next/image'
-import React, { Children } from 'react'
+import { useRouter } from 'next/navigation'
 
 interface ProductDetails {
     product :{
+      id:string
       name: string,
       img1:string,
       [key: string]: string; // Allow any additional properties
     }
 }
 
-
-
 const ProductCard:React.FC<ProductDetails> = ({product}) => { 
-  const {img1,name} = product
+
+  const router = useRouter()
+
+  const handleClick = () => router.push(`/ProductDetails/?id=${id}`)
+  
+  const {id,img1,name} = product
+  
   return (
-    <div className='min-w-[400px] mr-9 cursor-pointer'>
+    <div 
+      className='min-w-[340px] md:min-w-[400px] mr-9 cursor-pointer hover:scale-105'
+      onClick={handleClick}
+    >
         <Image
             src={img1}
             alt='Product image'
