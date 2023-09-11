@@ -13,7 +13,6 @@ export const navLinks = [
   },
 ] as const;
 
-
 export const productData = [
   {
     id: "001",

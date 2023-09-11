@@ -1,3 +1,4 @@
+
 import TopNavbar from '@/components/TopNavbar'
 import './globals.css'
 import type { Metadata } from 'next'

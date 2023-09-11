@@ -6,6 +6,11 @@ import { productData,sizeChartData } from "@/lib/data";
 import { useState,useRef } from "react";
 import Image from "next/image";
 
+// import { useRecoilState } from "recoil";
+// import { cartState,ProductDetails } from "@/store/atoms/cartState";
+
+
+
 const page = () => {
   const params = useSearchParams();
   const id = params.get("id");
@@ -29,19 +34,27 @@ const page = () => {
     if(selectRef.current?.value === "custom"){
       setToggle({sizeChart:false,customSize:true})
     }
+    if(selectRef.current?.value !== "custom"){
+      setToggle({sizeChart:false,customSize:false})
+    }
   }
 
   const handleClick: () => void = () =>{
     setToggle({ customSize:false, sizeChart:true })
-    selectRef.current!.value = 'uk6'
+    if(selectRef.current?.value === "custom") selectRef.current!.value = 'uk6'
   }
 
-  const addToCart:() => void = () =>{
-    if(selectRef.current?.value==='custom'){
-      if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!==''){}
-      else alert('Please add custom sizes for all the measurements.')
-    }
-  }
+  // const [cart,setCart] = useRecoilState<ProductDetails[]>(cartState)
+
+  // const addToCart=()=>{
+  //   if(selectRef.current?.value==='custom'){
+  //     if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!=='') {
+  //       setCart([...cart,selectedProd])
+  //       console.log(cart)
+  //     }
+  //     else alert('Please add custom sizes for all the measurements.')
+  //   }
+  // }
 
   return (
     <div className="flex p-7 pt-40 border w-full h-[100vh]">
@@ -141,7 +154,7 @@ const page = () => {
           </div>
         </div>
         <button
-          onClick={addToCart} 
+          // onClick={addToCart} 
           className="mt-5 py-2 px-36 border text-xl font-light border-black">
           Add to cart
         </button>
