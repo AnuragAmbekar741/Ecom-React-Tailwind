@@ -54,6 +54,8 @@ const App = () => {
       }
       else alert('Please add custom sizes for all the measurements.')
     }
+    setCart([...cart,selectedProd])
+    console.log(cart)
   }
 
   return (
