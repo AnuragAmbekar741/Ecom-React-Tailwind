@@ -11,6 +11,7 @@ const TopNavbar:React.FC = () => {
 
     const count = useRecoilValue(cartState).length
     const router = useRouter()
+    console.log(count)
 
   return (
     <header className='z-999 relative w-screen'>
@@ -26,7 +27,7 @@ const TopNavbar:React.FC = () => {
             <div className='flex py-7'>
                 {navLinks.map(link=>{
                     return(
-                        <p className='text-black text-sm font-light lg:text-[16px] mx-4 xl:mx-7 py-2 cursor-pointer'>{link.name}</p>
+                        <p key={link.hash} className='text-black text-sm font-light lg:text-[16px] mx-4 xl:mx-7 py-2 cursor-pointer'>{link.name}</p>
                     )
                 })}
                 <Image src="/assets/cart-icon.png" alt='Rhea-Vania-Logo' width={42} height={28} className=' md:ml-7 xl:ml-20'/>  

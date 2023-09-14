@@ -18,7 +18,7 @@ const BottomNavbar:React.FC = () => {
         <nav className='flex w-full justify-between fixed bottom-0 right-0 left-0 py-2 px-12 md:hidden bg-black opacity-50'>
             {navLinks.map((link)=>{
                 return(
-                    <p className='text-white text-sm font-light mx-4 py-2 cursor-pointer'>{link.name}</p>
+                    <p key={link.hash} className='text-white text-sm font-light mx-4 py-2 cursor-pointer'>{link.name}</p>
                 )
             })}
             <BsBag className="text-3xl text-white font-thin"/>

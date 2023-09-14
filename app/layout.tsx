@@ -1,6 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
+import TopNavbar from '@/components/TopNavbar'
+import BottomNavbar from '@/components/BottomNavbar'
+import RecoilRootProvider from "@/components/store/RecoilRootProvider";
+
 
 const roboto = Roboto({
   weight: ['100','300','400','500','700'],
@@ -22,8 +26,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${roboto.className}`}>
-        
+        <RecoilRootProvider>
+        <TopNavbar/>
+        <BottomNavbar/>
         {children}
+        </RecoilRootProvider>
       </body>
     </html>
   )
