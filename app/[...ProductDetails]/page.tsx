@@ -11,6 +11,7 @@ import { cartState,ProductDetails } from "@/components/store/atoms/cartState";
 
 
 
+
 const page = () => {
   const params = useSearchParams();
   const id = params.get("id");
@@ -47,15 +48,24 @@ const page = () => {
   const [cart,setCart] = useRecoilState<ProductDetails[]>(cartState)
 
   const addToCart=()=>{
+    const prodToAdd:ProductDetails = {...selectedProd}
+    const prodSameSize:ProductDetails = cart.filter(product=>{product.id == prodToAdd.id && product.size == prodToAdd.size})[0]
+    console.log(prodSameSize)
+    if(prodSameSize) {
+      prodSameSize['quantity']  = prodSameSize['quantity'] + 1
+      return
+    }
     if(selectRef.current?.value==='custom'){
       if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!=='') {
-        setCart([...cart,selectedProd])
+        prodToAdd['size'] = {bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip}
+        prodToAdd['quantity'] = 1
+        setCart([...cart,prodToAdd])
         console.log(cart)
       }
       else alert('Please add custom sizes for all the measurements.')
+    }else{
+
     }
-    setCart([...cart,selectedProd])
-    console.log(cart)
   }
 
   return (

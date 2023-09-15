@@ -6,7 +6,7 @@ export interface ProductDetails {
     price:string,
     img1:string,
     img2:string,
-    [key:string]:string|number
+    [key:string]:any
 }
 
 export const cartState = atom<ProductDetails[]>({

@@ -1,3 +1,5 @@
+import { ProductDetails } from "@/components/store/atoms/cartState";
+
 export const navLinks = [
   {
     name: "Home",
@@ -13,7 +15,9 @@ export const navLinks = [
   },
 ] as const;
 
-export const productData = [
+
+
+export const productData  = [
   {
     id: "001",
     name: "The Gabrielle Bralette",
