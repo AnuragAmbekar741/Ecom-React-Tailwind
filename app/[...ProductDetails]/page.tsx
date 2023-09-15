@@ -49,23 +49,23 @@ const page = () => {
 
   const addToCart=()=>{
     const prodToAdd:ProductDetails = {...selectedProd}
-    const prodSameSize:ProductDetails = cart.filter(product=>{product.id == prodToAdd.id && product.size == prodToAdd.size})[0]
-    console.log(prodSameSize)
+    if(selectRef.current?.value==='custom'){
+      if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!=='') {
+        prodToAdd['size'] = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip})
+        setCart([...cart,prodToAdd])
+      }else alert('Please add custom sizes for all the measurements.')
+    }
+    if(selectRef.current?.value!=='custom'){
+      prodToAdd['size'] = selectRef.current?.value
+      setCart([...cart,prodToAdd])
+    }
+    const prodSameSize:ProductDetails|any = cart.find(product=>product.id == prodToAdd.id && product.size == prodToAdd.size)
     if(prodSameSize) {
       prodSameSize['quantity']  = prodSameSize['quantity'] + 1
       return
     }
-    if(selectRef.current?.value==='custom'){
-      if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!=='') {
-        prodToAdd['size'] = {bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip}
-        prodToAdd['quantity'] = 1
-        setCart([...cart,prodToAdd])
-        console.log(cart)
-      }
-      else alert('Please add custom sizes for all the measurements.')
-    }else{
-
-    }
+    if(!prodSameSize) prodSameSize['quantity'] = 1
+  
   }
 
   return (
