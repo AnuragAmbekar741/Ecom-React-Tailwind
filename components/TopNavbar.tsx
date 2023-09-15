@@ -3,15 +3,16 @@
 import React from 'react'
 import { navLinks } from '@/lib/data'
 import Image from 'next/image'
-import { cartState } from './store/atoms/cartState'
+import { cartState,ProductDetails } from './store/atoms/cartState'
 import { useRecoilValue } from 'recoil'
 import { useRouter } from 'next/navigation'
 
 const TopNavbar:React.FC = () => {
 
-    const count = useRecoilValue(cartState).length
+    const cart = useRecoilValue(cartState)
+    var cartLen = cart.length > 0 ? cart.map(item=>item.quantity).reduce((a,b)=>a+b) : 0
+    
     const router = useRouter()
-    console.log(count)
 
   return (
     <header className='z-999 relative w-screen'>
@@ -31,7 +32,7 @@ const TopNavbar:React.FC = () => {
                     )
                 })}
                 <Image src="/assets/cart-icon.png" alt='Rhea-Vania-Logo' width={42} height={28} className=' md:ml-7 xl:ml-20'/>  
-                <p className='absolute right-24 top-[4.5rem]'>{count}</p>
+                <p className='absolute right-24 top-[4.5rem]'>{cartLen}</p>
             </div>
         </nav>
     </header>

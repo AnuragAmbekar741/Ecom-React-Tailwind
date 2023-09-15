@@ -47,25 +47,41 @@ const page = () => {
 
   const [cart,setCart] = useRecoilState<ProductDetails[]>(cartState)
 
-  const addToCart=()=>{
+  const checkSameSize = (prodToAdd:ProductDetails) =>{
+    let prodCheck = cart.find(prod=>prod.id == prodToAdd.id && prod.size == prodToAdd.size)
+    if(prodCheck){
+      prodToAdd['quantity'] = prodCheck.quantity + 1
+      let newcart = cart.filter(prod=>prod.id !== prodToAdd.id && prod.size !== prodToAdd.size)
+      newcart.push(prodToAdd)
+      console.log('newcart is ',newcart)
+      setCart(newcart)
+      console.log('samesize')
+    }
+    if(!prodCheck){
+      prodToAdd['quantity'] = 1
+      setCart([...cart,prodToAdd])
+      console.log('diff size')
+    }
+    console.log(cart)
+  }
+
+  const addSizeQuant = () =>{
     const prodToAdd:ProductDetails = {...selectedProd}
     if(selectRef.current?.value==='custom'){
       if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!=='') {
         prodToAdd['size'] = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip})
-        setCart([...cart,prodToAdd])
       }else alert('Please add custom sizes for all the measurements.')
     }
     if(selectRef.current?.value!=='custom'){
       prodToAdd['size'] = selectRef.current?.value
-      setCart([...cart,prodToAdd])
     }
-    const prodSameSize:ProductDetails|any = cart.find(product=>product.id == prodToAdd.id && product.size == prodToAdd.size)
-    if(prodSameSize) {
-      prodSameSize['quantity']  = prodSameSize['quantity'] + 1
-      return
-    }
-    if(!prodSameSize) prodSameSize['quantity'] = 1
-  
+    return prodToAdd
+  }
+
+  const addToCart=()=>{
+    const prodToAdd = addSizeQuant()
+    console.log(prodToAdd)
+    checkSameSize(prodToAdd)
   }
 
   return (
