@@ -13,10 +13,10 @@ const page = () => {
   console.log(Cart)
   return (
     <div className='pt-40 px-20 flex'>
-      <div className='w-1/2'>
+      <div className='w-3/5'>
         <CartProductContainer/>
       </div>
-      <div className='w-1/2'>
+      <div className='w-2/5'>
         <DeliveryDetailsForm/>
       </div>
     </div>
