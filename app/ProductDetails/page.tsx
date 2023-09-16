@@ -10,8 +10,6 @@ import { useRecoilState } from "recoil";
 import { cartState,ProductDetails } from "@/components/store/atoms/cartState";
 
 
-
-
 const page = () => {
   const params = useSearchParams();
   const id = params.get("id");

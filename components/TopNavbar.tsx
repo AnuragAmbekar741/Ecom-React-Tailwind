@@ -3,7 +3,7 @@
 import React from 'react'
 import { navLinks } from '@/lib/data'
 import Image from 'next/image'
-import { cartState,ProductDetails } from './store/atoms/cartState'
+import { cartState } from './store/atoms/cartState'
 import { useRecoilValue } from 'recoil'
 import { useRouter } from 'next/navigation'
 

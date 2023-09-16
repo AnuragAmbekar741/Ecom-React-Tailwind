@@ -1,9 +1,9 @@
-import bralette from '@public/assets/Bralette.png'
-import trouser from '@public/assets/Trouser.png'
-import shirt from '@public/assets/Shirt.png'
-import skirt from '@public/assets/Skirt.png'
-import dress from '@public/assets/Dress.png'
-import top from '@public/assets/Top.png'
+import bralette from '../public/assets/Bralette.png'
+import trouser from '../public/assets/Trouser.png'
+import shirt from '../public/assets/Shirt.png'
+import skirt from '../public/assets/Skirt.png'
+import dress from '../public/assets/Dress.png'
+import top from '../public/assets/Top.png'
 
 
 export const navLinks = [

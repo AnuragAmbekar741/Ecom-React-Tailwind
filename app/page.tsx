@@ -8,10 +8,10 @@ export default function Home() {
   return (
     <main >
       <Pov/>
-        <SectionDivider title="Products"/>
-        <CardContainer/>
-        <SectionDivider title="About Us"/>
-        <AboutUs/>
+      <SectionDivider title="Products"/>
+      <CardContainer/>
+      <SectionDivider title="About Us"/>
+      <AboutUs/>
     </main>
   )
 }
