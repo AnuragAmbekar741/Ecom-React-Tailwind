@@ -1,4 +1,10 @@
-import { ProductDetails } from "@/components/store/atoms/cartState";
+import bralette from '@public/assets/Bralette.png'
+import trouser from '@public/assets/Trouser.png'
+import shirt from '@public/assets/Shirt.png'
+import skirt from '@public/assets/Skirt.png'
+import dress from '@public/assets/Dress.png'
+import top from '@public/assets/Top.png'
+
 
 export const navLinks = [
   {
@@ -33,6 +39,7 @@ export const productData  = [
       "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
     composition:
       "A slightly curved neckline at the front, with panel boning and a center back zipper",
+      cartIcon:bralette
   },
   {
     id: "002",
@@ -49,6 +56,7 @@ export const productData  = [
       "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
     composition:
       "A pair of straight leg trousers with a high waist and front pockets",
+      cartIcon:trouser
   },
   {
     id: "003",
@@ -65,6 +73,7 @@ export const productData  = [
       "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
     composition:
       "An oversized sheer turtleneck with raglan sleeves, gathered at the cuffs and button closures at the back.",
+      cartIcon:top
   },
   {
     id: "004",
@@ -80,6 +89,7 @@ export const productData  = [
     material:
       "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
     composition: "",
+    cartIcon:shirt
   },
   {
     id: "005",
@@ -95,6 +105,7 @@ export const productData  = [
     material:
       "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
     composition: "",
+    cartIcon:skirt
   },
   {
     id: "006",
@@ -109,6 +120,7 @@ export const productData  = [
     material:
       "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
     composition: "",
+    cartIcon:dress
   },
 ] as const;
 

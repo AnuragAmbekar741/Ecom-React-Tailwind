@@ -47,17 +47,14 @@ const page = () => {
 
   const [cart,setCart] = useRecoilState<ProductDetails[]>(cartState)
 
-  const checkSameSize = (prodToAdd:ProductDetails) =>{
-    let prodCheck = cart.find(prod=>prod.id == prodToAdd.id && prod.size == prodToAdd.size)
-    if(prodCheck){
-      prodToAdd['quantity'] = prodCheck.quantity + 1
-      let newcart = cart.filter(prod=>prod.id !== prodToAdd.id && prod.size !== prodToAdd.size)
-      newcart.push(prodToAdd)
-      console.log('newcart is ',newcart)
-      setCart(newcart)
-      console.log('samesize')
+  const checkSameSize = async (prodToAdd:ProductDetails) =>{
+    let prodIndex = cart.findIndex(prod=>prod.id == prodToAdd.id && prod.size == prodToAdd.size)
+    if(prodIndex!==-1){
+    const updatedCart = [...cart];
+    updatedCart[prodIndex] = { ...cart[prodIndex], quantity: cart[prodIndex].quantity + 1 };
+    setCart(updatedCart); 
     }
-    if(!prodCheck){
+    else{
       prodToAdd['quantity'] = 1
       setCart([...cart,prodToAdd])
       console.log('diff size')
@@ -65,8 +62,13 @@ const page = () => {
     console.log(cart)
   }
 
-  const addSizeQuant = () =>{
+  const addSizeQuant = async () =>{
     const prodToAdd:ProductDetails = {...selectedProd}
+    const cartCheck = cart.filter(item=>item.id===prodToAdd.id && item.quantity>3)
+    if(cartCheck.length>0){
+      alert("Same prodcut can't be added trice!")
+      return
+    }
     if(selectRef.current?.value==='custom'){
       if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!=='') {
         prodToAdd['size'] = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip})
@@ -78,10 +80,10 @@ const page = () => {
     return prodToAdd
   }
 
-  const addToCart=()=>{
-    const prodToAdd = addSizeQuant()
-    console.log(prodToAdd)
-    checkSameSize(prodToAdd)
+  const addToCart = async() => {
+    const prodToAdd = await addSizeQuant()
+    if(!prodToAdd) return
+    await checkSameSize(prodToAdd)
   }
 
   return (
