@@ -10,7 +10,7 @@ const CartProductContainer:React.FC = () => {
   const cart = useRecoilValue(cartState)
 
   return (
-    <div className='grid w-full shadow-lg rounded-lg'>
+    <div className='grid w-full shadow-lg rounded-lg border'>
       {cart.map(item=>{
         return(
            <CartProd product={item}/>
