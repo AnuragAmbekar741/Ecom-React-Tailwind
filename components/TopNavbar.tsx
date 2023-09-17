@@ -39,7 +39,11 @@ const TopNavbar:React.FC = () => {
                     className=' md:ml-7 xl:ml-20 cursor-pointer'
                     onClick={()=>router.push('/CartPage')}
                 />  
-                <p className='absolute right-24 top-[4.5rem]'>{cartLen}</p>
+                <p 
+                  className='absolute right-24 top-[4.5rem]'
+                  onClick={()=>router.push('/CartPage')}
+                >{cartLen}
+                </p>
             </div>
         </nav>
     </header>

@@ -48,7 +48,7 @@ export const productData = [
     img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957724/1-15_jh7gxk.jpg",
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957731/1-52_n6zhdv.jpg",
     img5: "",
-
+    ideation:'',
     careInstructions: 'Dry Clean Only',
     composition:
       "Outer Shell: 100% Silk CrepeInner Shell: 100% Polyester",
