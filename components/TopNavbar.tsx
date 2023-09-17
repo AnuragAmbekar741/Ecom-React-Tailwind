@@ -22,7 +22,7 @@ const TopNavbar:React.FC = () => {
                 alt='Rhea-Vania-Logo' 
                 width={180} 
                 height={78} 
-                className='h-[97px] cursor-pointer hover:scale-125'
+                className='h-[97px] cursor-pointer hover:scale-125 transition delay-100'
                 onClick={()=>router.push('/')}
             />
             <div className='flex py-7'>

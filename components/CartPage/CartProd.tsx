@@ -25,12 +25,8 @@ const CartProd:React.FC <ProductDetails> = ({product}) => {
 
   const [cart,setCart] = useRecoilState(cartState)
 
-  useEffect(()=>{
-    console.log('effect called')
-    if(cart.length==0 || cart.length<1 ) router.push('/')
-  },[cart])
-
   const alterQuant = (quant:number,alter:string) =>{
+    
     const index = cart.findIndex(item=>item.id === id)
     const updatedCart = [...cart]
     
@@ -51,7 +47,6 @@ const CartProd:React.FC <ProductDetails> = ({product}) => {
     }
     
     setCart(updatedCart)
-    console.log(cart)
 }
   
   return (

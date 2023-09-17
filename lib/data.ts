@@ -23,7 +23,7 @@ export const navLinks = [
 
 
 
-export const productData  = [
+export const productData = [
   {
     id: "001",
     name: "The Gabrielle Bralette",
@@ -33,13 +33,11 @@ export const productData  = [
     img3: "",
     img4: "",
     img5: "",
-    ideation:
-      "We take into account the varying measurements of a woman's body to create pieces that don’t restrict but rather flow naturally, using boning as support rather than to cinch the body. As did designer Gabrielle Chanel when she eliminated the use of corsets in her clothing. A basic bralette is a staple in every fashionista's wardrobe.",
-    material:
-      "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
+    ideation: "A slightly curved neckline at the front, with panel boning and a centre back zipper.We take into account the varying measurements of a woman's body to create pieces that don’t restrict but rather flow naturally. We have used boning as support rather than to cinch the body. As did designer Gabrielle Chanel when she eliminated the use of corsets in her clothing. A basic bralette is a staple in every fashionista's wardrobe.Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel.Pair our piece with jeans and sneakers for a casual look or for something a little more elevated style with our Gabrielle Trousers and throw on a pair of heels.",
+    careInstructions: 'Dry Clean Only',
     composition:
-      "A slightly curved neckline at the front, with panel boning and a center back zipper",
-      cartIcon:bralette
+      "Outer Shell: 100% Silk \n Crepe Inner Shell: 100% Polyester",
+    cartIcon: bralette
   },
   {
     id: "002",
@@ -50,13 +48,11 @@ export const productData  = [
     img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957724/1-15_jh7gxk.jpg",
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957731/1-52_n6zhdv.jpg",
     img5: "",
-    ideation: "",
 
-    material:
-      "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
+    careInstructions: 'Dry Clean Only',
     composition:
-      "A pair of straight leg trousers with a high waist and front pockets",
-      cartIcon:trouser
+      "Outer Shell: 100% Silk CrepeInner Shell: 100% Polyester",
+    cartIcon: trouser
   },
   {
     id: "003",
@@ -67,13 +63,10 @@ export const productData  = [
     img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957725/1-24_qefwvi.jpg",
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957724/1-19_imixrc.jpg",
     img5: "",
-    ideation: "",
-
-    material:
-      "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
-    composition:
-      "An oversized sheer turtleneck with raglan sleeves, gathered at the cuffs and button closures at the back.",
-      cartIcon:top
+    ideation: "An oversized sheer turtleneck with raglan sleeves, gathered at the cuffs and button closures at the back. Made from pure silk organza. Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. When Gabrielle (Coco) Chanel began designing women's wear she created something revolutionary. She redefined what it means to be sexy. We aim to create pieces that make you look beautiful while still being comfortable. Pair this piece with our Gabrielle Bralette for an extra layer. Show some skin without actually revealing skin.",
+    careInstructions: 'Dry Clean Only',
+    composition:"Outer Shell: 100% Silk Organza",
+    cartIcon: top
   },
   {
     id: "004",
@@ -85,11 +78,9 @@ export const productData  = [
     img4: "",
     img5: "",
     ideation: "",
-
-    material:
-      "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
+    careInstructions: 'Dry Clean Only',
     composition: "",
-    cartIcon:shirt
+    cartIcon: shirt
   },
   {
     id: "005",
@@ -101,11 +92,9 @@ export const productData  = [
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957730/1-49_sxjikr.jpg",
     img5: "",
     ideation: "",
-
-    material:
-      "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
+    careInstructions: 'Dry Clean Only',
     composition: "",
-    cartIcon:skirt
+    cartIcon: skirt
   },
   {
     id: "006",
@@ -117,10 +106,9 @@ export const productData  = [
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957732/2-3_em7bvc.jpg",
     img5: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677956787/1-37_tdqwn3.jpg",
     ideation: "",
-    material:
-      "Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.",
+    careInstructions: 'Dry Clean Only',
     composition: "",
-    cartIcon:dress
+    cartIcon: dress
   },
 ] as const;
 

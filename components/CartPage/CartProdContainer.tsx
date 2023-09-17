@@ -10,7 +10,7 @@ const CartProductContainer:React.FC = () => {
   const cart = useRecoilValue(cartState)
 
   return (
-    <div className='grid w-full shadow-md p-3 rounded-lg'>
+    <div className='grid w-full shadow-md p-3 rounded-lg border border-slate-100'>
       <div className='flex justify-between p-3'>
         <h3 className='text-md font-medium'>Product</h3>
         <h3 className='text-md font-medium px-16'>Name</h3>

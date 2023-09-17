@@ -88,16 +88,16 @@ const page = () => {
     <div className="flex p-7 pt-40 border w-full h-[100vh]">
       <div className="w-1/3 pl-5 pr-10 pt-12  justify-start">
         <h2 className="text-xl font-light">Ideadtion</h2>
-        <p className="text-[15px] font-light leading-6  mt-3 mb-5">
+        <p className="text-[16px] font-light leading-6  mt-2 mb-5">
           {selectedProd.ideation}
         </p>
-        <h2 className="text-xl font-light mt-12">Composition</h2>
-        <p className="text-[15px] font-light leading-6  my-3 mb-5">
+        <h2 className="text-xl font-light mt-6">Composition</h2>
+        <p className="text-[16px] font-light leading-6  my-2 mb-5">
           {selectedProd.composition}
         </p>
-        <h2 className="text-xl font-light mt-12">Material</h2>
-        <p className="text-[15px] font-light leading-6  my-3 mb-5">
-          {selectedProd.material}
+        <h2 className="text-xl font-light mt-6">Material</h2>
+        <p className="text-[16px] font-light leading-6  my-2 mb-5">
+          {selectedProd.careInstructions}
         </p>
       </div>
       <div className="w-1/3 px-4 flex flex-col overflow-y-auto">
