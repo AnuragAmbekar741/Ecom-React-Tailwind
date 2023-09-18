@@ -54,13 +54,13 @@ const DeliveryDetailsForm:React.FC = () => {
     <div className='mx-2 p-5 rounded-lg shadow-md border border-slate-100'>
       <h2 className='text-xl font-medium mb-5'>Contact</h2>
       <input 
-        className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${formStatus && details.email=='' || !validation.emailVal ?'border-red-500 placeholder:text-red-500':''}`}
+        className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${formStatus && details.email=='' || formStatus && !validation.emailVal ?'border-red-500 placeholder:text-red-500':''}`}
         placeholder={`${formStatus && details.email==''?'Please enter valid email':'@Email' }`}
         value={details.email}
         onChange={(e)=>setDetails({...details,email:e.target.value})}
         />
       <input 
-        className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${formStatus && details.phone=='' || !validation.phoneVal ?'border-red-500 placeholder:text-red-500':''}`}
+        className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${formStatus && details.phone=='' || formStatus && !validation.phoneVal ?'border-red-500 placeholder:text-red-500':''}`}
         placeholder={`${formStatus && details.email==''?'Please enter valid phone number':'@Phone' }`}
         value={details.phone}
         onChange={(e)=>setDetails({...details,phone:e.target.value})}
@@ -106,7 +106,7 @@ const DeliveryDetailsForm:React.FC = () => {
             onChange={(e)=>setDetails({...details,state:e.target.value})}
           /> 
           <input 
-            className={`p-2 border-b border-black w-1/3 focus:outline-none mb-1 ${formStatus && details.pin=='' || !validation.pinVal ?'border-red-500 placeholder:text-red-500':''}`}
+            className={`p-2 border-b border-black w-1/3 focus:outline-none mb-1 ${formStatus && details.pin=='' || formStatus && !validation.pinVal ?'border-red-500 placeholder:text-red-500':''}`}
             placeholder='@Address - Pin'
             value={details.pin}
             onChange={(e)=>setDetails({...details,pin:e.target.value})}
