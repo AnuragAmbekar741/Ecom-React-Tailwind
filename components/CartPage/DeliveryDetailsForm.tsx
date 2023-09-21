@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { userDetailsState } from '../store/atoms/userDetailsState'
 
 const DeliveryDetailsForm:React.FC = () => {
 
@@ -13,6 +15,8 @@ const DeliveryDetailsForm:React.FC = () => {
     state:string,
     pin:string
   } 
+
+  const [userDetails,setUserDetails]= useRecoilState(userDetailsState)
 
   const [details,setDetails]= useState<UserDetails>({
     firstName:'',
@@ -34,7 +38,8 @@ const DeliveryDetailsForm:React.FC = () => {
     pinVal:false
   })
 
-  const handleClick = () =>{
+  const formValidation = () =>{
+    let result
     setFormStatus(true)
     if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(details.email)){
       setValidation({...validation,emailVal:true})
@@ -48,6 +53,11 @@ const DeliveryDetailsForm:React.FC = () => {
     if(!validation.emailVal) setDetails({...details,email:''})
     if(!validation.phoneVal) setDetails({...details,phone:''})
     if(!validation.pinVal) setDetails({...details,pin:''})
+
+  }
+
+  const handleClick = () =>{
+    
   }
 
   return (
