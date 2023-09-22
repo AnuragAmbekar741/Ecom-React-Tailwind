@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { userDetailsState } from '../store/atoms/userDetailsState'
+import { emails } from '@clerk/nextjs/api'
 
 const DeliveryDetailsForm:React.FC = () => {
 
@@ -16,7 +17,7 @@ const DeliveryDetailsForm:React.FC = () => {
     pin:string
   } 
 
-  const [userDetails,setUserDetails]= useRecoilState(userDetailsState)
+  const [userDetails,setUserDetails]= useRecoilState<UserDetails>(userDetailsState)
 
   const [details,setDetails]= useState<UserDetails>({
     firstName:'',
@@ -32,31 +33,55 @@ const DeliveryDetailsForm:React.FC = () => {
 
   const [formStatus,setFormStatus] = useState<boolean>(false)
 
+  const [clickStatus,setClickStatus] = useState<boolean>(false)
+
+
   const [validation,setValidation] = useState({
     emailVal:false,
     phoneVal:false,
     pinVal:false
   })
 
-  const formValidation = () =>{
-    let result
-    setFormStatus(true)
-    if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(details.email)){
-      setValidation({...validation,emailVal:true})
-    }
-    if(details.phone.length === 10){
-      setValidation({...validation,phoneVal:true})
-    }
-    if(details.pin.length === 6){
-      setValidation({...validation,pinVal:true})
-    } 
-    if(!validation.emailVal) setDetails({...details,email:''})
-    if(!validation.phoneVal) setDetails({...details,phone:''})
-    if(!validation.pinVal) setDetails({...details,pin:''})
 
+
+
+  const formValidation = () =>{
+    if(details.email !== ''){
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+      console.log("email val is ",emailPattern.test(details.email))
+      if(emailPattern.test(details.email)==true){ 
+        setValidation({...validation,emailVal:true})
+        console.log('email validated',validation.emailVal)
+        
+      }
+    }
+    // console.log(details.phone.split(''))
+    if(details.phone.split('').length === 10) setValidation({...validation,phoneVal:true})
+    if(details.pin.split('').length === 6) setValidation({...validation,pinVal:true})
+    if(details.firstName!=='' && details.lastName!=='' && details.apt!=='' && details.locality!=='' && details.city!=='' && details.state!==''){
+      if(validation.emailVal && validation.phoneVal && validation.pinVal){
+        console.log('Validation : ',validation)
+        return true
+      } 
+    } 
+    console.log('Validation : ',validation)
+    return false
   }
 
+  useEffect(()=>{
+    console.log('effect')
+    const formValidationRes = formValidation()
+    if(formValidationRes) console.log('valid form')
+    if(!formValidationRes) {
+      setClickStatus(false)
+    }
+
+  },[clickStatus])
+
   const handleClick = () =>{
+    setClickStatus(true)
+    setFormStatus(true)
+    // const formValidationRes = formValidation() 
     
   }
 
@@ -64,14 +89,14 @@ const DeliveryDetailsForm:React.FC = () => {
     <div className='mx-2 p-5 rounded-lg shadow-md border border-slate-100'>
       <h2 className='text-xl font-medium mb-5'>Contact</h2>
       <input 
-        className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${formStatus && details.email=='' || formStatus && !validation.emailVal ?'border-red-500 placeholder:text-red-500':''}`}
+        className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${formStatus && details.email=='' || formStatus && !validation.emailVal?'border-red-500 placeholder:text-red-500':'border-black'}`}
         placeholder={`${formStatus && details.email==''?'Please enter valid email':'@Email' }`}
         value={details.email}
         onChange={(e)=>setDetails({...details,email:e.target.value})}
         />
       <input 
         className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${formStatus && details.phone=='' || formStatus && !validation.phoneVal ?'border-red-500 placeholder:text-red-500':''}`}
-        placeholder={`${formStatus && details.email==''?'Please enter valid phone number':'@Phone' }`}
+        placeholder={`${formStatus && details.phone==''?'Please enter valid phone number':'@Phone' }`}
         value={details.phone}
         onChange={(e)=>setDetails({...details,phone:e.target.value})}
         /> 
@@ -117,7 +142,7 @@ const DeliveryDetailsForm:React.FC = () => {
           /> 
           <input 
             className={`p-2 border-b border-black w-1/3 focus:outline-none mb-1 ${formStatus && details.pin=='' || formStatus && !validation.pinVal ?'border-red-500 placeholder:text-red-500':''}`}
-            placeholder='@Address - Pin'
+            placeholder={`${formStatus && details.pin =='' || formStatus && !validation.pinVal ? 'Please enter valid pin' : '@Pin' }`}
             value={details.pin}
             onChange={(e)=>setDetails({...details,pin:e.target.value})}
           /> 
