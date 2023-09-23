@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-  interface UserDetails {
+  export interface UserDetails {
     firstName:string,
     lastName:string,
     email : string,

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
 import { userDetailsState } from '../store/atoms/userDetailsState'
-import { emails } from '@clerk/nextjs/api'
 
 const DeliveryDetailsForm:React.FC = () => {
 
@@ -46,16 +45,15 @@ const DeliveryDetailsForm:React.FC = () => {
 
 
   const formValidation = () =>{
+    setValidation({emailVal:false,phoneVal:false,pinVal:false})
     if(details.email !== ''){
     const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
       console.log("email val is ",emailPattern.test(details.email))
       if(emailPattern.test(details.email)==true){ 
         setValidation({...validation,emailVal:true})
-        console.log('email validated',validation.emailVal)
-        
+        console.log('email validated',validation)
       }
     }
-    // console.log(details.phone.split(''))
     if(details.phone.split('').length === 10) setValidation({...validation,phoneVal:true})
     if(details.pin.split('').length === 6) setValidation({...validation,pinVal:true})
     if(details.firstName!=='' && details.lastName!=='' && details.apt!=='' && details.locality!=='' && details.city!=='' && details.state!==''){
@@ -64,25 +62,27 @@ const DeliveryDetailsForm:React.FC = () => {
         return true
       } 
     } 
-    console.log('Validation : ',validation)
     return false
   }
 
-  useEffect(()=>{
-    console.log('effect')
-    const formValidationRes = formValidation()
-    if(formValidationRes) console.log('valid form')
-    if(!formValidationRes) {
-      setClickStatus(false)
-    }
+  // useEffect(()=>{
+  //   console.log('effect')
+  //   const formValidationRes = formValidation()
+  //   if(formValidationRes) console.log('valid form')
+  //   if(!formValidationRes) {
+  //     setClickStatus(false)
+  //   }
 
-  },[clickStatus])
+  // },[clickStatus])
 
   const handleClick = () =>{
     setClickStatus(true)
     setFormStatus(true)
-    // const formValidationRes = formValidation() 
-    
+const formValidationRes = formValidation()
+    if(formValidationRes) console.log('valid form')
+    if(!formValidationRes) {
+      setClickStatus(false)
+    }    
   }
 
   return (
