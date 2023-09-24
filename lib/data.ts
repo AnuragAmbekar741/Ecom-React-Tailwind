@@ -35,8 +35,10 @@ export const productData = [
     img5: "",
     ideation: "A slightly curved neckline at the front, with panel boning and a centre back zipper.We take into account the varying measurements of a woman's body to create pieces that don’t restrict but rather flow naturally. We have used boning as support rather than to cinch the body. As did designer Gabrielle Chanel when she eliminated the use of corsets in her clothing. A basic bralette is a staple in every fashionista's wardrobe.Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel.Pair our piece with jeans and sneakers for a casual look or for something a little more elevated style with our Gabrielle Trousers and throw on a pair of heels.",
     careInstructions: 'Dry Clean Only',
-    composition:
-      "Outer Shell: 100% Silk \n Crepe Inner Shell: 100% Polyester",
+    composition:{
+      prop1:"Outer Shell: 100%",
+      prop2:"Silk Crepe Inner Shell: 100% Polyester"
+    },
     cartIcon: bralette
   },
   {
@@ -164,3 +166,6 @@ export const sizeChartData = [
     Hip: "47''",
   },
 ] as const;
+
+
+

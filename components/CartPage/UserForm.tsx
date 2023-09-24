@@ -7,13 +7,18 @@ import {useForm} from 'react-hook-form'
 import { useRecoilState } from 'recoil'
 import { userDetailsState,UserDetails } from '../store/atoms/userDetailsState'
 
+import { useRouter } from 'next/navigation'
 
+interface InputProps {
+  value: string;
+  readOnly: boolean;
+}
 
+const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
 
+    const [userDetails,setUserDetails]= useRecoilState<UserDetails>(userDetailsState)
 
-const UserForm = () => {
-
-  const [userDetails,setUserDetails]= useRecoilState<UserDetails>(userDetailsState)
+    const router = useRouter()
 
     const {
         register,
@@ -21,13 +26,26 @@ const UserForm = () => {
         formState:{errors,isSubmitting},
         reset,
         getValues
-    } = useForm<UserDetails>()
+    } = useForm<UserDetails>({ defaultValues: 
+        { 
+            email: userDetails.email,
+            phone:userDetails.phone,
+            firstName:userDetails.firstName,
+            lastName:userDetails.lastName, 
+            apt:userDetails.apt,
+            locality:userDetails.locality,
+            city:userDetails.city,
+            state:userDetails.state,
+            pin:userDetails.pin
+        } 
+    })
 
     const onSubmit = async(data:UserDetails) =>{
         console.log(data)
         setUserDetails(data)
         console.log(userDetails)
         await new Promise((resolve)=>setTimeout(resolve,1000))
+        router.push('/CheckoutPage')
         // reset()
     }
 
@@ -42,6 +60,15 @@ const UserForm = () => {
         console.log(isValidPhone)
         return isValidPhone
     };
+
+    const validatePin = (value:string) =>{
+        const isValidPin = /^\d{6}$/.test(value)
+        if(!isValidPin){
+            reset({pin:''})
+            return 'Pin must be 6 digits'
+        }
+        return isValidPin
+    }
     
   return (
     <div className='text-md font-light px-5 py-2'>
@@ -57,7 +84,7 @@ const UserForm = () => {
                     required:"Email is Required",
                     validate: (value) => emailValidationRegex.test(value) === true || "Enter valid Email",
                 })}
-                
+                readOnly={readOnly}
             />
             
              <input
@@ -66,7 +93,8 @@ const UserForm = () => {
                 {...register('phone',{
                     required:"Phone is required",
                     validate: validatePhone,
-                })}            
+                })}
+                readOnly={readOnly}            
             />
 
             <h1 className='text-3xl text-black font-light my-3'>Shipping Details</h1>
@@ -121,14 +149,7 @@ const UserForm = () => {
                     placeholder={`${errors.state?'Enter Pin':' Pin Code'}`}
                     {...register('pin',{
                         required:'Enter Pin',
-                        minLength:{
-                            value:6,
-                            message:'Pin should be 6 digits'
-                        },
-                        maxLength:{
-                            value:6,
-                            message:'Pin should be 6 digits'
-                        }
+                        validate:validatePin
                     })}
                 /> 
             </div>
@@ -136,7 +157,7 @@ const UserForm = () => {
             
             <button
                 disabled={isSubmitting}
-                className='mt-10 mb-5 p-3 border border-black w-full text-lg font-light'
+                className={`mt-10 mb-5 p-3 border border-black w-full text-lg font-light ${readOnly?'hidden':''}`}
                 type='submit'
             >
             Proceed to checkout    
