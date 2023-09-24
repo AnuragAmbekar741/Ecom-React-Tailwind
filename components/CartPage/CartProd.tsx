@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React, { useEffect } from 'react'
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai'
 import { useRecoilState } from 'recoil';
-import { cartState } from '../store/atoms/cartState';
+import { cartState } from '../../store/atoms/cartState';
 import { useRouter } from 'next/navigation'
 
 

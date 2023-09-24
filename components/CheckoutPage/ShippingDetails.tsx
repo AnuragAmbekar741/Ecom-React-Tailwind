@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { userDetailsState } from '../store/atoms/userDetailsState'
+import { userDetailsState } from '../../store/atoms/userDetailsState'
 import UserForm from '../CartPage/UserForm'
 
 const ShippingDetails = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useRecoilState } from 'recoil'
-import { userDetailsState } from '../store/atoms/userDetailsState'
+import { userDetailsState } from '../../store/atoms/userDetailsState'
 
 const DeliveryDetailsForm:React.FC = () => {
 

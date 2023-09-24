@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Roboto } from 'next/font/google'
 import TopNavbar from '@/components/TopNavbar'
 import BottomNavbar from '@/components/BottomNavbar'
-import RecoilRootProvider from "@/components/store/RecoilRootProvider";
+import RecoilRootProvider from "@/store/RecoilRootProvider";
 
 
 const roboto = Roboto({

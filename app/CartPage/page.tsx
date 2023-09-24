@@ -3,7 +3,7 @@
 import React from 'react'
 import DeliveryDetailsForm from '@/components/CartPage/DeliveryDetailsForm'
 import CartProductContainer from '@/components/CartPage/CartProdContainer'
-import { cartState } from '@/components/store/atoms/cartState'
+import { cartState } from '@/store/atoms/cartState'
 import { useRecoilValue } from 'recoil'
 import UserForm from '@/components/CartPage/UserForm'
 

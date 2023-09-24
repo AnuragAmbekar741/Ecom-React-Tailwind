@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import { cartState } from '../store/atoms/cartState'
+import { cartState } from '../../store/atoms/cartState'
 import { useRecoilValue } from 'recoil'
 import CartProd from './CartProd'
 

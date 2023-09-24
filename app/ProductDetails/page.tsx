@@ -7,7 +7,7 @@ import { useState,useRef } from "react";
 import Image from "next/image";
 
 import { useRecoilState } from "recoil";
-import { cartState,ProductDetails } from "@/components/store/atoms/cartState";
+import { cartState,ProductDetails } from "@/store/atoms/cartState";
 
 
 const page = () => {
