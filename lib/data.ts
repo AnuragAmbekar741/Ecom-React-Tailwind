@@ -33,11 +33,15 @@ export const productData = [
     img3: "",
     img4: "",
     img5: "",
-    ideation: "A slightly curved neckline at the front, with panel boning and a centre back zipper.We take into account the varying measurements of a woman's body to create pieces that don’t restrict but rather flow naturally. We have used boning as support rather than to cinch the body. As did designer Gabrielle Chanel when she eliminated the use of corsets in her clothing. A basic bralette is a staple in every fashionista's wardrobe.Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel.Pair our piece with jeans and sneakers for a casual look or for something a little more elevated style with our Gabrielle Trousers and throw on a pair of heels.",
+    ideation:{
+      prop1:"A slightly curved neckline at the front, with panel boning and a centre back zipper.We take into account the varying measurements of a woman's body to create pieces that don’t restrict but rather flow naturally. We have used boning as support rather than to cinch the body. As did designer Gabrielle Chanel when she eliminated the use of corsets in her clothing. A basic bralette is a staple in every fashionista's wardrobe.",
+      prop2:"Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel.",
+      prop3:"Pair our piece with jeans and sneakers for a casual look or for something a little more elevated style with our Gabrielle Trousers and throw on a pair of heels."
+    },
     careInstructions: 'Dry Clean Only',
     composition:{
-      prop1:"Outer Shell: 100%",
-      prop2:"Silk Crepe Inner Shell: 100% Polyester"
+      prop1:"Outer Shell: 100% Silk Crepe",
+      prop2:"Inner Shell: 100% Polyester"
     },
     cartIcon: bralette
   },
@@ -50,10 +54,16 @@ export const productData = [
     img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957724/1-15_jh7gxk.jpg",
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957731/1-52_n6zhdv.jpg",
     img5: "",
-    ideation:'',
+    ideation:{
+      prop1:'A pair of straight leg trousers with a high waist and front pockets. Made from pure silk crepe. A weighted but extremely soft fabric that flows over the body. We prioritise on the fabrics we pick, creating a gorgeous ensemble and a comfortable feel. To make this pair of trousers we’ve opted for a much thicker crepe.',
+      prop2:"Gabrielle (Coco) Chanel was one of the first designers to dress women in trousers. Akin to her collections we too have used simple delicate fabrics to accentuate a woman's silhouette. A closet must have for every woman.",
+      prop3:'We recommend pairing it with our Gabrielle Bralette and some heels for a super glam look. Can also be worn with a smart shirt or with a statement top.'
+    },
     careInstructions: 'Dry Clean Only',
-    composition:
-      "Outer Shell: 100% Silk CrepeInner Shell: 100% Polyester",
+    composition:{
+      prop1:"Outer Shell: 100% Silk Crepe",
+      prop2:"Inner Shell: 100% Polyester"
+    },
     cartIcon: trouser
   },
   {
@@ -65,9 +75,16 @@ export const productData = [
     img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957725/1-24_qefwvi.jpg",
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957724/1-19_imixrc.jpg",
     img5: "",
-    ideation: "An oversized sheer turtleneck with raglan sleeves, gathered at the cuffs and button closures at the back. Made from pure silk organza. Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel. When Gabrielle (Coco) Chanel began designing women's wear she created something revolutionary. She redefined what it means to be sexy. We aim to create pieces that make you look beautiful while still being comfortable. Pair this piece with our Gabrielle Bralette for an extra layer. Show some skin without actually revealing skin.",
+    ideation:{
+      prop1:'An oversized sheer turtleneck with raglan sleeves, gathered at the cuffs and button closures at the back. Made from pure silk organza. Our pieces feel like a second skin. We carefully select fabrics that look and feel luxurious, creating a gorgeous ensemble and a comfortable feel.',
+      prop2:"When Gabrielle (Coco) Chanel began designing women's wear she created something revolutionary. She redefined what it means to be sexy. We aim to create pieces that make you look beautiful while still being comfortable.",
+      prop3:'Pair this piece with our Gabrielle Bralette for an extra layer. Show some skin without actually revealing skin.'
+    },    
     careInstructions: 'Dry Clean Only',
-    composition:"Outer Shell: 100% Silk Organza",
+    composition:{
+      prop1:"Outer Shell: 100% Silk Organza",
+      prop2:""
+    },
     cartIcon: top
   },
   {
@@ -79,9 +96,16 @@ export const productData = [
     img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677956788/2-33_lqawut.jpg",
     img4: "",
     img5: "",
-    ideation: "",
+    ideation:{
+      prop1:'Features a high neck broad collar. Oversized fit with longer sleeves and wide cuffs. You can never go wrong with a classic piece like this. Made from pure silk crepe. Silk covered buttons for that extra special touch. A good silk shirt is a wardrobe staple.',
+      prop2:'Wear it buttoned up to the office or drop the neckline for a more dressy feel.',
+      prop3:'We recommend pairing this look with our Jane Silk Skirt or our Gabrielle Trousers.'
+    },
     careInstructions: 'Dry Clean Only',
-    composition: "",
+    composition:{
+      prop1:"Outer Shell: 100% Silk Crepe",
+      prop2:""
+    },
     cartIcon: shirt
   },
   {
@@ -93,9 +117,16 @@ export const productData = [
     img3: "",
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957730/1-49_sxjikr.jpg",
     img5: "",
-    ideation: "",
+    ideation:{
+      prop1:'Sexy to us doesn’t mean the show of skin. To be sexy is to be confident, graceful and comfortable in your own skin. With this philosophy we bring to you a classic A-Line Skirt. A wardrobe staple. And just the right piece that can mix both comfort and sophistication.',
+      prop2:'A classic, simple A -line shape, cut along the bias with a delicate waist band. Your vacation must have, ensuring you look elevated even on those long sightseeing trips.',
+      prop3:'Pulling from the many characters by Jane Austen. To us this piece radiates elegance. Just like Jane’s women, this look isn’t over the top. It’s simple yet has a certain charm to it. We believe it’s the perfect vacation piece. Stoll through the town, visit a museum, sight see, and more with a piece so comfortable yet so stunning. This one’s a no brainer.'
+    },
     careInstructions: 'Dry Clean Only',
-    composition: "",
+    composition:{
+      prop1:"Outer Shell: 100% Silk",
+      prop2:""
+    },
     cartIcon: skirt
   },
   {
@@ -107,9 +138,16 @@ export const productData = [
     img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957718/1-6_hrcb0b.jpg",
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957732/2-3_em7bvc.jpg",
     img5: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677956787/1-37_tdqwn3.jpg",
-    ideation: "",
+    ideation:{
+      prop1:'',
+      prop2:'',
+      prop3:''
+    },
     careInstructions: 'Dry Clean Only',
-    composition: "",
+    composition:{
+      prop1:"Outer Shell: 100% Silk Crepe",
+      prop2:""
+    },
     cartIcon: dress
   },
 ] as const;
