@@ -4,20 +4,23 @@ import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai'
 import { useRecoilState } from 'recoil';
 import { cartState } from '../../store/atoms/cartState';
 import { useRouter } from 'next/navigation'
-
+import { StaticImageData } from 'next/image';
 
 interface ProductDetails {
-    product :{
-      id:string
-      name: string,
-      img1:string,
-      cartIcon:string,
-      quantity:number,
-      [key: string]: string|number; // Allow any additional properties
-    }
+  id: string;
+  name: string;
+  price: string;
+  cartIcon: StaticImageData;
+  quantity: number;
+  size?: string|undefined;
+  [key: string]: any; // Allow for additional dynamic properties if needed
 }
 
-const CartProd:React.FC <ProductDetails> = ({product}) => {
+interface CartProdProps {
+  product: ProductDetails;
+}
+
+const CartProd:React.FC <CartProdProps> = ({product}) => {
   
   const {id,name,price,cartIcon,quantity,size} = product
 

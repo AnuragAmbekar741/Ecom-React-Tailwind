@@ -4,12 +4,12 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 interface ProductDetails {
-    product :{
-      id:string
-      name: string,
-      img1:string,
-      [key: string]: string; // Allow any additional properties
-    }
+  product: {
+    id: string;
+    name: string;
+    img1: string;
+    [key: string]: any; // Allow for additional dynamic properties if needed
+  };
 }
 
 const ProductCard:React.FC<ProductDetails> = ({product}) => { 

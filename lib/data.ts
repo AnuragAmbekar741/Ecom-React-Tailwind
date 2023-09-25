@@ -43,7 +43,8 @@ export const productData = [
       prop1:"Outer Shell: 100% Silk Crepe",
       prop2:"Inner Shell: 100% Polyester"
     },
-    cartIcon: bralette
+    cartIcon: bralette,
+    price2:7700
   },
   {
     id: "002",
@@ -64,7 +65,8 @@ export const productData = [
       prop1:"Outer Shell: 100% Silk Crepe",
       prop2:"Inner Shell: 100% Polyester"
     },
-    cartIcon: trouser
+    cartIcon: trouser,
+    price2:30000
   },
   {
     id: "003",
@@ -85,7 +87,8 @@ export const productData = [
       prop1:"Outer Shell: 100% Silk Organza",
       prop2:""
     },
-    cartIcon: top
+    cartIcon: top,
+    price2:10500
   },
   {
     id: "004",
@@ -106,7 +109,8 @@ export const productData = [
       prop1:"Outer Shell: 100% Silk Crepe",
       prop2:""
     },
-    cartIcon: shirt
+    cartIcon: shirt,
+    price2:20000
   },
   {
     id: "005",
@@ -127,7 +131,9 @@ export const productData = [
       prop1:"Outer Shell: 100% Silk",
       prop2:""
     },
-    cartIcon: skirt
+    cartIcon: skirt,
+    price2:23000
+
   },
   {
     id: "006",
@@ -148,7 +154,8 @@ export const productData = [
       prop1:"Outer Shell: 100% Silk Crepe",
       prop2:""
     },
-    cartIcon: dress
+    cartIcon: dress,
+    price2:50000
   },
 ] as const;
 

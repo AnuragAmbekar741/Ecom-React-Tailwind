@@ -1,13 +1,15 @@
 "use client"
 
 import React from 'react'
-import { cartState } from '../../store/atoms/cartState'
+import { cartState,ProductDetails } from '../../store/atoms/cartState'
 import { useRecoilValue } from 'recoil'
 import CartProd from './CartProd'
 
-const CartProductContainer:React.FC = () => {
 
-  const cart = useRecoilValue(cartState)
+
+const CartProductContainer:React.FC =()=>{
+
+  const cart: ProductDetails[] = useRecoilValue(cartState)
 
   return (
     <div className='grid align-top w-full  shadow-md p-3 rounded-lg border border-slate-100'>

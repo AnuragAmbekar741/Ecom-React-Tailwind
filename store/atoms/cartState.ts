@@ -1,13 +1,15 @@
 import {atom} from 'recoil'
+import { StaticImageData } from 'next/image';
 
 export interface ProductDetails {
-    id:string
-    name: string,
-    price:string,
-    img1:string,
-    img2:string,
-    [key:string]:any
-}
+  id: string;
+  name: string;
+  price: string;
+  cartIcon: StaticImageData;
+  quantity: number;
+  size?: string;
+  [key: string]: any;
+}   
 
 export const cartState = atom<ProductDetails[]>({
     key:'cartState',

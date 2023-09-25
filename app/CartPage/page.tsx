@@ -18,7 +18,7 @@ const page = () => {
         <CartProductContainer/>
       </div>
       <div className='w-full lg:w-2/5'>
-        <UserForm/>
+        <UserForm value={'cartPage'} readOnly={false} />
       </div>
     </div>
   )

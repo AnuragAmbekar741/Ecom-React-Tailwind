@@ -9,6 +9,18 @@ import Image from "next/image";
 import { useRecoilState } from "recoil";
 import { cartState,ProductDetails } from "@/store/atoms/cartState";
 
+import { StaticImageData } from "next/image";
+
+interface ProdDetails  {
+    id: string;
+    name: string;
+    price: string;
+    cartIcon: StaticImageData;
+    quantity?: number;
+    size?: string|undefined;
+    [key:string]:any
+}
+ 
 
 const page = () => {
   const params = useSearchParams();
@@ -43,7 +55,7 @@ const page = () => {
     if(selectRef.current?.value === "custom") selectRef.current!.value = 'uk6'
   }
 
-  const [cart,setCart] = useRecoilState<ProductDetails[]>(cartState)
+  const [cart,setCart] = useRecoilState(cartState)
 
   const checkSameSize = async (prodToAdd:ProductDetails) =>{
     let prodIndex = cart.findIndex(prod=>prod.id == prodToAdd.id && prod.size == prodToAdd.size)
@@ -61,7 +73,7 @@ const page = () => {
   }
 
   const addSizeQuant = async () =>{
-    const prodToAdd:ProductDetails = {...selectedProd}
+    const prodToAdd:ProdDetails = {...selectedProd}
     const cartCheck = cart.filter(item=>item.id===prodToAdd.id && item.quantity>3)
     if(cartCheck.length>0){
       alert("Same prodcut can't be added trice!")
@@ -69,13 +81,13 @@ const page = () => {
     }
     if(selectRef.current?.value==='custom'){
       if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!=='') {
-        prodToAdd['size'] = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip})
+        prodToAdd['size'] = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip}) as string
       }else alert('Please add custom sizes for all the measurements.')
     }
     if(selectRef.current?.value!=='custom'){
-      prodToAdd['size'] = selectRef.current?.value
+      prodToAdd['size'] = selectRef.current?.value as string
     }
-    return prodToAdd
+    return prodToAdd as ProductDetails
   }
 
   const addToCart = async() => {
