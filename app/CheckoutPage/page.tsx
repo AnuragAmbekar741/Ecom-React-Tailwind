@@ -4,10 +4,9 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div className='pt-40 px-20 md:grid lg:flex w-full'>
+    <div className='pt-40 px-20 md:grid w-full overflow-y-auto'>
             <CartDetails/>
             <ShippingDetails/>
-
     </div>
   )
 }

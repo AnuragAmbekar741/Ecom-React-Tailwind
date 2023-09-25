@@ -6,7 +6,7 @@ import SectionDivider from "@/components/SectionDivider"
 
 export default function Home() {
   return (
-    <main >
+    <main className="bg-slate-100" >
       <Pov/>
       <SectionDivider title="Products"/>
       <CardContainer/>

@@ -81,7 +81,10 @@ const page = () => {
     }
     if(selectRef.current?.value==='custom'){
       if(customSizes.bust!=='' && customSizes.waist!=='' && customSizes.hip!=='') {
-        prodToAdd['size'] = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip}) as string
+        var str = "Bust:"+customSizes.bust+"Waist:"+customSizes.waist+"Hip:"+customSizes.hip
+        // var str = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip}) 
+        console.log(str)
+        prodToAdd['size'] = str as string
       }else alert('Please add custom sizes for all the measurements.')
     }
     if(selectRef.current?.value!=='custom'){

@@ -104,14 +104,16 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                     placeholder={`${errors.firstName?errors.firstName.message:'First name'}`}
                     {...register('firstName',{
                         required:'First name required'
-                    })}                    
+                    })}               
+                    readOnly={readOnly}            
                 />
                 <input 
                     className={`p-2 border-b border-black w-full lg:w-1/2 focus:outline-none mb-3 ${errors.lastName ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'} `}
                     placeholder={`${errors.lastName?errors.lastName.message:'Last name'}`}
                     {...register('lastName',{
                         required:'Last name required'
-                    })}                    
+                    })}  
+                    readOnly={readOnly}            
                 /> 
             </div>
 
@@ -121,12 +123,14 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                 {...register('apt',{
                     required:'Apartment/House No. is required',
                 })}
+                readOnly={readOnly}            
             /> 
 
             <input 
                 className={`p-2 border-b border-black w-full focus:outline-none mb-3`}
                 placeholder='Address - Street/Locality'
                 {...register('locality')}
+                readOnly={readOnly}            
             />
 
             <div className='grid lg:flex w-full'>
@@ -136,6 +140,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                     {...register('state',{
                         required:'Enter State'
                     })}
+                    readOnly={readOnly}            
                 />
                 <input 
                     className={`p-2 border-b border-black w-full lg:w-1/3 focus:outline-none mb-3 mr-3 ${errors.city ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
@@ -143,6 +148,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                     {...register('city',{
                         required:'Enter City'
                     })}
+                    readOnly={readOnly}            
                 /> 
                 <input 
                     className={`p-2 border-b border-black w-full lg:w-1/3 focus:outline-none mb-3 ${errors.pin ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
@@ -151,6 +157,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                         required:'Enter Pin',
                         validate:validatePin
                     })}
+                    readOnly={readOnly}            
                 /> 
             </div>
 
