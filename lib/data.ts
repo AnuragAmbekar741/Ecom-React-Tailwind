@@ -145,14 +145,14 @@ export const productData = [
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957732/2-3_em7bvc.jpg",
     img5: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677956787/1-37_tdqwn3.jpg",
     ideation:{
-      prop1:'',
-      prop2:'',
-      prop3:''
+      prop1:"A sex symbol during her time, the inspiration for this dress came from her infamous 'Happy Birthday' dress. Marilyn wore a sheath dress that made her appear naked at Mr. John F. Kennedy's birthday.",
+      prop2:"Inspired by the same, the colour has been chosen to create the impression of a sculpted nude body without actually having to be nude.",
+      prop3:"We aim at creating fierce and bold looks without have to reveal skin at all. To strike a balance between elegance and sexy. This dress accomplishes of our diligent endeavours."
     },
     careInstructions: 'Dry Clean Only',
     composition:{
-      prop1:"Outer Shell: 100% Silk Crepe",
-      prop2:""
+      prop1:"Outer Shell: 100% Silk",
+      prop2:"Inner Shell:100% Polyester"
     },
     cartIcon: dress,
     price2:50000
