@@ -17,7 +17,7 @@ const CartProductContainer:React.FC =()=>{
 
   return (
     <div className='grid align-top w-full  shadow-md p-3 rounded-lg border border-slate-100'>
-      <div className='flex justify-between p-3'>
+      <div className='flex justify-between p-3 pr-5'>
         <h3 className='text-md font-medium'>Product</h3>
         <h3 className='text-md font-medium '>Name</h3>
         <h3 className='text-md font-medium '>Price</h3>

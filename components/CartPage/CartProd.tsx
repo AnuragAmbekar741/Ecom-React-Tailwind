@@ -63,8 +63,10 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
           {name.split(' ').map(word=><h3 className='text-md font-light'>{word}</h3>)}
         </div>
         <h3 className='text-md font-light'>{price}</h3>
-        <h3 className='text-md font-light'>{size}</h3>
-        <div className='text-xl font-light flex'>
+        <div>
+          {size?.split(' ').map(word=><h3 className='text-md font-light'>{word}</h3>)}
+        </div>
+        <div className='text-xl font-light flex pr-2'>
           <AiOutlineMinus 
             className="text-[16px] mt-[0.35rem] mr-2 cursor-pointer"
             onClick={()=>alterQuant(quantity,'sub')}
