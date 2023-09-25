@@ -28,6 +28,9 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
 
   const [cart,setCart] = useRecoilState(cartState)
 
+  // const prodName = name.split(' ')
+  // console.log(prodName)
+
   const alterQuant = (quant:number,alter:string) =>{
     
     const index = cart.findIndex(item=>item.id === id)
@@ -54,8 +57,11 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
   
   return (
     <div className='flex p-3 rounded-lg w-full my-1 justify-between text-black'>
-        <Image src={cartIcon} width={75} height={75} alt=''/>
-        <h3 className='text-md font-light'>{name}</h3>
+        <Image src={cartIcon} width={70} height={70} alt='' onClick={()=>router.push(`/ProductDetails/?id=${id}`)}/>
+        
+        <div>
+          {name.split(' ').map(word=><h3 className='text-md font-light'>{word}</h3>)}
+        </div>
         <h3 className='text-md font-light'>{price}</h3>
         <h3 className='text-md font-light'>{size}</h3>
         <div className='text-xl font-light flex'>

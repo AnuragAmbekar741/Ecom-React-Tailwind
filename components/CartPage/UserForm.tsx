@@ -71,14 +71,14 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
     }
     
   return (
-    <div className='text-md font-light px-5 py-2'>
+    <div className='text-lg font-light px-5 py-2'>
         <form 
             onSubmit={handleSubmit(onSubmit)}
         >
             <h1 className='text-3xl text-black font-light my-3'>Contact</h1>
 
             <input
-                className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                className={`p-1 border-b border-black w-full focus:outline-none mb-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                 placeholder={`${ errors.email ? errors.email.message : 'Email' }`}
                 {...register('email',{
                     required:"Email is Required",
@@ -88,7 +88,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
             />
             
              <input
-                className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                className={`p-1 border-b border-black w-full focus:outline-none mb-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                 placeholder={`${ errors.phone ? errors.phone.message : 'Phone' }`}
                 {...register('phone',{
                     required:"Phone is required",
@@ -100,7 +100,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
             <h1 className='text-3xl text-black font-light my-3'>Shipping Details</h1>
             <div className='grid lg:flex w-full'>
                 <input 
-                    className={`p-2 border-b border-black w-full lg:w-1/2 focus:outline-none mr-3 mb-3 ${errors.firstName ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'} `}
+                    className={`p-1 border-b border-black w-full lg:w-1/2 focus:outline-none mr-3 mb-3 ${errors.firstName ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'} `}
                     placeholder={`${errors.firstName?errors.firstName.message:'First name'}`}
                     {...register('firstName',{
                         required:'First name required'
@@ -108,7 +108,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                     readOnly={readOnly}            
                 />
                 <input 
-                    className={`p-2 border-b border-black w-full lg:w-1/2 focus:outline-none mb-3 ${errors.lastName ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'} `}
+                    className={`p-1 border-b border-black w-full lg:w-1/2 focus:outline-none mb-3 ${errors.lastName ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'} `}
                     placeholder={`${errors.lastName?errors.lastName.message:'Last name'}`}
                     {...register('lastName',{
                         required:'Last name required'
@@ -118,7 +118,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
             </div>
 
             <input 
-                className={`p-2 border-b border-black w-full focus:outline-none mb-3 ${errors.apt ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'} `}
+                className={`p-1 border-b border-black w-full focus:outline-none mb-3 ${errors.apt ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'} `}
                 placeholder={`${errors.apt?errors.apt.message:'Address - Apartment/House No.'}`}
                 {...register('apt',{
                     required:'Apartment/House No. is required',
@@ -127,7 +127,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
             /> 
 
             <input 
-                className={`p-2 border-b border-black w-full focus:outline-none mb-3`}
+                className={`p-1 border-b border-black w-full focus:outline-none mb-3`}
                 placeholder='Address - Street/Locality'
                 {...register('locality')}
                 readOnly={readOnly}            
@@ -135,7 +135,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
 
             <div className='grid lg:flex w-full'>
                 <input 
-                    className={`p-2 border-b border-black w-full lg:w-1/3 focus:outline-none mb-3 mr-3 ${errors.state ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                    className={`p-1 border-b border-black w-full lg:w-1/3 focus:outline-none mb-3 mr-3 ${errors.state ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                     placeholder={`${errors.state?'Enter State':'Enter State'}`}
                     {...register('state',{
                         required:'Enter State'
@@ -143,7 +143,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                     readOnly={readOnly}            
                 />
                 <input 
-                    className={`p-2 border-b border-black w-full lg:w-1/3 focus:outline-none mb-3 mr-3 ${errors.city ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                    className={`p-1 border-b border-black w-full lg:w-1/3 focus:outline-none mb-3 mr-3 ${errors.city ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                     placeholder={`${errors.state?'Enter City':'Enter City'}`}
                     {...register('city',{
                         required:'Enter City'
@@ -151,7 +151,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                     readOnly={readOnly}            
                 /> 
                 <input 
-                    className={`p-2 border-b border-black w-full lg:w-1/3 focus:outline-none mb-3 ${errors.pin ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                    className={`p-1 border-b border-black w-full lg:w-1/3 focus:outline-none mb-3 ${errors.pin ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                     placeholder={`${errors.state?'Enter Pin':' Pin Code'}`}
                     {...register('pin',{
                         required:'Enter Pin',
