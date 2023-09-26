@@ -33,7 +33,7 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
 
   const alterQuant = (quant:number,alter:string) =>{
     
-    const index = cart.findIndex(item=>item.id === id)
+    const index = cart.findIndex(item=>item.id === id && item.size === size)
     const updatedCart = [...cart]
     
     if(alter==='add') {

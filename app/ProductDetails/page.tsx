@@ -59,6 +59,7 @@ const page = () => {
 
   const checkSameSize = async (prodToAdd:ProductDetails) =>{
     let prodIndex = cart.findIndex(prod=>prod.id == prodToAdd.id && prod.size == prodToAdd.size)
+    console.log()
     if(prodIndex!==-1){
     const updatedCart = [...cart];
     updatedCart[prodIndex] = { ...cart[prodIndex], quantity: cart[prodIndex].quantity + 1 };
