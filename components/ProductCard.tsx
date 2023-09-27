@@ -8,7 +8,7 @@ interface ProductDetails {
     id: string;
     name: string;
     img1: string;
-    [key: string]: any; // Allow for additional dynamic properties if needed
+    [key: string]: any;
   };
 }
 

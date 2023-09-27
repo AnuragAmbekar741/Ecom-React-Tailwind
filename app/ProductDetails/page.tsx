@@ -103,7 +103,7 @@ const page = () => {
   return (
     <div className="flex p-7 pt-40 border w-full h-[100vh]">
       <div className="w-1/3 pl-5 pr-10 pt-5  justify-start overflow-y-auto">
-        <h2 className="text-xl">Ideadtion</h2>
+        <h2 className="text-xl">DESCRIPTION</h2>
         <p className="text-[16px] font-light leading-6  mt-2 mb-2">
           {selectedProd.ideation.prop1}
         </p>
@@ -113,14 +113,14 @@ const page = () => {
         <p className="text-[16px] font-light leading-6  mt-2 mb-2">
           {selectedProd.ideation.prop3}
         </p>
-        <h2 className="text-xl mt-6">Composition</h2>
+        <h2 className="text-xl mt-6">COMPOSITION</h2>
         <p className="text-[16px] font-medium leading-6  my-2">
           {selectedProd.composition.prop1}
         </p>
         <p className="text-[16px] font-medium leading-6  my-2">
           {selectedProd.composition.prop2}
         </p>
-        <h2 className="text-xl mt-6">Material</h2>
+        <h2 className="text-xl mt-6">CARE INSTRUCTIONS</h2>
         <p className="text-[16px] font-light leading-6  my-2 mb-5">
           {selectedProd.careInstructions}
         </p>
