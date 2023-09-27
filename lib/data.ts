@@ -94,10 +94,10 @@ export const productData = [
     id: "004",
     name: "The Jane Shirt",
     price: "Rs 20,000",
-    img1: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957724/1-32_hlp3x3.jpg",
-    img2: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677956784/1-27_ea73iw.jpg",
-    img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677956788/2-33_lqawut.jpg",
-    img4: "",
+    img1: " https://res.cloudinary.com/dmprrczfn/image/upload/v1677957721/1-10_j0yvuh.jpg",
+    img2: "",
+    img3: "",
+    img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957730/1-49_sxjikr.jpg",
     img5: "",
     ideation:{
       prop1:'Features a high neck broad collar. Oversized fit with longer sleeves and wide cuffs. You can never go wrong with a classic piece like this. Made from pure silk crepe. Silk covered buttons for that extra special touch. A good silk shirt is a wardrobe staple.',
@@ -116,10 +116,10 @@ export const productData = [
     id: "005",
     name: "The Jane Skirt",
     price: "Rs 23,000",
-    img1: " https://res.cloudinary.com/dmprrczfn/image/upload/v1677957721/1-10_j0yvuh.jpg",
-    img2: "",
-    img3: "",
-    img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957730/1-49_sxjikr.jpg",
+    img1: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957724/1-32_hlp3x3.jpg",
+    img2: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677956784/1-27_ea73iw.jpg",
+    img3: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677956788/2-33_lqawut.jpg",
+    img4: "",
     img5: "",
     ideation:{
       prop1:'Sexy to us doesn’t mean the show of skin. To be sexy is to be confident, graceful and comfortable in your own skin. With this philosophy we bring to you a classic A-Line Skirt. A wardrobe staple. And just the right piece that can mix both comfort and sophistication.',
@@ -147,7 +147,7 @@ export const productData = [
     ideation:{
       prop1:"A sex symbol during her time, the inspiration for this dress came from her infamous 'Happy Birthday' dress. Marilyn wore a sheath dress that made her appear naked at Mr. John F. Kennedy's birthday.",
       prop2:"Inspired by the same, the colour has been chosen to create the impression of a sculpted nude body without actually having to be nude.",
-      prop3:"We aim at creating fierce and bold looks without have to reveal skin at all. To strike a balance between elegance and sexy. This dress accomplishes of our diligent endeavours."
+      prop3:"We aim at creating fierce and bold looks without having to reveal skin at all. To strike a balance between elegance and sexy. This dress accomplishes of our diligent endeavours."
     },
     careInstructions: 'Dry Clean Only',
     composition:{
