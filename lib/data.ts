@@ -94,7 +94,7 @@ export const productData = [
     id: "004",
     name: "The Jane Shirt",
     price: "Rs 20,000",
-    img1: " https://res.cloudinary.com/dmprrczfn/image/upload/v1677957721/1-10_j0yvuh.jpg",
+    img1: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957721/1-10_j0yvuh.jpg",
     img2: "",
     img3: "",
     img4: "https://res.cloudinary.com/dmprrczfn/image/upload/v1677957730/1-49_sxjikr.jpg",
