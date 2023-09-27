@@ -128,6 +128,10 @@ const page = () => {
       <div className="w-1/3 px-4 flex flex-col overflow-y-auto">
         <Image width={500} height={500} src={selectedProd.img1} className="w-full object-contain" alt="" />
         <Image width={500} height={500} src={selectedProd.img2} className="w-full object-contain" alt="" />
+        <Image width={500} height={500} src={selectedProd.img3} className="w-full object-contain" alt="" />
+        <Image width={500} height={500} src={selectedProd.img4} className="w-full object-contain" alt="" />
+        <Image width={500} height={500} src={selectedProd.img5} className="w-full object-contain" alt="" />
+
       </div>
       <div className="w-1/3 p-2 pl-7 pt-5">
         <h1 className="text-lg font-bold">{selectedProd.name}</h1>

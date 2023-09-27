@@ -29,7 +29,7 @@ const ProductCard:React.FC<ProductDetails> = ({product}) => {
             src={img1}
             alt='Product image'
             width={500}
-            height={520}
+            height={500}
             className='w-full'
         />
         <p className='text-xl font-light my-2 p-3 border border-black text-center'>{name}</p>
