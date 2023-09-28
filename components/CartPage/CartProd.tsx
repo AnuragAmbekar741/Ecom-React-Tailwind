@@ -1,10 +1,14 @@
 import Image from 'next/image';
 import React, { useEffect } from 'react'
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai'
-import { useRecoilState } from 'recoil';
+import { useRecoilState,useRecoilValue } from 'recoil';
+import { userDetailsState,UserDetails } from '../../store/atoms/userDetailsState'
+
 import { cartState } from '../../store/atoms/cartState';
 import { useRouter } from 'next/navigation'
 import { StaticImageData } from 'next/image';
+
+
 
 interface ProductDetails {
   id: string;
@@ -27,6 +31,11 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
   const router = useRouter()
 
   const [cart,setCart] = useRecoilState(cartState)
+
+  const ShippingDetails = useRecoilValue(userDetailsState)
+
+ 
+
 
   // const prodName = name.split(' ')
   // console.log(prodName)
@@ -66,14 +75,14 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
         <div>
           {size?.split(' ').map(word=><h3 className='text-md font-light'>{word}</h3>)}
         </div>
-        <div className='text-xl font-light flex pr-2'>
+        <div className='text-xl font-light flex pr-5'>
           <AiOutlineMinus 
-            className="text-[16px] mt-[0.35rem] mr-2 cursor-pointer"
+            className={`text-[16px] mt-[0.35rem] mr-2 cursor-pointer`}
             onClick={()=>alterQuant(quantity,'sub')}
           /> 
             <p>{quantity}</p>   
           <AiOutlinePlus 
-            className="text-[16px] mt-[0.35rem] ml-2 cursor-pointer"
+            className={`text-[16px] mt-[0.35rem] ml-2 cursor-pointer `}
             onClick={()=>alterQuant(quantity,'add')}
           /> 
         </div>

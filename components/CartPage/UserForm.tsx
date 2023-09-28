@@ -1,7 +1,7 @@
 "use client"
 
 
-import React from 'react'
+import React, { useState } from 'react'
 import {useForm} from 'react-hook-form'
 
 import { useRecoilState } from 'recoil'
@@ -9,16 +9,18 @@ import { userDetailsState,UserDetails } from '../../store/atoms/userDetailsState
 
 import { useRouter } from 'next/navigation'
 
-interface InputProps {
-  value: string;
-  readOnly: boolean;
-}
+// interface InputProps {
+//   value: string;
+//   readOnly: boolean;
+// }
 
-const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
+const UserForm:React.FC = () => {
 
     const [userDetails,setUserDetails]= useRecoilState<UserDetails>(userDetailsState)
 
     const router = useRouter()
+
+    const [readOnly , setReadOnly] = useState(false)
 
     const {
         register,
@@ -45,7 +47,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
         setUserDetails(data)
         console.log(userDetails)
         await new Promise((resolve)=>setTimeout(resolve,1000))
-        router.push('/CheckoutPage')
+        setReadOnly(true)
         // reset()
     }
 
@@ -62,20 +64,27 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
     };
 
     const validatePin = (value:string) =>{
-        const isValidPin = /^\d{6}$/.test(value)
+        const isValidPin = /^\d{6}$/.test(value.trim())
         if(!isValidPin){
             reset({pin:''})
             return 'Pin must be 6 digits'
         }
         return isValidPin
     }
+
+
     
   return (
     <div className='text-lg font-light px-5 py-2'>
         <form 
             onSubmit={handleSubmit(onSubmit)}
         >
+        {   readOnly
+            ?
+            <h1 className='text-3xl text-black font-light my-3'>Confirm Shipping Details</h1>
+                :
             <h1 className='text-3xl text-black font-light my-3'>Contact</h1>
+        }
 
             <input
                 className={`p-1 border-b border-black w-full focus:outline-none mb-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
@@ -97,7 +106,7 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                 readOnly={readOnly}            
             />
 
-            <h1 className='text-3xl text-black font-light my-3'>Shipping Details</h1>
+            <h1 className={`text-3xl text-black font-light my-3 ${readOnly?'hidden':'block'}`}>Shipping Details</h1>
             <div className='grid lg:flex w-full'>
                 <input 
                     className={`p-1 border-b border-black w-full lg:w-1/2 focus:outline-none mr-3 mb-3 ${errors.firstName ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'} `}
@@ -160,15 +169,25 @@ const UserForm:React.FC<InputProps> = ({value,readOnly}) => {
                     readOnly={readOnly}            
                 /> 
             </div>
-
-            
-            <button
-                disabled={isSubmitting}
-                className={`mt-10 mb-5 p-3 border border-black w-full text-lg font-light ${readOnly?'hidden':''}`}
-                type='submit'
-            >
-            Proceed to checkout    
-            </button>
+                    
+            {   readOnly
+                ?
+                <button
+                    disabled={isSubmitting}
+                    className={`mt-10 mb-5 p-3 border border-black w-full text-lg font-light`}
+                    type='submit'
+                >
+                Proceed to payment    
+                </button>
+                :
+                <button
+                    disabled={isSubmitting}
+                    className={`mt-10 mb-5 p-3 border border-black w-full text-lg font-light`}
+                    type='submit'
+                >
+                Proceed to checkout    
+                </button>
+            }
         </form>
     </div>
   )

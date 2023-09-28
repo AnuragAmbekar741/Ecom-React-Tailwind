@@ -8,7 +8,7 @@ const ReturnsExchanges = () => {
 const [hide,setHide] = useState<boolean>(true)
 
   return (
-    <div className='w-1/2 text-left shadow-md border p-3 border-slate-100 rounded-lg'>
+    <div className='w-full text-left shadow-md border p-3 border-slate-100 rounded-lg'>
         <div className='flex justify-between'>
             <h3 className='text-xl font-normal'>Returns & Exchanges</h3>
             <AiOutlinePlus 
