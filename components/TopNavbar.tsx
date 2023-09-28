@@ -21,7 +21,7 @@ const TopNavbar:React.FC = () => {
       // Determine the scroll position
       const scrollY = window.scrollY;
       // Set a threshold value, adjust as needed
-      const scrollThreshold = 1700;
+      const scrollThreshold = 1800;
 
       // Check if the scroll position is greater than the threshold
       if (scrollY > scrollThreshold) {
@@ -51,7 +51,7 @@ const TopNavbar:React.FC = () => {
                 className={`h-[97px] cursor-pointer hover:scale-125 transition delay-100 ${isLogoHidden?'hidden':'block'}`}
                 onClick={()=>router.push('/')}
             />
-            <div className='flex py-7'>
+            <div className={`flex ${isLogoHidden?'pb-12':'py-7'}`}>
                 {navLinks.map(link=>{
                     return(
                         <p key={link.hash} className='text-black text-sm font-light lg:text-[16px] mx-4 xl:mx-7 py-2 cursor-pointer'>{link.name}</p>
@@ -66,7 +66,7 @@ const TopNavbar:React.FC = () => {
                     onClick={()=>router.push('/CartPage')}
                 />  
                 <p 
-                  className='absolute right-24 top-[4.5rem]'
+                  className={`absolute right-24 ${isLogoHidden?'top-[3rem]':'top-[4.5rem]'} `}
                   onClick={()=>router.push('/CartPage')}
                 >{cartLen}
                 </p>
