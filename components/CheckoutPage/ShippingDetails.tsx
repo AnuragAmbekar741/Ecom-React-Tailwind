@@ -27,7 +27,7 @@ console.log(UserShippingDetail)
           />
         </div>
         <div className={`${hide?'hidden':'block'}`}>
-          <UserForm value={'shippingDetails'} readOnly={true} />
+          <UserForm />
         </div>
     </div>
   )
