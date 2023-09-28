@@ -86,7 +86,7 @@ const page = () => {
         // var str = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip}) 
         console.log(str)
         prodToAdd['size'] = str as string
-      }else alert('Please add custom sizes for all the measurements.')
+      }else return alert('Please add custom sizes for all the measurements.')
     }
     if(selectRef.current?.value!=='custom'){
       prodToAdd['size'] = selectRef.current?.value as string

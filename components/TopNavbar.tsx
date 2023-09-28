@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { navLinks } from '@/lib/data'
 import Image from 'next/image'
 import { cartState } from '../store/atoms/cartState'
@@ -13,16 +13,42 @@ const TopNavbar:React.FC = () => {
     var cartLen = cart.length > 0 ? cart.map(item=>item.quantity).reduce((a,b)=>a+b) : 0
     
     const router = useRouter()
+  const [isLogoHidden, setIsLogoHidden] = useState(false);
+
+      useEffect(() => {
+    // Function to handle scroll event
+    const handleScroll = () => {
+      // Determine the scroll position
+      const scrollY = window.scrollY;
+      // Set a threshold value, adjust as needed
+      const scrollThreshold = 1700;
+
+      // Check if the scroll position is greater than the threshold
+      if (scrollY > scrollThreshold) {
+        setIsLogoHidden(true);
+      } else {
+        setIsLogoHidden(false);
+      }
+    };
+
+    // Attach the scroll event listener
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up the listener when the component unmounts
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <header className='z-999 relative w-screen'>
-        <nav className='hidden md:flex fixed w-full top-0 left-0 right-0 justify-between md:py-8 md:px-12 lg:px-20'>
+        <nav className={`hidden md:flex fixed w-full top-0 left-0 right-0 ${isLogoHidden?'justify-end':'justify-between'} md:py-8 md:px-12 lg:px-20`}>
             <Image 
                 src="/assets/logoBlack.png"  
                 alt='Rhea-Vania-Logo' 
                 width={180} 
                 height={78} 
-                className='h-[97px] cursor-pointer hover:scale-125 transition delay-100'
+                className={`h-[97px] cursor-pointer hover:scale-125 transition delay-100 ${isLogoHidden?'hidden':'block'}`}
                 onClick={()=>router.push('/')}
             />
             <div className='flex py-7'>

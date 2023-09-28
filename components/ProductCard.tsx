@@ -22,9 +22,10 @@ const ProductCard:React.FC<ProductDetails> = ({product}) => {
   
   return (
     <div 
-      className='min-w-[340px] md:min-w-[400px] mr-9 cursor-pointer hover:scale-105'
+      className='min-w-[340px] md:min-w-[400px] mr-9 cursor-pointer hover:scale-105 grid'
       onClick={handleClick}
     >
+      <div className='h-2/3'>
         <Image
             src={img1}
             alt='Product image'
@@ -32,6 +33,8 @@ const ProductCard:React.FC<ProductDetails> = ({product}) => {
             height={500}
             className='w-full'
         />
+      </div>
+    
         <p className='text-xl font-light my-2 p-3 border border-black text-center'>{name}</p>
     </div>
   )

@@ -55,7 +55,7 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
 
     if(alter==='sub') {
       if(quant == 1) {
-        setCart(cart.filter(item=>item.id != id))
+        setCart(cart.filter(item=>item.id !== id && item.size !== size))
         return
       }
       if(quant>1) updatedCart[index] = {...cart[index],quantity:cart[index].quantity-1}
