@@ -23,7 +23,7 @@ const Footer:React.FC = () => {
         setPolicy(policy)   
         setHide(true)
    }
-    
+
   return (
     <section>
         <PolicyModal policy={policy} policyName={policyName} hide={hide} setHide={setHide} />
@@ -36,13 +36,24 @@ const Footer:React.FC = () => {
                     height={50} 
                     className='mt-7 mr-10 h-3/5'
                 />
-
             </div>
             <div className='w-2/6 grid justify-center'>
                 <h3 className='text-[19.5px] font-light'>Policies</h3>
-                <p className='text-md font-extralight my-1 cursor-pointer hover:scale-110' onClick={()=>openPolicy('Order Processing',OrderProcessing)} >Order Processing</p>
-                <p className='text-md font-extralight mb-1 cursor-pointer hover:scale-110' onClick={()=>openPolicy('Shipping Policy',Shipping)} >Shipping Policy</p>
-                <p className='text-md font-extralight mb-1 cursor-pointer hover:scale-110' onClick={()=>openPolicy('Returns & Exchange',ReturnsExchange)} >Returns & Exchanges</p>
+                <p className='text-md font-extralight my-1 cursor-pointer hover:scale-110' 
+                    onClick={()=>openPolicy('Order Processing',OrderProcessing)} 
+                >
+                    Order Processing
+                </p>
+                <p className='text-md font-extralight mb-1 cursor-pointer hover:scale-110' 
+                    onClick={()=>openPolicy('Shipping Policy',Shipping)} 
+                >   
+                    Shipping Policy
+                </p>
+                <p className='text-md font-extralight mb-1 cursor-pointer hover:scale-110' 
+                    onClick={()=>openPolicy('Returns & Exchange',ReturnsExchange)} 
+                >
+                    Returns & Exchanges
+                </p>
             </div>
             <div className='w-2/6 grid justify-center'>
                 <h3 className='text-[19.5px] font-light'>Contacts</h3>
@@ -57,8 +68,8 @@ const Footer:React.FC = () => {
             <div className='w-2/6 grid justify-center'>
                 <p className='text-xl font-light'>Subscribe to our news letter!</p>
                 <div className='flex mb-12'>
-                <input type="text" className='w-[210px] text-white font-light py-1 px-3 border border-white bg-black placeholder:font-light focus:outline-none' placeholder='@Email Address' />
-                <button className='px-2 py-1 text-sm font-extralight border border-white border-l-0' >Subscribe</button>
+                    <input type="text" className='w-[210px] text-white font-light py-1 px-3 border border-white bg-black placeholder:font-light focus:outline-none' placeholder='@Email Address' />
+                    <button className='px-2 py-1 text-sm font-extralight border border-white border-l-0' >Subscribe</button>
                 </div>
             </div>
         </div>
