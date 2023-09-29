@@ -212,5 +212,8 @@ export const sizeChartData = [
   },
 ] as const;
 
+export const OrderProcessing = "Once your order has been confirmed our team will begin production. All our pieces are made to order and made to measure meaning that we will construct a piece entirely from scratch to fit your body perfectly. This process will  take 7 to 10 working days, after which we will wrap and ship it to your given postal address."
 
+export const ReturnsExchange = "Since we make each piece to order we don’t offer returns or exchanges. However if you feel like the fit doesn’t meet your needs we can offer you assistance with alterations for which you can contact us at help@rheavania.com"
 
+export const Shipping = "The estimated delivery time will be between 12-14 working days, depending on the delivery address." 

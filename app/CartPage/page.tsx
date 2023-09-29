@@ -1,14 +1,13 @@
 "use client"
 
 import React from 'react'
-import DeliveryDetailsForm from '@/components/CartPage/DeliveryDetailsForm'
 import CartProductContainer from '@/components/CartPage/CartProdContainer'
 import { cartState } from '@/store/atoms/cartState'
 import { useRecoilValue } from 'recoil'
 import UserForm from '@/components/CartPage/UserForm'
-import OrderProcessing from '@/components/CheckoutPage/OrderProcessing'
-import ReturnsExchanges from '@/components/CheckoutPage/ReturnsExchanges'
-import ShippingPolicy from '@/components/CheckoutPage/Shipping Policy'
+import PolicyViewer from '@/components/CartPage/PolicyViewer'
+
+import { OrderProcessing,ReturnsExchange,Shipping} from '@/lib/data'
 
 
 const page = () => {
@@ -19,9 +18,9 @@ const page = () => {
     <div className='pt-40 px-20 md:grid lg:flex'>
       <div className='w-full lg:w-3/6'>
         <CartProductContainer/>
-        <OrderProcessing/>
-        <ReturnsExchanges/>
-        <ShippingPolicy/>
+        <PolicyViewer policyName='Order Processing' policy={OrderProcessing}/>
+        <PolicyViewer policyName='Returns & Exchange' policy={ReturnsExchange}/>
+        <PolicyViewer policyName='Shipping Policy' policy={Shipping}/>
       </div>
       <div className='w-full lg:w-3/6'>
         <UserForm />
