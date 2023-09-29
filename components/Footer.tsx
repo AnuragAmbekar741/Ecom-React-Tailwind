@@ -1,15 +1,32 @@
+"use client"
+
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 // import Logo from '../public/assets/logoBlack.png'
 import Logo from '../public/assets/logoWhite.png'
 
 import { BsInstagram } from 'react-icons/bs';
 import { FaFacebookF } from 'react-icons/fa';
 import { BsLinkedin } from 'react-icons/bs';
+import PolicyModal from './PolicyModal';
+
+import { OrderProcessing, ReturnsExchange, Shipping } from '@/lib/data';
 
 const Footer:React.FC = () => {
+
+   const[hide,setHide] = useState<boolean>(false)
+   const [policy,setPolicy] = useState<string>("")
+   const [policyName,setPolicyName] = useState<string>("")
+
+   const openPolicy = (name:string,policy:string):void =>{
+        setPolicyName(name)
+        setPolicy(policy)   
+        setHide(true)
+   }
+    
   return (
     <section>
+        <PolicyModal policy={policy} policyName={policyName} hide={hide} setHide={setHide} />
         <div className='w-full px-20 py-12 flex justify-between bg-black text-white'>
             <div className='w-2/6 grid justify-center'>
                 <Image
@@ -23,9 +40,9 @@ const Footer:React.FC = () => {
             </div>
             <div className='w-2/6 grid justify-center'>
                 <h3 className='text-[19.5px] font-light'>Policies</h3>
-                <p className='text-md font-extralight my-1 cursor-pointer hover:scale-110'>Order Processing</p>
-                <p className='text-md font-extralight mb-1 cursor-pointer hover:scale-110'>Shipping Policy</p>
-                <p className='text-md font-extralight mb-1 cursor-pointer hover:scale-110'>Returns & Exchanges</p>
+                <p className='text-md font-extralight my-1 cursor-pointer hover:scale-110' onClick={()=>openPolicy('Order Processing',OrderProcessing)} >Order Processing</p>
+                <p className='text-md font-extralight mb-1 cursor-pointer hover:scale-110' onClick={()=>openPolicy('Shipping Policy',Shipping)} >Shipping Policy</p>
+                <p className='text-md font-extralight mb-1 cursor-pointer hover:scale-110' onClick={()=>openPolicy('Returns & Exchange',ReturnsExchange)} >Returns & Exchanges</p>
             </div>
             <div className='w-2/6 grid justify-center'>
                 <h3 className='text-[19.5px] font-light'>Contacts</h3>
