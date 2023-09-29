@@ -2,6 +2,7 @@ import {atom} from 'recoil'
 import { StaticImageData } from 'next/image';
 
 export interface ProductDetails {
+  ID: number
   id: string;
   name: string;
   price: string;

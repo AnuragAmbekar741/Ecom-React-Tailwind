@@ -75,6 +75,7 @@ const page = () => {
 
   const addSizeQuant = async () =>{
     const prodToAdd:ProdDetails = {...selectedProd}
+    prodToAdd.ID = Math.floor(Math.random()*1000000000000)
     const cartCheck = cart.filter(item=>item.id===prodToAdd.id && item.quantity>3)
     if(cartCheck.length>0){
       alert("Same prodcut can't be added trice!")

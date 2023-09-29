@@ -11,6 +11,7 @@ import { StaticImageData } from 'next/image';
 
 
 interface ProductDetails {
+  ID:number;
   id: string;
   name: string;
   price: string;
@@ -26,7 +27,7 @@ interface CartProdProps {
 
 const CartProd:React.FC <CartProdProps> = ({product}) => {
   
-  const {id,name,price,cartIcon,quantity,size} = product
+  const {ID,id,name,price,cartIcon,quantity,size} = product
 
   const router = useRouter()
 
@@ -56,7 +57,7 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
     if(alter==='sub') {
       if(quant == 1) {
         console.log(id,size)
-        setCart(cart.filter((item)=>item.size !== size &&  item.id !== id))
+        setCart(cart.filter((item)=>item.ID !== ID))
         return
       }
       if(quant>1) updatedCart[index] = {...cart[index],quantity:cart[index].quantity-1}
