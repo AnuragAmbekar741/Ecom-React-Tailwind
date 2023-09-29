@@ -3,11 +3,11 @@ import React from 'react'
 const About = () => {
   return (
     <section>
-        <div className='w-full gird md:flex px-20 pb-12'>
+        <div className='w-full gird md:flex px-20 pt-5 pb-12'>
             <div className='grid w-full md:w-2/6 my-20 md:justify-start ml-10 md:text-left'>
-                <h1 className='text-[150px] leading-[150px] lg:text-[140px] lg:leading-[100px] tracking-widest font-thin'>Who</h1>
-                <h1 className='text-[150px] leading-[150px] lg:text-[140px] lg:leading-[100px] tracking-widest font-thin'>We</h1>
-                <h1 className='text-[150px] leading-[150px] lg:text-[140px] lg:leading-[100px] tracking-widest font-thin'>Are?</h1>
+                <h1 className='text-[150px] leading-[150px] lg:text-[150px] lg:leading-[100px] tracking-widest font-thin'>Who</h1>
+                <h1 className='text-[150px] leading-[150px] lg:text-[150px] lg:leading-[100px] tracking-widest font-thin'>We</h1>
+                <h1 className='text-[150px] leading-[150px] lg:text-[150px] lg:leading-[100px] tracking-widest font-thin'>Are?</h1>
             </div>
             <div className='w-4/6'>
             <div className='w-full justify-center md:text-left'>

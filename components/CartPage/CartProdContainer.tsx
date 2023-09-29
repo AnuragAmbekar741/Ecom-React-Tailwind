@@ -27,7 +27,7 @@ const CartProductContainer:React.FC =()=>{
       <div className={`w-full ${cart.length>3?'overflow-y-auto h-[510px]':''} text-left`}>
       {cart.map(item=>{
         return(
-           <CartProd key={item.id} product={item}/>
+           <CartProd product={item}/>
         )
       })}
       </div>
