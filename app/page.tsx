@@ -11,7 +11,7 @@ export default function Home() {
       <Pov/>
       <SectionDivider title="Products"/>
       <CardContainer/>
-      <SectionDivider title="About Us"/>
+      {/* <SectionDivider title="About Us"/> */}
       <About/>
       <Footer/>
     </main>

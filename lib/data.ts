@@ -12,12 +12,12 @@ export const navLinks = [
     hash: "#home",
   },
   {
-    name: "About",
-    hash: "#about",
-  },
-  {
     name: "Products",
     hash: "#Products",
+  },
+  {
+    name: "About",
+    hash: "#about",
   },
 ] as const;
 

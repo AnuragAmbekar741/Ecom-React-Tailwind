@@ -9,6 +9,11 @@ import { userDetailsState,UserDetails } from '../../store/atoms/userDetailsState
 
 import { useRouter } from 'next/navigation'
 
+import { TbShoppingBagEdit } from 'react-icons/Tb';
+
+
+
+
 // interface InputProps {
 //   value: string;
 //   readOnly: boolean;
@@ -76,6 +81,10 @@ const UserForm:React.FC = () => {
     
   return (
     <div className='text-lg font-light px-5 py-2'>
+        <TbShoppingBagEdit 
+            className={`text-4xl absolute right-28 top-[11.5rem] ${readOnly?'block':'hidden'}`}
+            onClick={()=>setReadOnly(false)}
+        />
         <form 
             onSubmit={handleSubmit(onSubmit)}
         >
@@ -85,9 +94,9 @@ const UserForm:React.FC = () => {
                 :
             <h1 className='text-3xl text-black font-light my-3'>Contact</h1>
         }
-
+        <div className='flex'>
             <input
-                className={`p-1 border-b border-black w-full focus:outline-none mb-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                className={`p-1 border-b border-black w-1/2 focus:outline-none mb-3 mr-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                 placeholder={`${ errors.email ? errors.email.message : 'Email' }`}
                 {...register('email',{
                     required:"Email is Required",
@@ -97,7 +106,7 @@ const UserForm:React.FC = () => {
             />
             
              <input
-                className={`p-1 border-b border-black w-full focus:outline-none mb-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                className={`p-1 border-b border-black w-1/2 focus:outline-none mb-3 ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                 placeholder={`${ errors.phone ? errors.phone.message : 'Phone' }`}
                 {...register('phone',{
                     required:"Phone is required",
@@ -105,6 +114,8 @@ const UserForm:React.FC = () => {
                 })}
                 readOnly={readOnly}            
             />
+        </div>
+
 
             <h1 className={`text-3xl text-black font-light my-3 ${readOnly?'hidden':'block'}`}>Shipping Details</h1>
             <div className='grid lg:flex w-full'>
@@ -174,7 +185,7 @@ const UserForm:React.FC = () => {
                 ?
                 <button
                     disabled={isSubmitting}
-                    className={`mt-10 mb-5 p-3 border border-black w-full text-lg font-light`}
+                    className={`mt-5 mb-5 p-3 border border-black w-full text-lg font-light`}
                     type='submit'
                 >
                 Proceed to payment    
@@ -182,7 +193,7 @@ const UserForm:React.FC = () => {
                 :
                 <button
                     disabled={isSubmitting}
-                    className={`mt-10 mb-5 p-3 border border-black w-full text-lg font-light`}
+                    className={`mt-5 mb-5 p-3 border border-black w-full text-lg font-light`}
                     type='submit'
                 >
                 Proceed to checkout    

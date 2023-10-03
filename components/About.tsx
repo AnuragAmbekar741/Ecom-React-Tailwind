@@ -3,7 +3,7 @@ import React from 'react'
 const About = () => {
   return (
     <section>
-        <div className='w-full gird md:flex px-20 pt-5 pb-12'>
+        <div className='w-full gird md:flex px-20 py-20'>
             <div className='grid w-full md:w-2/6 my-10 md:justify-start ml-10 md:text-left'>
                 <h1 className='text-[215px] leading-[150px] lg:text-[150px] lg:leading-[100px] tracking-widest font-thin'>Who</h1>
                 <h1 className='text-[215px] leading-[150px] lg:text-[150px] lg:leading-[100px] tracking-widest font-thin'>We</h1>

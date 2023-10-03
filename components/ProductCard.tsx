@@ -29,8 +29,8 @@ const ProductCard:React.FC<ProductDetails> = ({product}) => {
         <Image
             src={img1}
             alt='Product image'
-            width={500}
-            height={500}
+            width={'500'}
+            height={'500'}
             className='w-full'
         />
       </div>

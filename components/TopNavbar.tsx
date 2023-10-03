@@ -6,6 +6,10 @@ import Image from "next/image";
 import { cartState } from "../store/atoms/cartState";
 import { useRecoilValue } from "recoil";
 import { useRouter } from "next/navigation";
+import { LiaShoppingBagSolid } from 'react-icons/lia';
+
+
+
 
 const TopNavbar: React.FC = () => {
   const cart = useRecoilValue(cartState);
@@ -15,12 +19,13 @@ const TopNavbar: React.FC = () => {
       : 0;
 
   const router = useRouter();
+  
   const [isLogoHidden, setIsLogoHidden] = useState(false);
 
   const handleScroll = () => {
     // Determine the scroll position
     const scrollY = window.scrollY;
-    const scrollThreshold = 1800;
+    const scrollThreshold = 1500;
     if (scrollY > scrollThreshold) {
       setIsLogoHidden(true);
     } else {
@@ -66,18 +71,23 @@ const TopNavbar: React.FC = () => {
           <Image
             src="/assets/cart-icon.png"
             alt="Cart-Icon"
-            width={42}
-            height={28}
-            className=" md:ml-7 xl:ml-20 cursor-pointer"
+            width={52}
+            height={38}
+            className="md:ml-7 xl:ml-20 cursor-pointer"
             onClick={() => router.push("/CartPage")}
           />
-          <p
-            className={`absolute right-24 ${
-              isLogoHidden ? "top-[2.875rem]" : "top-[4.5rem]"
-            } `}
+          {/* <LiaShoppingBagSolid 
+            className="md:ml-7 mb-20 xl:ml-20 cursor-pointer text-[3.75rem]"
             onClick={() => router.push("/CartPage")}
           >
-            {cartLen}
+          </LiaShoppingBagSolid> */}
+          <p
+                className={`absolute right-[6.25rem] ${
+                  isLogoHidden ? "top-[3.2rem]" : "top-[4.85rem]"
+                } text-lg font-medium cursor-pointer`}
+                onClick={() => router.push("/CartPage")}
+              >
+                {cartLen}
           </p>
         </div>
       </nav>
