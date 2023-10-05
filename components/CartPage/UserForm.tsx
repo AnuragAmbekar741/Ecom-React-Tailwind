@@ -9,7 +9,7 @@ import { userDetailsState,UserDetails } from '../../store/atoms/userDetailsState
 
 import { useRouter } from 'next/navigation'
 
-import { TbShoppingBagEdit } from 'react-icons/Tb';
+import { TbShoppingBagEdit } from 'react-icons/tb';
 
 
 

@@ -31,7 +31,7 @@ const ProductCard:React.FC<ProductDetails> = ({product}) => {
             alt='Product image'
             width={'500'}
             height={'500'}
-            className='w-full'
+            className='w-full object-contain object-center'
         />
       </div>
     
