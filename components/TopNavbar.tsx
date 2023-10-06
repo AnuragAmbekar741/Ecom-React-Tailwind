@@ -45,7 +45,6 @@ const TopNavbar: React.FC = () => {
       <nav
         className={`hidden md:flex fixed w-full top-0 left-0 right-0 ${
           isLogoHidden ? "justify-end" : "justify-between"
-          
         } md:py-8 md:px-12 lg:px-20`}
       >
         <Image
@@ -58,13 +57,14 @@ const TopNavbar: React.FC = () => {
           }`}
           onClick={() => router.push("/")}
         />
-        <div className={`flex ${isLogoHidden ? "pb-12" : "py-7"} ${isLogoHidden ? 'hidden' : 'flex'} `}>
+        <div className={`flex ${isLogoHidden ? "pb-12" : "py-7"}`}>
           {navLinks.map((link) => {
             return (
               <p
                 key={link.hash}
-                className="text-black text-sm font-light lg:text-[16px] mx-4 xl:mx-7 py-2 cursor-pointer"
-              >
+                className={`text-black text-sm font-light lg:text-[16px] mx-4 xl:mx-7 py-2 cursor-pointer ${isLogoHidden ? 'hidden' : 'flex'}`}
+                onClick ={()=>router.push("/")}
+             >
                 {link.name}
               </p>
             );
@@ -74,7 +74,7 @@ const TopNavbar: React.FC = () => {
             alt="Cart-Icon"
             width={52}
             height={38}
-            className="md:ml-7 xl:ml-20 cursor-pointer"
+            className={`md:ml-7 xl:ml-20 cursor-pointer ${!isLogoHidden ? 'flex' : 'flex'}`}
             onClick={() => router.push("/CartPage")}
           />
           {/* <LiaShoppingBagSolid 
@@ -85,7 +85,9 @@ const TopNavbar: React.FC = () => {
           <p
                 className={`absolute right-[6.25rem] ${
                   isLogoHidden ? "top-[3.2rem]" : "top-[4.85rem]"
-                } text-lg font-medium cursor-pointer`}
+                }
+                ${isLogoHidden ? 'flex' : 'flex'} 
+                text-lg font-medium cursor-pointer`}
                 onClick={() => router.push("/CartPage")}
               >
                 {cartLen}
