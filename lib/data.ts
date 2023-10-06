@@ -21,6 +21,7 @@ export const navLinks = [
   },
 ] as const;
 
+const daatta = ''
 
 export const productData = [
   {
