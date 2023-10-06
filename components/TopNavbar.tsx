@@ -41,7 +41,7 @@ const TopNavbar: React.FC = () => {
   }, []);
 
   return (
-    <header className="z-999 relative w-screen">
+    <header className="z-10 relative w-screen">
       <nav
         className={`hidden md:flex fixed w-full top-0 left-0 right-0 ${
           isLogoHidden ? "justify-end" : "justify-between"
