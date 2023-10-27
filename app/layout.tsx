@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={`${roboto.className}`}>
         <RecoilRootProvider>
         <TopNavbar/>
-        <BottomNavbar/>
+        {/* <BottomNavbar/> */}
         {children}
         </RecoilRootProvider>
       </body>

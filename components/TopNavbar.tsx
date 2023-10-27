@@ -25,7 +25,7 @@ const TopNavbar: React.FC = () => {
   const handleScroll = () => {
     // Determine the scroll position
     const scrollY = window.scrollY;
-    const scrollThreshold = 950;
+    const scrollThreshold = 500;
     if (scrollY > scrollThreshold) {
       setIsLogoHidden(true);
     } else {
@@ -43,7 +43,7 @@ const TopNavbar: React.FC = () => {
   return (
     <header className="z-10 relative w-screen">
       <nav
-        className={`hidden md:flex fixed w-full top-0 left-0 right-0 ${
+        className={`md:flex fixed w-full top-0 left-0 right-0 ${
           isLogoHidden ? "justify-end" : "justify-between"
         } md:py-8 md:px-12 lg:px-20`}
       >
@@ -57,7 +57,7 @@ const TopNavbar: React.FC = () => {
           }`}
           onClick={() => router.push("/")}
         />
-        <div className={`flex ${isLogoHidden ? "pb-12" : "py-7"}`}>
+        <div className={`hidden md:flex ${isLogoHidden ? "pb-12" : "py-7"}`}>
           {navLinks.map((link) => {
             return (
               <p
