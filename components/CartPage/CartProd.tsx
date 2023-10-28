@@ -71,13 +71,13 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
         <Image src={cartIcon} width={70} height={70} alt='' onClick={()=>router.push(`/ProductDetails/?id=${id}`)}/>
         
         <div>
-          {name.split(' ').map(word=><h3 className='text-md font-light'>{word}</h3>)}
+          {name.split(' ').map(word=><h3 className='xs:text-sm sm:text-md font-light'>{word}</h3>)}
         </div>
         <h3 className='text-md font-light'>{price}</h3>
         <div>
-          {size?.split(' ').map(word=><h3 className='text-md font-light'>{word}</h3>)}
+          {size?.split(' ').map(word=><h3 className='xs:text-sm sm:text-md font-light'>{word}</h3>)}
         </div>
-        <div className='text-xl font-light flex pr-5'>
+        <div className='text-xl font-light flex pl-3 md:pl-0 sm:pr-5'>
           <AiOutlineMinus 
             className={`text-[16px] mt-[0.35rem] mr-2 cursor-pointer`}
             onClick={()=>alterQuant(quantity,'sub')}

@@ -80,9 +80,9 @@ const UserForm:React.FC = () => {
 
     
   return (
-    <div className='text-lg font-light px-5 py-2'>
+    <div className='text-lg font-light px-5 py-2 relative'>
         <TbShoppingBagEdit 
-            className={`text-4xl absolute right-28 top-[11.5rem] ${readOnly?'block':'hidden'}`}
+            className={`text-4xl absolute right-5 top-5 ${readOnly?'block':'hidden'}`}
             onClick={()=>setReadOnly(false)}
         />
         <form 

@@ -15,7 +15,7 @@ const page = () => {
   const Cart = useRecoilValue(cartState)
   console.log(Cart)
   return (
-    <div className='pt-40 px-20 md:grid lg:flex'>
+    <div className='pt-28 px-8 sm:pt-40 sm:px-20 md:grid lg:flex'>
       <div className='w-full lg:w-3/6'>
         <CartProductContainer/>
         <PolicyViewer policyName='Order Processing' policy={OrderProcessing}/>
