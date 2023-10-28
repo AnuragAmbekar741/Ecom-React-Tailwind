@@ -127,11 +127,14 @@ const page = () => {
         </p>
       </div>
       <div className="w-full h-screen md:h-[75vh] lg:w-1/3 px-4 flex flex-col overflow-y-auto">
-        <Image width={500} height={500} src={selectedProd.img1} className="w-full object-contain" alt="" />
+        {
+          selectedProd.images.map(img=> <Image width={500} height={500} src={img} className="w-full object-contain" alt="" />)
+        }
+        {/* <Image width={500} height={500} src={selectedProd.img1} className="w-full object-contain" alt="" />
         <Image width={500} height={500} src={selectedProd.img2} className="w-full object-contain" alt="" />
         <Image width={500} height={500} src={selectedProd.img3} className="w-full object-contain" alt="" />
         <Image width={500} height={500} src={selectedProd.img4} className="w-full object-contain" alt="" />
-        <Image width={500} height={500} src={selectedProd.img5} className="w-full object-contain" alt="" />
+        <Image width={500} height={500} src={selectedProd.img5} className="w-full object-contain" alt="" /> */}
 
       </div>
       <div className="w-full lg:w-1/3 p-2 pl-7 pt-5">
@@ -159,7 +162,7 @@ const page = () => {
             Size chart
           </p>
         </div>
-        <div className={`${toggle.customSize?'block':'hidden'} border border-black p-3 mr-10 mt-5 flex justify-between`}>
+        <div className={`${toggle.customSize?'block':'hidden'} border border-black p-3 mt-5 flex justify-between`}>
           <div className="w-1/3 mr-5">
             <p className="text-xl font-light">Bust</p>
             <input 
@@ -190,7 +193,7 @@ const page = () => {
             toggle.sizeChart ? "grid" : "hidden"
           } mt-8 border border-black p-2 pr-0 mr-10`}
         >
-          <div className="flex w-full p-1 pr-10 justify-between">
+          <div className="flex w-full p-1 justify-between">
             <h3 className="text-md font-bold">Uk</h3>
             <h3 className="text-md font-bold">Bust</h3>
             <h3 className="text-md font-bold">Waist</h3>
@@ -200,13 +203,13 @@ const page = () => {
             <div className="grid">
               {sizeChartData.map(size=><h3 key={size.UK} className="text-md px-[0.7rem] py-1">{size.UK}</h3>)}
             </div>
-            <div className="grid -ml-3">
+            <div className="grid">
               {sizeChartData.map(size=><h3 key={size.Bust} className="text-md px-[0.6rem] py-1">{size.Bust}</h3>)}
             </div>
-            <div className="grid -ml-4">
+            <div className="grid">
               {sizeChartData.map(size=><h3 key={size.Waist} className="text-md px-[0.6rem] py-1 ">{size.Waist}</h3>)}
             </div>
-            <div className="grid mr-4">
+            <div className="grid">
               {sizeChartData.map(size=><h3 key={size.Hip} className="text-md px-[0.6rem] py-1">{size.Hip}</h3>)}
             </div>
           </div>

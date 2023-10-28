@@ -6,6 +6,7 @@ export interface ProductDetails {
   id: string;
   name: string;
   price: string;
+  images:[];
   cartIcon: StaticImageData;
   quantity: number;
   size?: string;
