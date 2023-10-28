@@ -4,7 +4,7 @@ const About = () => {
   return (
     <section>
         <div className='w-full gird lg:flex xs:px-10 sm:px-20 py-10'>
-            <div className='grid md:flex lg:grid w-full lg:w-2/6 my-5 text-center lg:py-10'>
+            <div className='grid md:flex md:justify-center lg:grid w-full lg:w-2/6 my-5 text-center lg:py-10'>
                 <h1 className='text-[165px] sm:text-[180px] md:text-[120px] leading-[160px] lg:text-[135px] xl:text-[170px] lg:leading-[150px] tracking-widest font-thin'>Who</h1>
                 <h1 className='text-[165px] sm:text-[180px] md:text-[120px] leading-[160px] lg:text-[135px] xl:text-[170px] lg:leading-[150px] tracking-widest font-thin'>We</h1>
                 <h1 className='text-[165px] sm:text-[180px] md:text-[120px] leading-[160px] lg:text-[135px] xl:text-[170px] lg:leading-[150px] tracking-widest font-thin'>Are?</h1>

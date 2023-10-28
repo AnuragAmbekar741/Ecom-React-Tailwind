@@ -13,7 +13,7 @@ export default function Home() {
       <CardContainer/>
       {/* <SectionDivider title="About Us"/> */}
       <About/>
-      {/* <Footer/> */}
+      <Footer/>
     </main>
   )
 }
