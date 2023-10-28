@@ -22,7 +22,7 @@ const ProductCard:React.FC<ProductDetails> = ({product}) => {
   
   return (
     <div 
-      className='min-w-[340px] md:min-w-[400px] mr-9 cursor-pointer hover:scale-105 grid'
+      className='min-w-[300px] md:min-w-[350px] xl:min-w-[400px] mr-9 cursor-pointer hover:scale-105 grid'
       onClick={handleClick}
     >
       <div className='h-2/3'>

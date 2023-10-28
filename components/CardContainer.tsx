@@ -4,7 +4,7 @@ import ProductCard from './ProductCard'
 
 const CardContainer:React.FC = () => {
   return (
-    <section className='flex w-full overflow-x-scroll py-10 px-28 md:px-20'>
+    <section className='flex w-full overflow-x-scroll px-5  md:px-20'>
         {productData.map(product=>{
             return(
                 <ProductCard key={product.id} product={product}/>
