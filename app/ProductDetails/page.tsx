@@ -126,7 +126,7 @@ const page = () => {
           {selectedProd.careInstructions}
         </p>
       </div>
-      <div className="w-full h-screen md:h-[75vh] lg:w-1/3 px-4 flex flex-col overflow-y-auto">
+      <div className="w-full h-[85vh] md:h-[75vh] lg:w-1/3 px-4 flex flex-col overflow-y-auto">
         {
           selectedProd.images.map(img=> <Image width={500} height={500} src={img} className="w-full object-contain" alt="" />)
         }
