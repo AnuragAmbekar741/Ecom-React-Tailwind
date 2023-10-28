@@ -102,8 +102,8 @@ const page = () => {
   }
 
   return (
-    <div className="flex p-7 pt-40 border w-full h-[100vh]">
-      <div className="w-1/3 pl-5 pr-10 pt-5  justify-start overflow-y-auto">
+    <div className="grid lg:flex p-7 pt-40 border w-full">
+      <div className="hidden lg:grid w-full lg:w-1/3 pl-5 pr-10 pt-5  justify-start overflow-y-auto">
         <h2 className="text-xl">DESCRIPTION</h2>
         <p className="text-[16px] font-light leading-6  mt-2 mb-2">
           {selectedProd.ideation.prop1}
@@ -126,7 +126,7 @@ const page = () => {
           {selectedProd.careInstructions}
         </p>
       </div>
-      <div className="w-1/3 px-4 flex flex-col overflow-y-auto">
+      <div className="w-full h-screen md:h-[75vh] lg:w-1/3 px-4 flex flex-col overflow-y-auto">
         <Image width={500} height={500} src={selectedProd.img1} className="w-full object-contain" alt="" />
         <Image width={500} height={500} src={selectedProd.img2} className="w-full object-contain" alt="" />
         <Image width={500} height={500} src={selectedProd.img3} className="w-full object-contain" alt="" />
@@ -134,10 +134,10 @@ const page = () => {
         <Image width={500} height={500} src={selectedProd.img5} className="w-full object-contain" alt="" />
 
       </div>
-      <div className="w-1/3 p-2 pl-7 pt-5">
+      <div className="w-full lg:w-1/3 p-2 pl-7 pt-5">
         <h1 className="text-lg font-bold">{selectedProd.name}</h1>
         <h5 className="text-md mt-3 mb-8">{selectedProd.price}</h5>
-        <div className="flex mt-10 justify-between pr-10">
+        <div className="flex mt-10 justify-between">
           <h2 className="text-lg mt-2">Select</h2>
           <select 
             className="border-b border-black w-2/5 outline-none p-2 text-xl font-semibold"
@@ -213,9 +213,32 @@ const page = () => {
         </div>
         <button
           onClick={addToCart} 
-          className="mt-5 py-2 px-36 border text-xl font-light border-black">
+          className="mt-5 py-2 w-full md:px-36 border text-xl font-light border-black">
           Add to cart
         </button>
+      </div>
+            <div className="grid lg:hidden w-full lg:w-1/3 pl-5 pr-10 pt-5  justify-start overflow-y-auto">
+        <h2 className="text-xl">DESCRIPTION</h2>
+        <p className="text-[16px] font-light leading-6  mt-2 mb-2">
+          {selectedProd.ideation.prop1}
+        </p>
+        <p className="text-[16px] font-light leading-6  mt-2 mb-2">
+          {selectedProd.ideation.prop2}
+        </p>
+        <p className="text-[16px] font-light leading-6  mt-2 mb-2">
+          {selectedProd.ideation.prop3}
+        </p>
+        <h2 className="text-xl mt-6">COMPOSITION</h2>
+        <p className="text-[16px] font-medium leading-6  my-2">
+          {selectedProd.composition.prop1}
+        </p>
+        <p className="text-[16px] font-medium leading-6  my-2">
+          {selectedProd.composition.prop2}
+        </p>
+        <h2 className="text-xl mt-6">CARE INSTRUCTIONS</h2>
+        <p className="text-[16px] font-light leading-6  my-2 mb-5">
+          {selectedProd.careInstructions}
+        </p>
       </div>
     </div>
   );

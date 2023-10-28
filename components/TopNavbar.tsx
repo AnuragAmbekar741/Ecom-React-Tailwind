@@ -83,8 +83,8 @@ const TopNavbar: React.FC = () => {
           >
           </LiaShoppingBagSolid> */}
           <p
-                className={`absolute right-[6.25rem] ${
-                  isLogoHidden ? "top-7 right-[1.87rem] md:top-[3.25rem] md:right-[4.4rem] lg:right-[6.4rem]" : "right-[1.87rem] top-9 md:top-[5rem] md:right-[4.45rem] lg:right-[6.4rem]"
+                className={`absolute ${
+                  isLogoHidden ? "top-7 right-8 md:top-[3.25rem] md:right-[4.4rem] lg:right-[6.4rem]" : "right-8 top-9 md:top-[5rem] md:right-[4.45rem] lg:right-[6.4rem]"
                 }
                 ${isLogoHidden ? 'flex' : 'flex'} 
                 text-lg font-medium cursor-pointer`}
