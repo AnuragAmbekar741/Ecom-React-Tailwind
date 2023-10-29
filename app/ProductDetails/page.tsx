@@ -167,7 +167,7 @@ const page = () => {
           </p>
         </div>
 
-        <p className={`${toggle.customSize?'block':'hidden'} text-md pt-5`}>*Please provide your custom measurements in inches.</p>
+        <p className={`${toggle.customSize?'block':'hidden'} text-sm md:text-md pt-5`}>*Please provide your custom measurements in inches.</p>
 
         <div className={`${toggle.customSize?'block':'hidden'} flex border border-black p-3 mt-3  justify-between`}>
             <div className="w-1/3 mr-5">
