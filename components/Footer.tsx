@@ -68,7 +68,7 @@ const Footer:React.FC = () => {
             <div className='w-full py-2 md:py-0 md:w-2/6 grid justify-start md:justify-center'>
                 <p className='text-lg lg:text-xl font-light'>Subscribe to our news letter!</p>
                 <div className='flex mb-12'>
-                    <input type="text" className='w-[150px] lg:w-[210px] text-white font-light py-1 px-3 border border-white bg-black placeholder:font-light focus:outline-none' placeholder='@Email Address' />
+                    <input type="text" className='w-[150px] lg:w-[210px] text-white font-light py-1 px-3 border border-white bg-black rounded-none placeholder:font-light focus:outline-none' placeholder='@Email Address' />
                     <button className='px-2 py-1 text-sm font-extralight border border-white border-l-0' >Subscribe</button>
                 </div>
             </div>
