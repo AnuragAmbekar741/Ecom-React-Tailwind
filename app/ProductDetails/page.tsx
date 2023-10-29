@@ -191,26 +191,26 @@ const page = () => {
         <div
           className={`${
             toggle.sizeChart ? "grid" : "hidden"
-          } mt-8 border border-black p-2 pr-0 mr-10`}
+          } mt-8 border border-black p-2`}
         >
-          <div className="flex w-full p-1 justify-between">
+          <div className="flex w-full justify-between pl-2 pr-5">
             <h3 className="text-md font-bold">Uk</h3>
             <h3 className="text-md font-bold">Bust</h3>
             <h3 className="text-md font-bold">Waist</h3>
             <h3 className="text-md font-bold">Hip</h3>
           </div>
-          <div className="flex justify-between">
+          <div className="flex justify-between px-2">
             <div className="grid">
-              {sizeChartData.map(size=><h3 key={size.UK} className="text-md px-[0.7rem] py-1">{size.UK}</h3>)}
+              {sizeChartData.map(size=><h3 key={size.UK} className="text-md py-1">{size.UK}</h3>)}
             </div>
             <div className="grid">
-              {sizeChartData.map(size=><h3 key={size.Bust} className="text-md px-[0.6rem] py-1">{size.Bust}</h3>)}
+              {sizeChartData.map(size=><h3 key={size.Bust} className="text-md py-1">{size.Bust}</h3>)}
             </div>
             <div className="grid">
-              {sizeChartData.map(size=><h3 key={size.Waist} className="text-md px-[0.6rem] py-1 ">{size.Waist}</h3>)}
+              {sizeChartData.map(size=><h3 key={size.Waist} className="text-md py-1 ">{size.Waist}</h3>)}
             </div>
             <div className="grid">
-              {sizeChartData.map(size=><h3 key={size.Hip} className="text-md px-[0.6rem] py-1">{size.Hip}</h3>)}
+              {sizeChartData.map(size=><h3 key={size.Hip} className="text-md py-1">{size.Hip}</h3>)}
             </div>
           </div>
         </div>
