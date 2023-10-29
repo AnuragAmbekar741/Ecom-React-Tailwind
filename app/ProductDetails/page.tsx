@@ -11,6 +11,8 @@ import { cartState,ProductDetails } from "@/store/atoms/cartState";
 
 import { StaticImageData } from "next/image";
 
+import { useRouter } from "next/navigation";
+
 interface ProdDetails  {
     id: string;
     name: string;
@@ -27,6 +29,8 @@ const page = () => {
   const id = params.get("id");
 
   const selectedProd = productData.filter((item) => item.id === id)[0];
+
+  const router = useRouter()
 
   const [toggle, setToggle] = useState<{ sizeChart: boolean; customSize: boolean }>({
     sizeChart: false,
@@ -76,7 +80,7 @@ const page = () => {
   const addSizeQuant = async () =>{
     const prodToAdd:ProdDetails = {...selectedProd}
     prodToAdd.ID = Math.floor(Math.random()*1000000000000)
-    const cartCheck = cart.filter(item=>item.id===prodToAdd.id && item.quantity>3)
+    const cartCheck = cart.filter(item=>item.id===prodToAdd.id && item.quantity>2)
     if(cartCheck.length>0){
       alert("Same prodcut can't be added trice!")
       return
@@ -102,7 +106,7 @@ const page = () => {
   }
 
   return (
-    <div className="grid lg:flex p-7 pt-40 border w-full">
+    <div className="grid lg:flex p-7 pt-40 lg:px-16 border w-full">
       <div className="hidden lg:grid w-full lg:w-1/3 pl-5 pr-10 pt-5  justify-start overflow-y-auto">
         <h2 className="text-xl">DESCRIPTION</h2>
         <p className="text-[16px] font-light leading-6  mt-2 mb-2">
@@ -114,15 +118,15 @@ const page = () => {
         <p className="text-[16px] font-light leading-6  mt-2 mb-2">
           {selectedProd.ideation.prop3}
         </p>
-        <h2 className="text-xl mt-6">COMPOSITION</h2>
-        <p className="text-[16px] font-medium leading-6  my-2">
+        <h2 className="text-xl mt-3">COMPOSITION</h2>
+        <p className="text-[16px] leading-6 my-1">
           {selectedProd.composition.prop1}
         </p>
-        <p className="text-[16px] font-medium leading-6  my-2">
+        <p className="text-[16px] leading-6">
           {selectedProd.composition.prop2}
         </p>
-        <h2 className="text-xl mt-6">CARE INSTRUCTIONS</h2>
-        <p className="text-[16px] font-light leading-6  my-2 mb-5">
+        <h2 className="text-xl mt-2">CARE INSTRUCTIONS</h2>
+        <p className="text-[16px] font-light leading-6  my-1 mb-5">
           {selectedProd.careInstructions}
         </p>
       </div>
@@ -137,7 +141,7 @@ const page = () => {
         <Image width={500} height={500} src={selectedProd.img5} className="w-full object-contain" alt="" /> */}
 
       </div>
-      <div className="w-full lg:w-1/3 p-2 pl-7 pt-5">
+      <div className="w-full lg:w-1/3 p-2 pl-7 lg:pr-5 pt-5">
         <h1 className="text-lg font-bold">{selectedProd.name}</h1>
         <h5 className="text-md mt-3 mb-8">{selectedProd.price}</h5>
         <div className="flex mt-10 justify-between">
@@ -216,9 +220,22 @@ const page = () => {
         </div>
         <button
           onClick={addToCart} 
-          className="mt-5 py-2 w-full md:px-36 border text-xl font-light border-black">
+          className="mt-5 py-2 w-full border text-lg font-light border-black">
           Add to cart
         </button>
+
+          {cart.length > 0  && 
+          (
+            <button
+              onClick={()=>router.push('/CartPage')} 
+              className="mt-5 py-2 w-full border text-lg font-light border-black"
+            >
+            Proceed to cart
+            </button>
+          )
+          }
+
+        
       </div>
             <div className="grid lg:hidden w-full lg:w-1/3 pl-5 pr-10 pt-5  justify-start overflow-y-auto">
         <h2 className="text-xl">DESCRIPTION</h2>

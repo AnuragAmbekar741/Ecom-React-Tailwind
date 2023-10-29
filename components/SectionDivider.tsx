@@ -6,7 +6,7 @@ interface PropsToPass {
 
 const SectionDivider:React.FC<PropsToPass>= (props) => {
   return (
-    <section className='w-full text-center py-5'>
+    <section className='w-full text-center py-10'>
         <p className='text-[42px] font-extralight text-black'>{props.title}</p>
     </section>
   )
