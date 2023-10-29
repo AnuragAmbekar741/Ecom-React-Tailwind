@@ -143,7 +143,7 @@ const page = () => {
         <div className="flex mt-10 justify-between">
           <h2 className="text-lg mt-2">Select</h2>
           <select 
-            className="border-b border-black w-2/5 outline-none p-2 text-xl font-semibold"
+            className="border-b border-black w-2/5 outline-none p-2 text-xl font-semibold bg-white rounded-none"
             onChange={e=>handleChange(e)}
             ref={selectRef}
           >
@@ -167,7 +167,7 @@ const page = () => {
             <p className="text-xl font-light">Bust</p>
             <input 
               type="number" 
-              className="w-full p-[2.5px] border-b border-black focus:outline-none"
+              className="w-full p-[2.5px] border-b border-black rounded-none focus:outline-none"
               onChange={(e)=>setCustomSizes({...customSizes,bust:e.target.value})}  
             />
           </div>
@@ -175,7 +175,7 @@ const page = () => {
             <p className="text-xl font-light">Waist</p>
             <input 
               type="number" 
-              className="w-full p-[2.5px] border-b border-black focus:outline-none"
+              className="w-full p-[2.5px] border-b border-black rounded-none focus:outline-none"
               onChange={(e)=>setCustomSizes({...customSizes,waist:e.target.value})}  
             />
           </div>
@@ -183,7 +183,7 @@ const page = () => {
             <p className="text-xl font-light">Hip</p>
             <input 
               type="number" 
-              className="w-full p-[2.5px] border-b border-black focus:outline-none"
+              className="w-full p-[2.5px] border-b border-black rounded-none focus:outline-none"
               onChange={(e)=>setCustomSizes({...customSizes,hip:e.target.value})}  
             />
           </div>

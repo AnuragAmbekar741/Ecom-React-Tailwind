@@ -94,9 +94,9 @@ const UserForm:React.FC = () => {
                 :
             <h1 className='text-3xl text-black font-light my-3'>Contact</h1>
         }
-        <div className='flex'>
+        <div className='grid md:flex'>
             <input
-                className={`p-1 border-b border-black w-1/2 focus:outline-none mb-3 mr-3 rounded-none ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                className={`p-1 border-b border-black w-full md:w-1/2 focus:outline-none mb-3 mr-3 rounded-none ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                 placeholder={`${ errors.email ? errors.email.message : 'Email' }`}
                 {...register('email',{
                     required:"Email is Required",
@@ -106,7 +106,7 @@ const UserForm:React.FC = () => {
             />
             
              <input
-                className={`p-1 border-b border-black w-1/2 focus:outline-none mb-3 rounded-none ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
+                className={`p-1 border-b border-black w-full md:w-1/2 focus:outline-none mb-3 rounded-none ${errors.email ? 'placeholder:text-red-500 placeholder:text-md border-red-500 ':'placeholder:text-gray-300-300'}`}
                 placeholder={`${ errors.phone ? errors.phone.message : 'Phone' }`}
                 {...register('phone',{
                     required:"Phone is required",
