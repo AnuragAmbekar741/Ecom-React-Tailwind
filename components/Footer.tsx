@@ -10,6 +10,8 @@ import { FaFacebookF } from 'react-icons/fa';
 import { BsLinkedin } from 'react-icons/bs';
 import PolicyModal from './PolicyModal';
 
+import { useRouter } from 'next/navigation';
+
 import { OrderProcessing, ReturnsExchange, Shipping } from '@/lib/data';
 
 const Footer:React.FC = () => {
@@ -17,6 +19,8 @@ const Footer:React.FC = () => {
    const[hide,setHide] = useState<boolean>(false)
    const [policy,setPolicy] = useState<string>("")
    const [policyName,setPolicyName] = useState<string>("")
+
+   const router = useRouter()
 
    const openPolicy = (name:string,policy:string):void =>{
         setPolicyName(name)
@@ -57,12 +61,12 @@ const Footer:React.FC = () => {
             </div>
             <div className='w-full py-2 md:py-0 md:w-2/6 grid justify-start md:justify-center'>
                 <h3 className='text-[19.5px] font-light'>Contacts</h3>
-                <p className='cursor-pointer hover:scale-110 text-sm md:text-md font-light my-2'>Mail - <span className='font-normal'>care@projectshades.in</span></p>
-                <p className='cursor-pointer hover:scale-110 text-sm md:text-md font-normal '>+91 7558544365</p>
+                <p className='cursor-pointer hover:scale-110 text-sm md:text-md font-light my-2'>Mail - <span className='font-normal'>contact@rheavania.com</span></p>
+                <p className='cursor-pointer hover:scale-110 text-sm md:text-md font-normal '>+91 84519 65111</p>
                 <div className='flex justify-start my-3'>
-                    <BsInstagram className="cursor-pointer hover:scale-125 text-2xl"/>
-                    <FaFacebookF className="cursor-pointer hover:scale-125 text-2xl ml-3"/>
-                    <BsLinkedin className="cursor-pointer hover:scale-125 text-2xl ml-3"/>
+                    <BsInstagram onClick={()=>router.push('https://www.instagram.com/rheavaniaofficial/?igshid=MzMyNGUyNmU2YQ%3D%3D')} className="cursor-pointer hover:scale-125 text-2xl"/>
+                    <FaFacebookF onClick={()=>router.push('https://www.facebook.com/people/RheaVania/61551566453951/?mibextid=LQQJ4d')} className="cursor-pointer hover:scale-125 text-2xl ml-3"/>
+                    <BsLinkedin  onClick={()=>router.push('https://www.linkedin.com/company/rhea-vania/')} className="cursor-pointer hover:scale-125 text-2xl ml-3"/>
                 </div>
             </div>
             <div className='w-full py-2 md:py-0 md:w-2/6 grid justify-start md:justify-center'>
