@@ -13,7 +13,7 @@ const PolicyViewer:React.FC<{policy:string,policyName:string}> = ({policy,policy
 
   return (
     <div className='w-full text-left shadow-md border p-3 border-slate-100 rounded-lg my-5'>
-        <div className='flex justify-between'>
+        <div className={`flex justify-between`}>
             <h3 className='text-xl font-normal'>{policyName}</h3>
             <AiOutlinePlus 
                 className={`text-2xl text-black m-1 ${hide?'block':'hidden'}`} 
@@ -24,7 +24,7 @@ const PolicyViewer:React.FC<{policy:string,policyName:string}> = ({policy,policy
                 onClick={()=>setHide(!hide)}
             />
         </div>
-        <div className={`${hide?'hidden':''} p-1 text-md font-light`}>
+        <div className={`${hide?'hidden':''} p-1 text-md font-light ${policyName==='Returns & Exchange' && !hide || policyName==="Terms & Conditions" && !hide ? 'h-[400px] overflow-y-auto':''} `}>
             <p>{policy}</p>
         </div>
     </div>
