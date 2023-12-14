@@ -12,7 +12,7 @@ import PolicyModal from './PolicyModal';
 
 import { useRouter } from 'next/navigation';
 
-import { OrderProcessing, ReturnsExchange, Shipping } from '@/lib/data';
+import { OrderProcessing, ReturnsExchange, Shipping, TermsAndConditions } from '@/lib/data';
 
 const Footer:React.FC = () => {
 
@@ -57,6 +57,11 @@ const Footer:React.FC = () => {
                     onClick={()=>openPolicy('Returns & Exchange',ReturnsExchange)} 
                 >
                     Returns & Exchanges
+                </p>
+                <p className='text-sm md:text-md font-extralight mb-1 cursor-pointer hover:scale-110' 
+                    onClick={()=>openPolicy('Terms & Conditions',TermsAndConditions)} 
+                >
+                    Terms & Conditions
                 </p>
             </div>
             <div className='w-full py-2 md:py-0 md:w-2/6 grid justify-start md:justify-center'>
