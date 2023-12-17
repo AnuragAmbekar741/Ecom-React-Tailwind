@@ -1,17 +1,11 @@
 "use client"
-import React from "react";
 
-
-
-const src =
-  "https://res.cloudinary.com/dmprrczfn/video/upload/v1696447239/vdcsi03nc5zymbnlc2kw.mp4";
-
-const srcMobile = "https://res.cloudinary.com/dmprrczfn/video/upload/v1698135799/kuqwr0wohlykwuk43qwv.mp4"
+import { videoSrcDesktop,videoSrcMobile } from "@/lib/data";
 
 const Video = () => {
   return (
     <video loop autoPlay controls={false} muted width="100%">
-      <source src={src} type="video/mp4" />
+      <source src={videoSrcDesktop} type="video/mp4" />
       Sorry, your browser doesn't support embedded videos.
     </video>
   );
@@ -20,7 +14,7 @@ const Video = () => {
 const VideoMobile = () => {
   return (
     <video loop autoPlay controls={false} muted width="100%">
-      <source src={srcMobile} type="video/mp4" />
+      <source src={videoSrcMobile} type="video/mp4" />
       Sorry, your browser doesn't support embedded videos.
     </video>
   );

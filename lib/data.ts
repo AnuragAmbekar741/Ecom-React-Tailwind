@@ -5,6 +5,11 @@ import skirt from '../public/assets/Skirt.png'
 import dress from '../public/assets/Dress.png'
 import top from '../public/assets/Top.png'
 
+export const videoSrcDesktop =
+  "https://res.cloudinary.com/dmprrczfn/video/upload/v1696447239/vdcsi03nc5zymbnlc2kw.mp4";
+
+export const videoSrcMobile = "https://res.cloudinary.com/dmprrczfn/video/upload/v1698135799/kuqwr0wohlykwuk43qwv.mp4"
+
 
 export const navLinks = [
   {
