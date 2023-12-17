@@ -1,19 +1,19 @@
 "use client"
 
 import React from 'react'
-import { cartState,ProductDetails } from '../../store/atoms/cartState'
-import { useRecoilValue } from 'recoil'
+import { cartState,ProductDetails } from '../../store/atoms/productDetails'
+import { useRecoilValue, } from 'recoil'
 import CartProd from './CartProd'
-
-
 
 const CartProductContainer:React.FC =()=>{
 
   const cart: ProductDetails[] = useRecoilValue(cartState)
 
   var total = 0
-  if(cart.length>0)  total = cart.map(item=>item.price2*item.quantity).reduce((a,b)=>a+b)
-  
+
+  if(cart.length>0)  {
+    total = cart.map(item=>item.price2*item.quantity).reduce((a,b)=>a+b)
+  }
 
   return (
     <div className='grid align-top w-full shadow-md px-3 py-10 sm:p-3 rounded-lg border border-slate-100'>
@@ -27,7 +27,7 @@ const CartProductContainer:React.FC =()=>{
       <div className={`w-full ${cart.length>3?'overflow-y-auto h-[510px]':''} text-left`}>
       {cart.map(item=>{
         return(
-           <CartProd product={item}/>
+           <CartProd key={item.name+item.size} product={item}/>
         )
       })}
       </div>

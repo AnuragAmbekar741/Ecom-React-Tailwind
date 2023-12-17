@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import React, { useEffect } from 'react'
 import { AiOutlinePlus,AiOutlineMinus } from 'react-icons/ai'
-import { useRecoilState,useRecoilValue } from 'recoil';
-import { userDetailsState,UserDetails } from '../../store/atoms/userDetailsState'
+import { useRecoilState } from 'recoil';
 
-import { cartState } from '../../store/atoms/cartState';
+import { cartState } from '../../store/atoms/productDetails';
 import { useRouter } from 'next/navigation'
 import { StaticImageData } from 'next/image';
+import {CartProductDetails,orderState} from '../../store/atoms/orderDetailsState'
 
 
 
@@ -21,6 +21,12 @@ interface ProductDetails {
   [key: string]: any; // Allow for additional dynamic properties if needed
 }
 
+interface Order {
+  products: CartProductDetails[];
+  count: number;
+  totalAmt: number;
+}
+
 interface CartProdProps {
   product: ProductDetails;
 }
@@ -32,14 +38,29 @@ const CartProd:React.FC <CartProdProps> = ({product}) => {
   const router = useRouter()
 
   const [cart,setCart] = useRecoilState(cartState)
+  const [order,setOrder] = useRecoilState<Order>(orderState)
 
-  const ShippingDetails = useRecoilValue(userDetailsState)
+    const calculateCart = () =>{
+      const products = cart.map(item=>{
+        return {name:item.name,size:item.size,quantity:item.quantity,price:item.price2}
+      })
+      const totalPayableAmt = products.map(item=>item.price*item.quantity).reduce((a,b)=>a+b)
+      const productCount = products.map(item=>item.quantity).reduce((a,b)=>a+b)
 
+      const finalcart =  {
+        products:products,
+        count:productCount,
+        totalAmt:totalPayableAmt
+      } as Order
+      setOrder(finalcart)
+      return finalcart
+  }
+
+  useEffect(()=>{
+    const Order = calculateCart()
+    console.log("effect called",order,Order)
+  },[cart])
  
-
-
-  // const prodName = name.split(' ')
-  // console.log(prodName)
 
   const alterQuant = (quant:number,alter:string) =>{
     

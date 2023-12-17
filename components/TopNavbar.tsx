@@ -3,10 +3,9 @@
 import React, { useEffect, useState } from "react";
 import { navLinks } from "@/lib/data";
 import Image from "next/image";
-import { cartState } from "../store/atoms/cartState";
+import { cartState } from "../store/atoms/productDetails";
 import { useRecoilValue } from "recoil";
 import { useRouter } from "next/navigation";
-import { LiaShoppingBagSolid } from 'react-icons/lia';
 
 
 
@@ -77,11 +76,6 @@ const TopNavbar: React.FC = () => {
             className={`w-12 h-12 md:w-[3.5rem] md:h-[3.5rem] md:ml-7 xl:ml-20 cursor-pointer ${!isLogoHidden ? 'flex' : 'flex'}`}
             onClick={() => router.push("/CartPage")}
           />
-          {/* <LiaShoppingBagSolid 
-            className="md:ml-7 mb-20 xl:ml-20 cursor-pointer text-[3.75rem]"
-            onClick={() => router.push("/CartPage")}
-          >
-          </LiaShoppingBagSolid> */}
           <p
                 className={`absolute ${
                   isLogoHidden ? "top-7 right-8 md:top-[3.25rem] md:right-[4.4rem] lg:right-[6.4rem]" : "right-8 top-9 md:top-[5rem] md:right-[4.45rem] lg:right-[6.4rem]"

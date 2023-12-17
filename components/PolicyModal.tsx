@@ -20,7 +20,7 @@ const PolicyModal:React.FC<PolicyModalProps> = ({
       className={`fixed top-0 w-full h-full bg-[#00000099] ${hide?'block':'hidden'}`}
       onClick={()=>setHide(false)}
     >
-      <div className={`grid mx-auto top-20 right-3 left-3 md:top-60 md:w-1/2 p-7 absolute bg-white text-black ${policyName==='Returns & Exchange' || policyName==="Terms & Conditions" ?'h-[750px] overflow-y-auto md:top-10 bottom-10':''} `}>
+      <div className={`grid mx-auto top-20 right-3 left-3 md:top-40 md:w-1/2 p-7 absolute bg-white text-black ${policyName==='Returns & Exchange' || policyName==="Terms & Conditions" ?'h-[600px] overflow-y-auto':''} `}>
         <RxCross2 
             className='text-xl absolute right-3 top-3'
             onClick={()=>setHide(false)}
