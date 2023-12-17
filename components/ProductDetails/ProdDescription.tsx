@@ -1,13 +1,19 @@
 import { useSearchParams } from "next/navigation";
 import { productData } from '@/lib/data';
 
-const ProdDescription = () => {
+interface ProdDescriptionProps{
+  screenSize?:boolean
+}
+
+const ProdDescription:React.FC<ProdDescriptionProps> = ({
+  screenSize
+}) => {
     const params = useSearchParams();
     const id = params.get("id");
     const selectedProd = productData.filter((item) => item.id === id)[0];
 
   return (
-      <div className="hidden lg:grid w-full lg:w-1/3 pl-5 pr-10 pt-5  justify-start overflow-y-auto">
+      <div className={`${screenSize?'hidden lg:grid':'grid lg:hidden'} w-full lg:w-1/3 pl-5 pr-10 pt-5 justify-start overflow-y-auto`}>
         <h2 className="text-xl">DESCRIPTION</h2>
         <p className="text-[16px] font-light leading-6  mt-2 mb-2">
           {selectedProd.ideation.prop1}
