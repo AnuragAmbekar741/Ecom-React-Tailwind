@@ -12,25 +12,29 @@ import PolicyModal from './PolicyModal';
 
 import { useRouter } from 'next/navigation';
 
-import { OrderProcessing, ReturnsExchange, Shipping, TermsAndConditions } from '@/lib/data';
+import { OrderProcessing, ReturnsExchange, Shipping, TermsAndConditions2,TermsAndConditionsType,TermsAndConditions } from '@/lib/data';
 
 const Footer:React.FC = () => {
 
    const[hide,setHide] = useState<boolean>(false)
    const [policy,setPolicy] = useState<string>("")
    const [policyName,setPolicyName] = useState<string>("")
+   const [policyObj,setPolicyObj] = useState<TermsAndConditionsType>()
 
    const router = useRouter()
 
-   const openPolicy = (name:string,policy:string):void =>{
-        setPolicyName(name)
-        setPolicy(policy)   
+   const openPolicy = (name?:string,policy?:string,policyObj?:TermsAndConditionsType):void =>{
+        if(name && policy){
+            setPolicyName(name)
+            setPolicy(policy) 
+        }  
+        // if(policyObj) setPolicyObj(TermsAndConditions)
         setHide(true)
    }
 
   return (
     <section>
-        <PolicyModal policy={policy} policyName={policyName} hide={hide} setHide={setHide} />
+        <PolicyModal policy={policy} policyName={policyName} policyObj={policyObj} hide={hide} setHide={setHide} />
         <div className='w-full py-3 px-7 xs:px-16 sm:px-28 md:px-7 lg:px-20 md:py-12 grid md:flex justify-start lg:justify-between bg-black text-white'>
             <div className='w-full py-2 md:py-0 md:w-[20%] lg:w-2/6 grid justify-start lg:justify-center'>
                 <Image
@@ -59,7 +63,7 @@ const Footer:React.FC = () => {
                     Returns & Exchanges
                 </p>
                 <p className='text-sm md:text-md font-extralight mb-1 cursor-pointer hover:scale-110' 
-                    onClick={()=>openPolicy('Terms & Conditions',TermsAndConditions)} 
+                    onClick={()=>openPolicy('Terms & Conditions',TermsAndConditions2)} 
                 >
                     Terms & Conditions
                 </p>
