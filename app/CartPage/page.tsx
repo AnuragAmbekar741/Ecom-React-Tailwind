@@ -5,7 +5,7 @@ import CartProductContainer from '@/components/CartPage/CartProdContainer'
 import UserForm from '@/components/CartPage/UserForm'
 import PolicyViewer from '@/components/CartPage/PolicyViewer'
 
-import { OrderProcessing,ReturnsExchange,Shipping,TermsAndConditions} from '@/lib/data'
+import { OrderProcessing,ReturnsExchange,Shipping,TermsAndConditions2} from '@/lib/data'
 
 
 const page = () => {
@@ -18,7 +18,7 @@ const page = () => {
         <PolicyViewer policyName='Order Processing' policy={OrderProcessing}/>
         <PolicyViewer policyName='Returns & Exchange' policy={ReturnsExchange}/>
         <PolicyViewer policyName='Shipping Policy' policy={Shipping}/>
-        <PolicyViewer policyName='Terms & Conditions' policy={TermsAndConditions}/>
+        <PolicyViewer policyName='Terms & Conditions' policy={TermsAndConditions2}/>
       </div>
       <div className='w-full lg:w-3/6'>
         <UserForm />

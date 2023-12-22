@@ -13,7 +13,7 @@ import { atom } from "recoil";
   }
 
   export const userDetailsState = atom<UserDetails>({
-    key:'',
+    key:'userDetails',
     default:{
         firstName:'',
         lastName:'',

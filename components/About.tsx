@@ -22,9 +22,9 @@ const About = () => {
                    <span>Our designs are inspired by some of the most fierce, leading and authoritative women and their stories across the globe. We hope to inspire a few more in the process.</span>
                 </h3>
             </div>
-            <div className='w-full justify-end px-8 lg:px-4 lg:pb-5 text-left leading-7'>
-                <h1 className='text-[27px] md:text-[38px] md:mb-1 tracking-wider font-light mt-3'>ABOUT THE DESIGNER</h1>
-                <h3 className='text-[16.99px] md:text-[19px] font-light'>The creator of this passion project is Rhea Vania De Quadros. She hails from Goa, India. Currently based in Mumbai, Rhea has worked for various brands, celebrities and assisted the top stylist in the industry!</h3>
+            <div className='w-full justify-end px-8 lg:px-4 lg:pb-5 text-left'>
+                <h1 className='text-[27px] md:text-[38px] md:my-2 tracking-wider font-light mt-3'>ABOUT THE DESIGNER</h1>
+                <h3 className='text-[16.99px] md:text-[19px] sm:my-3 font-light leading-7'>The creator of this passion project is Rhea Vania De Quadros. She hails from Goa, India. Currently based in Mumbai, Rhea has worked for various brands, celebrities and assisted the top stylist in the industry!</h3>
             </div>
             </div>
         </div>
