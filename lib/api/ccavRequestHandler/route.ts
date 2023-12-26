@@ -1,5 +1,5 @@
 // pages/api/ccav.js
-import {encrypt} from '../../../lib/ccavUtil'; // Adjust the path accordingly
+import {encrypt} from '../../ccavUtil'; // Adjust the path accordingly
 import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 
