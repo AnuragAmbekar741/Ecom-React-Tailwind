@@ -55,9 +55,9 @@ const UserForm: React.FC = () => {
       merchantTransactionId: transactionid,
       merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
       amount: 10000,
-      redirectUrl: `https://www.rheavania.com/api/status/${transactionid}`,
+      redirectUrl: `https://www.rheavania.com/${transactionid}`,
       redirectMode: "POST",
-      callbackUrl: `https://www.rheavania.com/api/status/${transactionid}`,
+      callbackUrl: `https://www.rheavania.com/${transactionid}`,
       mobileNumber: "9999999999",
       paymentInstrument: {
         type: "PAY_PAGE",
@@ -76,6 +76,15 @@ const UserForm: React.FC = () => {
 
     const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
     console.log("c====", checksum);
+
+    console.log(
+      "saltkey-",
+      process.env.NEXT_PUBLIC_SALT_KEY,
+      "saltindex",
+      process.env.NEXT_PUBLIC_SALT_INDEX,
+      "muid",
+      process.env.NEXT_PUBLIC_MERCHANT_ID
+    );
 
     const UAT_PAY_API_URL =
       "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
