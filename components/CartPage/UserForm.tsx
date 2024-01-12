@@ -48,12 +48,14 @@ const UserForm: React.FC = () => {
   const makePayment = async (e: React.MouseEvent) => {
     e.preventDefault();
 
-    const transactionid = "Tr-" + uuidv4().toString().slice(-6);
+    const transactionid =
+      "Tr-" + Math.floor(Math.random() * 10000000000000000000);
 
     const payload = {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
       merchantTransactionId: transactionid,
-      merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
+      merchantUserId:
+        "MUID-" + Math.floor(Math.random() * 10000000000000000000),
       amount: 10000,
       redirectUrl: `https://www.rheavania.com/${transactionid}`,
       redirectMode: "POST",
@@ -85,6 +87,8 @@ const UserForm: React.FC = () => {
       "muid",
       process.env.NEXT_PUBLIC_MERCHANT_ID
     );
+
+    if (!dataBase64 || !checksum) return;
 
     const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
