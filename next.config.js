@@ -10,7 +10,7 @@ const nextConfig = {
         return [
             {
                 source: '/pg/v1/pay',
-                destination: 'https://api-preprod.phonepe.com/apis/pg-sandbox',
+                destination: 'https://api.phonepe.com/apis/hermes',
             }
         ]
     }

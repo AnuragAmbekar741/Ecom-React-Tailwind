@@ -45,67 +45,66 @@ const UserForm: React.FC = () => {
     },
   });
 
-  // const makePayment = async (e: React.MouseEvent) => {
-  //   e.preventDefault();
+  const makePayment = async (e: React.MouseEvent) => {
+    e.preventDefault();
 
-  //   const transactionid = "Tr-" + uuidv4().toString().slice(-6);
+    const transactionid = "Tr-" + uuidv4().toString().slice(-6);
 
-  //   const payload = {
-  //     merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
-  //     merchantTransactionId: transactionid,
-  //     merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
-  //     amount: 10000,
-  //     redirectUrl: `https://www.rheavania.com/${transactionid}`,
-  //     redirectMode: "POST",
-  //     callbackUrl: `https://www.rheavania.com/${transactionid}`,
-  //     mobileNumber: "9999999999",
-  //     paymentInstrument: {
-  //       type: "PAY_PAGE",
-  //     },
-  //   };
+    const payload = {
+      merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
+      merchantTransactionId: transactionid,
+      merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
+      amount: 10000,
+      redirectUrl: `https://www.rheavania.com/${transactionid}`,
+      redirectMode: "POST",
+      callbackUrl: `https://www.rheavania.com/${transactionid}`,
+      mobileNumber: "9999999999",
+      paymentInstrument: {
+        type: "PAY_PAGE",
+      },
+    };
 
-  //   const dataPayload = JSON.stringify(payload);
-  //   console.log(dataPayload);
+    const dataPayload = JSON.stringify(payload);
+    console.log(dataPayload);
 
-  //   const dataBase64 = Buffer.from(dataPayload).toString("base64");
-  //   console.log(dataBase64);
+    const dataBase64 = Buffer.from(dataPayload).toString("base64");
+    console.log(dataBase64);
 
-  //   const fullURL =
-  //     dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
-  //   const dataSha256 = sha256(fullURL);
+    const fullURL =
+      dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
+    const dataSha256 = sha256(fullURL);
 
-  //   const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-  //   console.log("c====", checksum);
+    const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+    console.log("c====", checksum);
 
-  //   console.log(
-  //     "saltkey-",
-  //     process.env.NEXT_PUBLIC_SALT_KEY,
-  //     "saltindex",
-  //     process.env.NEXT_PUBLIC_SALT_INDEX,
-  //     "muid",
-  //     process.env.NEXT_PUBLIC_MERCHANT_ID
-  //   );
+    console.log(
+      "saltkey-",
+      process.env.NEXT_PUBLIC_SALT_KEY,
+      "saltindex",
+      process.env.NEXT_PUBLIC_SALT_INDEX,
+      "muid",
+      process.env.NEXT_PUBLIC_MERCHANT_ID
+    );
 
-  //   const UAT_PAY_API_URL =
-  //     "https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay";
+    const UAT_PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
-  //   const response = await axios.post(
-  //     UAT_PAY_API_URL,
-  //     {
-  //       request: dataBase64,
-  //     },
-  //     {
-  //       headers: {
-  //         accept: "application/json",
-  //         "Content-Type": "application/json",
-  //         "X-VERIFY": checksum,
-  //       },
-  //     }
-  //   );
+    const response = await axios.post(
+      UAT_PAY_API_URL,
+      {
+        request: dataBase64,
+      },
+      {
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+          "X-VERIFY": checksum,
+        },
+      }
+    );
 
-  //   const redirect = response.data.data.instrumentResponse.redirectInfo.url;
-  //   router.push(redirect);
-  // };
+    const redirect = response.data.data.instrumentResponse.redirectInfo.url;
+    router.push(redirect);
+  };
 
   const onSubmit = async (data: UserDetails) => {
     setUserDetails(data);
@@ -305,7 +304,7 @@ const UserForm: React.FC = () => {
             disabled={isSubmitting}
             className={`mt-5 mb-5 p-3 border border-black w-full text-lg font-light`}
             type="submit"
-            // onClick={(e) => makePayment(e)}
+            onClick={(e) => makePayment(e)}
           >
             Proceed to payment
           </button>
