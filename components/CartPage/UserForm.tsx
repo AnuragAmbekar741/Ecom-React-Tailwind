@@ -14,7 +14,6 @@ import { TbShoppingBagEdit } from "react-icons/tb";
 
 import { useRouter } from "next/navigation";
 import sha256 from "crypto-js/sha256";
-import { redirect } from "next/navigation";
 import axios from "axios";
 
 const UserForm: React.FC = () => {
@@ -56,9 +55,9 @@ const UserForm: React.FC = () => {
       merchantTransactionId: transactionid,
       merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
       amount: 10000,
-      redirectUrl: `http://localhost:3000/api/status/${transactionid}`,
+      redirectUrl: `https://www.rheavania.com/api/status/${transactionid}`,
       redirectMode: "POST",
-      callbackUrl: `http://localhost:3000/api/status/${transactionid}`,
+      callbackUrl: `https://www.rheavania.com/api/status/${transactionid}`,
       mobileNumber: "9999999999",
       paymentInstrument: {
         type: "PAY_PAGE",
