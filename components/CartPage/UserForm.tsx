@@ -86,10 +86,10 @@ const UserForm: React.FC = () => {
       process.env.NEXT_PUBLIC_MERCHANT_ID
     );
 
-    const UAT_PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+    const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
     const response = await axios.post(
-      UAT_PAY_API_URL,
+      PAY_API_URL,
       {
         request: dataBase64,
       },
