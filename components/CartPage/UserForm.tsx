@@ -57,9 +57,9 @@ const UserForm: React.FC = () => {
       merchantUserId:
         "MUID-" + Math.floor(Math.random() * 10000000000000000000),
       amount: 10000,
-      redirectUrl: `http://localhost:3000/${transactionid}`,
+      redirectUrl: `https://www.rheavania.com/${transactionid}`,
       redirectMode: "POST",
-      callbackUrl: `http://localhost:3000/${transactionid}`,
+      callbackUrl: `https://www.rheavania.com/${transactionid}`,
       mobileNumber: "9999999999",
       paymentInstrument: {
         type: "PAY_PAGE",
