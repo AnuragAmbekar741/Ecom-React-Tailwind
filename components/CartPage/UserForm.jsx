@@ -10,16 +10,16 @@ import {
 import { orderState } from "@/store/atoms/orderDetailsState";
 
 import { TbShoppingBagEdit } from "react-icons/tb";
-
+import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
 import sha256 from "crypto-js/sha256";
 import axios from "axios";
 
-const UserForm: React.FC = () => {
+const UserForm = () => {
   const router = useRouter();
 
   const [userDetails, setUserDetails] =
-    useRecoilState<UserDetails>(userDetailsState);
+    useRecoilState < UserDetails > userDetailsState;
 
   const [readOnly, setReadOnly] = useState(false);
 
@@ -30,7 +30,9 @@ const UserForm: React.FC = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm<UserDetails>({
+  } = useForm <
+  UserDetails >
+  {
     defaultValues: {
       email: userDetails.email,
       phone: userDetails.phone,
@@ -42,22 +44,20 @@ const UserForm: React.FC = () => {
       state: userDetails.state,
       pin: userDetails.pin,
     },
-  });
+  };
 
-  const makePayment = async (e: any) => {
+  const makePayment = async () => {
     e.preventDefault();
-    const transactionid =
-      "Tr-" + Math.floor(Math.random() * 10000000000000000000);
+    const transactionid = "Tr-" + uuidv4().toString(36).slice(-6);
 
     const payload = {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
       merchantTransactionId: transactionid,
-      merchantUserId:
-        "MUID-" + Math.floor(Math.random() * 10000000000000000000),
+      merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
       amount: 10000,
-      redirectUrl: `http://localhost:3000/${transactionid}`,
+      redirectUrl: `https://www.rheavania.com/${transactionid}`,
       redirectMode: "POST",
-      callbackUrl: `http://localhost:3000/${transactionid}`,
+      callbackUrl: `https://www.rheavania.com/${transactionid}`,
       mobileNumber: "9999999999",
       paymentInstrument: {
         type: "PAY_PAGE",
@@ -111,7 +111,7 @@ const UserForm: React.FC = () => {
     }
   };
 
-  const onSubmit = async (data: UserDetails) => {
+  const onSubmit = async (data) => {
     setUserDetails(data);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setReadOnly(true);
@@ -129,7 +129,7 @@ const UserForm: React.FC = () => {
   const emailValidationRegex =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  const validatePhone = (value: string) => {
+  const validatePhone = (value) => {
     const isValidPhone = /^\d{10}$/.test(value);
     if (!isValidPhone) {
       reset({ phone: "" });
@@ -139,7 +139,7 @@ const UserForm: React.FC = () => {
     return isValidPhone;
   };
 
-  const validatePin = (value: string) => {
+  const validatePin = (value) => {
     const isValidPin = /^\d{6}$/.test(value.trim());
     if (!isValidPin) {
       reset({ pin: "" });
