@@ -46,72 +46,72 @@ const UserForm: React.FC = () => {
     },
   });
 
-  const makePayment = async (e: React.MouseEvent) => {
-    e.preventDefault();
-    const transactionid =
-      "Tr-" + Math.floor(Math.random() * 10000000000000000000);
+  // const makePayment = async (e: React.MouseEvent) => {
+  //   e.preventDefault();
+  //   const transactionid =
+  //     "Tr-" + Math.floor(Math.random() * 10000000000000000000);
 
-    const payload = {
-      merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
-      merchantTransactionId: transactionid,
-      merchantUserId:
-        "MUID-" + Math.floor(Math.random() * 10000000000000000000),
-      amount: 10000,
-      redirectUrl: `https://www.rheavania.com/${transactionid}`,
-      redirectMode: "POST",
-      callbackUrl: `https://www.rheavania.com/${transactionid}`,
-      mobileNumber: "9999999999",
-      paymentInstrument: {
-        type: "PAY_PAGE",
-      },
-    };
+  //   const payload = {
+  //     merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
+  //     merchantTransactionId: transactionid,
+  //     merchantUserId:
+  //       "MUID-" + Math.floor(Math.random() * 10000000000000000000),
+  //     amount: 10000,
+  //     redirectUrl: `https://www.rheavania.com/${transactionid}`,
+  //     redirectMode: "POST",
+  //     callbackUrl: `https://www.rheavania.com/${transactionid}`,
+  //     mobileNumber: "9999999999",
+  //     paymentInstrument: {
+  //       type: "PAY_PAGE",
+  //     },
+  //   };
 
-    const dataPayload = JSON.stringify(payload);
-    console.log(dataPayload);
+  //   const dataPayload = JSON.stringify(payload);
+  //   console.log(dataPayload);
 
-    const dataBase64 = Buffer.from(dataPayload).toString("base64");
-    console.log(dataBase64);
+  //   const dataBase64 = Buffer.from(dataPayload).toString("base64");
+  //   console.log(dataBase64);
 
-    const fullURL =
-      dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
-    const dataSha256 = sha256(fullURL);
+  //   const fullURL =
+  //     dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
+  //   const dataSha256 = sha256(fullURL);
 
-    const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-    console.log("c====", checksum);
+  //   const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+  //   console.log("c====", checksum);
 
-    console.log(
-      "saltkey-",
-      process.env.NEXT_PUBLIC_SALT_KEY,
-      "saltindex",
-      process.env.NEXT_PUBLIC_SALT_INDEX,
-      "muid",
-      process.env.NEXT_PUBLIC_MERCHANT_ID
-    );
+  //   console.log(
+  //     "saltkey-",
+  //     process.env.NEXT_PUBLIC_SALT_KEY,
+  //     "saltindex",
+  //     process.env.NEXT_PUBLIC_SALT_INDEX,
+  //     "muid",
+  //     process.env.NEXT_PUBLIC_MERCHANT_ID
+  //   );
 
-    if (!dataBase64 || !checksum) return;
+  //   if (!dataBase64 || !checksum) return;
 
-    // const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+  //   // const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
-    try {
-      const response = await axios.post(
-        "/api/phonepe",
-        {
-          request: dataBase64,
-        },
-        {
-          headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
-            "X-VERIFY": checksum,
-          },
-        }
-      );
-      const redirect = response.data.data.instrumentResponse.redirectInfo.url;
-      router.push(redirect);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //   try {
+  //     const response = await axios.post(
+  //       "/api/phonepe",
+  //       {
+  //         request: dataBase64,
+  //       },
+  //       {
+  //         headers: {
+  //           accept: "application/json",
+  //           "Content-Type": "application/json",
+  //           "X-VERIFY": checksum,
+  //         },
+  //       }
+  //     );
+  //     const redirect = response.data.data.instrumentResponse.redirectInfo.url;
+  //     router.push(redirect);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   const onSubmit = async (data: UserDetails) => {
     setUserDetails(data);
