@@ -46,9 +46,8 @@ const UserForm: React.FC = () => {
     },
   });
 
-  const makePayment = async (e: MouseEvent) => {
+  const makePayment = async (e: React.MouseEvent) => {
     e.preventDefault();
-
     const transactionid =
       "Tr-" + Math.floor(Math.random() * 10000000000000000000);
 
@@ -91,11 +90,11 @@ const UserForm: React.FC = () => {
 
     if (!dataBase64 || !checksum) return;
 
-    const PAY_API_URL = "https://api.phonepe.com/apis/hermes";
+    // const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
     try {
       const response = await axios.post(
-        PAY_API_URL,
+        "/api/phonepe",
         {
           request: dataBase64,
         },

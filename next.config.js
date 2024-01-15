@@ -9,8 +9,8 @@ const nextConfig = {
     async rewrites() {
         return [
             {
-                source: '/pg/v1/pay',
-                destination: 'https://api.phonepe.com/apis/hermes',
+                source: '/api/phonepe',
+                destination: 'https://api.phonepe.com/apis/hermes/pg/v1/pay',
             }
         ]
     },
@@ -22,3 +22,5 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
+
+
