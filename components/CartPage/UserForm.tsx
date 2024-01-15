@@ -8,13 +8,14 @@ import {
   UserDetails,
 } from "../../store/atoms/userDetailsState";
 import { orderState } from "@/store/atoms/orderDetailsState";
-import { v4 as uuidv4 } from "uuid";
 
 import { TbShoppingBagEdit } from "react-icons/tb";
 
 import { useRouter } from "next/navigation";
 import sha256 from "crypto-js/sha256";
 import axios from "axios";
+
+import { MouseEvent } from "react";
 
 const UserForm: React.FC = () => {
   const router = useRouter();
@@ -45,7 +46,7 @@ const UserForm: React.FC = () => {
     },
   });
 
-  const makePayment = async (e: React.MouseEvent) => {
+  const makePayment = async (e: MouseEvent) => {
     e.preventDefault();
 
     const transactionid =
@@ -90,7 +91,7 @@ const UserForm: React.FC = () => {
 
     if (!dataBase64 || !checksum) return;
 
-    const PAY_API_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox";
+    const PAY_API_URL = "https://api.phonepe.com/apis/hermes";
 
     try {
       const response = await axios.post(
