@@ -57,9 +57,9 @@ const UserForm: React.FC = () => {
       merchantUserId:
         "MUID-" + Math.floor(Math.random() * 10000000000000000000),
       amount: 10000,
-      redirectUrl: `https://www.rheavania.com/${transactionid}`,
+      redirectUrl: `http://localhost:3000/${transactionid}`,
       redirectMode: "POST",
-      callbackUrl: `https://www.rheavania.com/${transactionid}`,
+      callbackUrl: `http://localhost:3000/${transactionid}`,
       mobileNumber: "9999999999",
       paymentInstrument: {
         type: "PAY_PAGE",
@@ -90,7 +90,7 @@ const UserForm: React.FC = () => {
 
     if (!dataBase64 || !checksum) return;
 
-    const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
+    const PAY_API_URL = "https://api-preprod.phonepe.com/apis/pg-sandbox";
 
     try {
       const response = await axios.post(
