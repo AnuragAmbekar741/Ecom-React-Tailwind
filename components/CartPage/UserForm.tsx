@@ -15,8 +15,6 @@ import { useRouter } from "next/navigation";
 import sha256 from "crypto-js/sha256";
 import axios from "axios";
 
-import { MouseEvent } from "react";
-
 const UserForm: React.FC = () => {
   const router = useRouter();
 
@@ -25,7 +23,7 @@ const UserForm: React.FC = () => {
 
   const [readOnly, setReadOnly] = useState(false);
 
-  const order = useRecoilValue(orderState);
+  // const order = useRecoilValue(orderState);
 
   const {
     register,
@@ -57,9 +55,9 @@ const UserForm: React.FC = () => {
       merchantUserId:
         "MUID-" + Math.floor(Math.random() * 10000000000000000000),
       amount: 10000,
-      redirectUrl: `https://www.rheavania.com/${transactionid}`,
+      redirectUrl: `http://localhost:3000/${transactionid}`,
       redirectMode: "POST",
-      callbackUrl: `https://www.rheavania.com/${transactionid}`,
+      callbackUrl: `http://localhost:3000/${transactionid}`,
       mobileNumber: "9999999999",
       paymentInstrument: {
         type: "PAY_PAGE",
@@ -119,14 +117,14 @@ const UserForm: React.FC = () => {
     setReadOnly(true);
   };
 
-  const addCustomerAndOrder = async () => {
-    if (order.totalAmt === 0 || order.count === 0) return;
-    const res = await axios.post("/api/customerDetails", userDetails);
-    const customerId = res.data.customerId;
-    const orderWithCustomerId = { ...order, customerId: customerId };
-    const res2 = await axios.post("/api/orderDetails", orderWithCustomerId);
-    console.log(res2.data);
-  };
+  // const addCustomerAndOrder = async () => {
+  //   if (order.totalAmt === 0 || order.count === 0) return;
+  //   const res = await axios.post("/api/customerDetails", userDetails);
+  //   const customerId = res.data.customerId;
+  //   const orderWithCustomerId = { ...order, customerId: customerId };
+  //   const res2 = await axios.post("/api/orderDetails", orderWithCustomerId);
+  //   console.log(res2.data);
+  // };
 
   const emailValidationRegex =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -298,7 +296,7 @@ const UserForm: React.FC = () => {
           />
         </div>
 
-        {readOnly && order.count === 0 ? (
+        {readOnly ? (
           <p className="text-red-500 text-sm">
             *Cannot proceed to payment with an empty cart!
           </p>
@@ -306,7 +304,7 @@ const UserForm: React.FC = () => {
           ""
         )}
 
-        {readOnly && order.count != 0 ? (
+        {readOnly ? (
           <button
             disabled={isSubmitting}
             className={`mt-5 mb-5 p-3 border border-black w-full text-lg font-light`}
