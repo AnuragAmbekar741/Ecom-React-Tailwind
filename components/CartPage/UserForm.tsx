@@ -311,7 +311,7 @@ const UserForm: React.FC = () => {
             disabled={isSubmitting}
             className={`mt-5 mb-5 p-3 border border-black w-full text-lg font-light`}
             type="submit"
-            onClick={(e) => makePayment(e)}
+            // onClick={(e) => makePayment(e)}
           >
             Proceed to payment
           </button>
