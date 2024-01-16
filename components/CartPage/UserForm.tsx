@@ -15,11 +15,11 @@ import { useRouter } from "next/navigation";
 import sha256 from "crypto-js/sha256";
 import axios from "axios";
 
-const UserForm = () => {
+const UserForm: React.FC = () => {
   const router = useRouter();
 
   const [userDetails, setUserDetails] =
-    useRecoilState < UserDetails > userDetailsState;
+    useRecoilState<UserDetails>(userDetailsState);
 
   const [readOnly, setReadOnly] = useState(false);
 
@@ -30,9 +30,7 @@ const UserForm = () => {
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-  } = useForm <
-  UserDetails >
-  {
+  } = useForm<UserDetails>({
     defaultValues: {
       email: userDetails.email,
       phone: userDetails.phone,
@@ -44,16 +42,16 @@ const UserForm = () => {
       state: userDetails.state,
       pin: userDetails.pin,
     },
-  };
+  });
 
-  const makePayment = async () => {
+  const makePayment = async (e: any) => {
     e.preventDefault();
-    const transactionid = "Tr-" + uuidv4().toString(36).slice(-6);
+    const transactionid = "Tr-" + uuidv4().toString().slice(-6);
 
     const payload = {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
       merchantTransactionId: transactionid,
-      merchantUserId: "MUID-" + uuidv4().toString(36).slice(-6),
+      merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
       amount: 10000,
       redirectUrl: `https://www.rheavania.com/${transactionid}`,
       redirectMode: "POST",
@@ -111,7 +109,7 @@ const UserForm = () => {
     }
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: UserDetails) => {
     setUserDetails(data);
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setReadOnly(true);
@@ -129,7 +127,7 @@ const UserForm = () => {
   const emailValidationRegex =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  const validatePhone = (value) => {
+  const validatePhone = (value: string) => {
     const isValidPhone = /^\d{10}$/.test(value);
     if (!isValidPhone) {
       reset({ phone: "" });
@@ -139,7 +137,7 @@ const UserForm = () => {
     return isValidPhone;
   };
 
-  const validatePin = (value) => {
+  const validatePin = (value: string) => {
     const isValidPin = /^\d{6}$/.test(value.trim());
     if (!isValidPin) {
       reset({ pin: "" });
