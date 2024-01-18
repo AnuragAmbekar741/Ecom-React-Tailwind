@@ -44,15 +44,15 @@ const UserForm: React.FC = () => {
     },
   });
 
-  const makePayment = async (e: any) => {
-    e.preventDefault();
+  const makePayment = async () => {
+    // e.preventDefault();
     const transactionid = "Tr-" + uuidv4().toString().slice(-6);
 
     const payload = {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
       merchantTransactionId: transactionid,
       merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
-      amount: 10000,
+      amount: 1000,
       redirectUrl: `https://www.rheavania.com/${transactionid}`,
       redirectMode: "POST",
       callbackUrl: `https://www.rheavania.com/${transactionid}`,
@@ -70,6 +70,7 @@ const UserForm: React.FC = () => {
 
     const fullURL =
       dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
+
     const dataSha256 = sha256(fullURL);
 
     const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
@@ -83,8 +84,6 @@ const UserForm: React.FC = () => {
       "muid",
       process.env.NEXT_PUBLIC_MERCHANT_ID
     );
-
-    if (!dataBase64 || !checksum) return;
 
     // const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
@@ -307,9 +306,7 @@ const UserForm: React.FC = () => {
             disabled={isSubmitting}
             className={`mt-5 mb-5 p-3 border border-black w-full text-lg font-light`}
             type="submit"
-            onClick={(e) => {
-              makePayment(e);
-            }}
+            onClick={makePayment}
           >
             Proceed to payment
           </button>
