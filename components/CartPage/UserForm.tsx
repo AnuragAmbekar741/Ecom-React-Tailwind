@@ -87,25 +87,25 @@ const UserForm: React.FC = () => {
 
     // const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
-    try {
-      const response = await axios.post(
-        "/api/phonepe",
-        {
-          request: dataBase64,
-        },
-        {
-          headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
-            "X-VERIFY": checksum,
-          },
-        }
-      );
-      const redirect = response.data.data.instrumentResponse.redirectInfo.url;
-      router.push(redirect);
-    } catch (err) {
-      console.log(err);
-    }
+    // try {
+    //   const response = await axios.post(
+    //     "/api/phonepe",
+    //     {
+    //       request: dataBase64,
+    //     },
+    //     {
+    //       headers: {
+    //         accept: "application/json",
+    //         "Content-Type": "application/json",
+    //         "X-VERIFY": checksum,
+    //       },
+    //     }
+    //   );
+    //   const redirect = response.data.data.instrumentResponse.redirectInfo.url;
+    //   router.push(redirect);
+    // } catch (err) {
+    //   console.log(err);
+    // }
   };
 
   const onSubmit = async (data: UserDetails) => {
