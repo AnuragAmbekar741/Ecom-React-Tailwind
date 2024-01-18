@@ -68,44 +68,44 @@ const UserForm: React.FC = () => {
     const dataBase64 = Buffer.from(dataPayload).toString("base64");
     console.log(dataBase64);
 
-    // const fullURL =
-    //   dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
+    const fullURL =
+      dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
 
     // const dataSha256 = sha256(fullURL);
 
     // const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
     // console.log("c====", checksum);
 
-    // console.log(
-    //   "saltkey-",
-    //   process.env.NEXT_PUBLIC_SALT_KEY,
-    //   "saltindex",
-    //   process.env.NEXT_PUBLIC_SALT_INDEX,
-    //   "muid",
-    //   process.env.NEXT_PUBLIC_MERCHANT_ID
-    // );
+    console.log(
+      "saltkey-",
+      process.env.NEXT_PUBLIC_SALT_KEY,
+      "saltindex",
+      process.env.NEXT_PUBLIC_SALT_INDEX,
+      "muid",
+      process.env.NEXT_PUBLIC_MERCHANT_ID
+    );
 
     // const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
-    // try {
-    //   const response = await axios.post(
-    //     "/api/phonepe",
-    //     {
-    //       request: dataBase64,
-    //     },
-    //     {
-    //       headers: {
-    //         accept: "application/json",
-    //         "Content-Type": "application/json",
-    //         "X-VERIFY": checksum,
-    //       },
-    //     }
-    //   );
-    //   const redirect = response.data.data.instrumentResponse.redirectInfo.url;
-    //   router.push(redirect);
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    try {
+      const response = await axios.post(
+        "/api/phonepe",
+        {
+          request: dataBase64,
+        },
+        {
+          headers: {
+            accept: "application/json",
+            "Content-Type": "application/json",
+            // "X-VERIFY": checksum,
+          },
+        }
+      );
+      const redirect = response.data.data.instrumentResponse.redirectInfo.url;
+      router.push(redirect);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const onSubmit = async (data: UserDetails) => {
