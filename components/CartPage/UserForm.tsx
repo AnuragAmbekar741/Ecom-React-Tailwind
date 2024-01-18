@@ -12,7 +12,9 @@ import { orderState } from "@/store/atoms/orderDetailsState";
 import { TbShoppingBagEdit } from "react-icons/tb";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
-import sha256 from "crypto-js/sha256";
+// import sha256 from "crypto-js/sha256";
+import { sha256, sha224 } from "js-sha256";
+
 import axios from "axios";
 
 const UserForm: React.FC = () => {
@@ -71,10 +73,10 @@ const UserForm: React.FC = () => {
     const fullURL =
       dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
 
-    // const dataSha256 = sha256(fullURL);
+    const dataSha256 = sha256(fullURL);
 
-    // const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-    // console.log("c====", checksum);
+    const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
+    console.log("c====", checksum);
 
     console.log(
       "saltkey-",
@@ -97,7 +99,7 @@ const UserForm: React.FC = () => {
           headers: {
             accept: "application/json",
             "Content-Type": "application/json",
-            // "X-VERIFY": checksum,
+            "X-VERIFY": checksum,
           },
         }
       );
