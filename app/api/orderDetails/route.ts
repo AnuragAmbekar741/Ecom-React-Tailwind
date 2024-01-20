@@ -6,8 +6,9 @@ export async function POST(req:NextRequest) {
     const {products,count,totalAmt,customerId} = await req.json()
     try{
         await connectToDb()
-        await Order.create({products,count,totalAmt,customerId})
-        return NextResponse.json({ msg: ['hello from server'], success: true })
+        const order = await Order.create({products,count,totalAmt,customerId})
+        const orderId = order._id
+        return NextResponse.json({ orderId:orderId, success: true })
     }
     catch(err){
         return NextResponse.json({ msg: ['error occured'], success: false })

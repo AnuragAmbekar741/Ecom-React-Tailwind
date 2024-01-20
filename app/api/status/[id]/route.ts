@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import sha256 from "crypto-js/sha256";
+// import sha256 from "crypto-js/sha256";
+import { sha256, sha224 } from "js-sha256";
 import axios from "axios";
 
 export async function POST(req:NextRequest, res:NextResponse) {

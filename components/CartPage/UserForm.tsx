@@ -13,7 +13,7 @@ import { TbShoppingBagEdit } from "react-icons/tb";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/navigation";
 // import sha256 from "crypto-js/sha256";
-import { sha256, sha224 } from "js-sha256";
+import { sha256 } from "js-sha256";
 
 import axios from "axios";
 
@@ -25,7 +25,7 @@ const UserForm: React.FC = () => {
 
   const [readOnly, setReadOnly] = useState(false);
 
-  // const order = useRecoilValue(orderState);
+  const order = useRecoilValue(orderState);
 
   const {
     register,
@@ -46,15 +46,15 @@ const UserForm: React.FC = () => {
     },
   });
 
-  const makePayment = async () => {
+  const makePayment = async (id: any, amt: number) => {
     // e.preventDefault();
     const transactionid = "Tr-" + uuidv4().toString().slice(-6);
 
     const payload = {
       merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
-      merchantTransactionId: transactionid,
+      merchantTransactionId: id,
       merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
-      amount: 1000,
+      amount: amt * 100,
       redirectUrl: `https://www.rheavania.com/${transactionid}`,
       redirectMode: "POST",
       callbackUrl: `https://www.rheavania.com/${transactionid}`,
@@ -65,10 +65,10 @@ const UserForm: React.FC = () => {
     };
 
     const dataPayload = JSON.stringify(payload);
-    console.log(dataPayload);
+    // console.log(dataPayload);
 
     const dataBase64 = Buffer.from(dataPayload).toString("base64");
-    console.log(dataBase64);
+    // console.log(dataBase64);
 
     const fullURL =
       dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
@@ -76,16 +76,7 @@ const UserForm: React.FC = () => {
     const dataSha256 = sha256(fullURL);
 
     const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-    console.log("c====", checksum);
-
-    console.log(
-      "saltkey-",
-      process.env.NEXT_PUBLIC_SALT_KEY,
-      "saltindex",
-      process.env.NEXT_PUBLIC_SALT_INDEX,
-      "muid",
-      process.env.NEXT_PUBLIC_MERCHANT_ID
-    );
+    // console.log("c====", checksum);
 
     // const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
 
@@ -115,15 +106,18 @@ const UserForm: React.FC = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setReadOnly(true);
   };
+  console.log(order.totalAmt);
 
-  // const addCustomerAndOrder = async () => {
-  //   if (order.totalAmt === 0 || order.count === 0) return;
-  //   const res = await axios.post("/api/customerDetails", userDetails);
-  //   const customerId = res.data.customerId;
-  //   const orderWithCustomerId = { ...order, customerId: customerId };
-  //   const res2 = await axios.post("/api/orderDetails", orderWithCustomerId);
-  //   console.log(res2.data);
-  // };
+  const addCustomerAndOrder = async () => {
+    if (order.totalAmt === 0 || order.count === 0) return;
+    const res = await axios.post("/api/customerDetails", userDetails);
+    const customerId = res.data.customerId;
+    const orderWithCustomerId = { ...order, customerId: customerId };
+    const res2 = await axios.post("/api/orderDetails", orderWithCustomerId);
+    const orderId = res2.data.orderId;
+
+    makePayment(orderId, order.totalAmt);
+  };
 
   const emailValidationRegex =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -295,7 +289,7 @@ const UserForm: React.FC = () => {
           />
         </div>
 
-        {readOnly ? (
+        {readOnly && order.totalAmt !== 0 ? (
           <p className="text-red-500 text-sm">
             *Cannot proceed to payment with an empty cart!
           </p>
@@ -303,12 +297,12 @@ const UserForm: React.FC = () => {
           ""
         )}
 
-        {readOnly ? (
+        {readOnly && order.totalAmt !== 0 ? (
           <button
             disabled={isSubmitting}
             className={`mt-5 mb-5 p-3 border border-black w-full text-lg font-light`}
             type="submit"
-            onClick={makePayment}
+            onClick={addCustomerAndOrder}
           >
             Proceed to payment
           </button>
