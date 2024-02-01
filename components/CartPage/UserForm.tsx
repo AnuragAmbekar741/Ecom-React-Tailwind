@@ -1,31 +1,25 @@
 "use client";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-
 import { useRecoilState, useRecoilValue } from "recoil";
 import {
   userDetailsState,
   UserDetails,
 } from "../../store/atoms/userDetailsState";
 import { orderState } from "@/store/atoms/orderDetailsState";
-
 import { TbShoppingBagEdit } from "react-icons/tb";
-import { v4 as uuidv4 } from "uuid";
-import { useRouter } from "next/navigation";
-// import sha256 from "crypto-js/sha256";
-import { sha256 } from "js-sha256";
-
 import axios from "axios";
+import usePayment from "./hooks/usePayment";
 
 const UserForm: React.FC = () => {
-  const router = useRouter();
-
   const [userDetails, setUserDetails] =
     useRecoilState<UserDetails>(userDetailsState);
 
   const [readOnly, setReadOnly] = useState(false);
 
   const order = useRecoilValue(orderState);
+
+  const { makePayment, loading, error } = usePayment();
 
   const {
     register,
@@ -46,61 +40,6 @@ const UserForm: React.FC = () => {
     },
   });
 
-  const makePayment = async (id: any, amt: number) => {
-    // e.preventDefault();
-    const transactionid = "Tr-" + uuidv4().toString().slice(-6);
-
-    const payload = {
-      merchantId: process.env.NEXT_PUBLIC_MERCHANT_ID,
-      merchantTransactionId: id,
-      merchantUserId: "MUID-" + uuidv4().toString().slice(-6),
-      amount: amt * 100,
-      redirectUrl: `https://www.rheavania.com/${transactionid}`,
-      redirectMode: "POST",
-      callbackUrl: `https://www.rheavania.com/${transactionid}`,
-      mobileNumber: "9999999999",
-      paymentInstrument: {
-        type: "PAY_PAGE",
-      },
-    };
-
-    const dataPayload = JSON.stringify(payload);
-    // console.log(dataPayload);
-
-    const dataBase64 = Buffer.from(dataPayload).toString("base64");
-    // console.log(dataBase64);
-
-    const fullURL =
-      dataBase64 + "/pg/v1/pay" + process.env.NEXT_PUBLIC_SALT_KEY;
-
-    const dataSha256 = sha256(fullURL);
-
-    const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-    // console.log("c====", checksum);
-
-    // const PAY_API_URL = "https://api.phonepe.com/apis/hermes/pg/v1/pay";
-
-    try {
-      const response = await axios.post(
-        "/api/phonepe",
-        {
-          request: dataBase64,
-        },
-        {
-          headers: {
-            accept: "application/json",
-            "Content-Type": "application/json",
-            "X-VERIFY": checksum,
-          },
-        }
-      );
-      const redirect = response.data.data.instrumentResponse.redirectInfo.url;
-      router.push(redirect);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const onSubmit = async (data: UserDetails) => {
     setUserDetails(data);
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -112,11 +51,16 @@ const UserForm: React.FC = () => {
     if (order.totalAmt === 0 || order.count === 0) return;
     const res = await axios.post("/api/customerDetails", userDetails);
     const customerId = res.data.customerId;
-    const orderWithCustomerId = { ...order, customerId: customerId };
+    const orderWithCustomerId = {
+      ...order,
+      customerId: customerId,
+      // paymentStatus: false,
+    };
+    console.log(orderWithCustomerId);
     const res2 = await axios.post("/api/orderDetails", orderWithCustomerId);
     const orderId = res2.data.orderId;
-
-    makePayment(orderId, order.totalAmt);
+    console.log(orderId);
+    makePayment(orderId, order.totalAmt, userDetails.phone);
   };
 
   const emailValidationRegex =
@@ -289,7 +233,7 @@ const UserForm: React.FC = () => {
           />
         </div>
 
-        {readOnly && order.totalAmt !== 0 ? (
+        {readOnly && order.totalAmt == 0 ? (
           <p className="text-red-500 text-sm">
             *Cannot proceed to payment with an empty cart!
           </p>

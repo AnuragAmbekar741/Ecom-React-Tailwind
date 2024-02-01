@@ -1,11 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-// import sha256 from "crypto-js/sha256";
-import { sha256, sha224 } from "js-sha256";
+import { sha256 } from "js-sha256";
 import axios from "axios";
+import OrderModel from "@/models/orderDetails";
 
 export async function POST(req:NextRequest, res:NextResponse) {
   const data = await req.formData();
-  console.log(data);
+  // console.log(data);
   const status = data.get("code");
   const merchantId = data.get("merchantId");
   const transactionId = data.get("transactionId");
@@ -17,11 +17,11 @@ export async function POST(req:NextRequest, res:NextResponse) {
   const dataSha256 = sha256(st);
 
   const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-  console.log(checksum);
+  // console.log(checksum);
 
   const options = {
     method: "GET",
-    url: `/api/phonepe/${merchantId}/${transactionId}`,
+    url: `https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status/${merchantId}/${transactionId}`,
     headers: {
       accept: "application/json",
       "Content-Type": "application/json",
@@ -32,17 +32,19 @@ export async function POST(req:NextRequest, res:NextResponse) {
 
   // CHECK PAYMENT STATUS
   const response = await axios.request(options);
-  console.log("r===", response.data.code);
+  console.log("r===", response.data);
+  console.log(response.data.data.merchantTransactionId)
 
-
-  if (response.data.code == "PAYMENT_SUCCESS")
-  return NextResponse.redirect("http://localhost:3000/success",{
+  if (response.data.code == "PAYMENT_SUCCESS"){
+    const order = await OrderModel.findByIdAndUpdate(response.data.data.merchantTransactionId,{ $set: { paymentStatus: true } },{ new: true })
+    console.log(order)
+    return NextResponse.redirect("http://localhost:3000/",{
     status: 301,
-  });
-else return NextResponse.redirect("http://localhost:3000/failure",{
-  // a 301 status is required to redirect from a POST to a GET route
+    });
+  }
+  
+  else return NextResponse.redirect("http://localhost:3000/",{
   status: 301,
 });
-
 
 }

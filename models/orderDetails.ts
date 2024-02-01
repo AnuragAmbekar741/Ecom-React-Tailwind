@@ -12,6 +12,7 @@ const orderSchema = new Schema({
   count: { type: Number, required: true },
   totalAmt: { type: Number, required: true },
   customerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Customer', required: true }, // Reference to the Customer schema
+  paymentStatus:{type:Boolean,required:true,default:false},
 });
 
 const OrderModel = mongoose.models.Order || mongoose.model('Order', orderSchema);

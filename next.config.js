@@ -10,13 +10,17 @@ const nextConfig = {
         return [
             {
                 source: '/api/phonepe',
-                destination: 'https://api.phonepe.com/apis/hermes/pg/v1/pay',
+                destination: 'https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/pay',
+            },
+            {
+                source: '/api/phonepeCheckStatus',
+                destination: 'https://api-preprod.phonepe.com/apis/pg-sandbox/pg/v1/status',
             }
         ]
     },
     env: {
-        NEXT_PUBLIC_MERCHANT_ID: "RHEAVANIAONLINE",
-        NEXT_PUBLIC_SALT_KEY: "af2d4ae9-0de3-45c7-9641-8f8f2d09a648",
+        NEXT_PUBLIC_MERCHANT_ID: "PGTESTPAYUAT",
+        NEXT_PUBLIC_SALT_KEY: "099eb0cd-02cf-4e2a-8aca-3e6c6aff0399",
         NEXT_PUBLIC_SALT_INDEX: "1"
     }
 }

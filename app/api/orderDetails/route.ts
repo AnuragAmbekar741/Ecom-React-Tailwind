@@ -3,7 +3,7 @@ import connectToDb from "@/db/mongoose"
 import Order from "@/models/orderDetails"
 
 export async function POST(req:NextRequest) {
-    const {products,count,totalAmt,customerId} = await req.json()
+    const {products,count,totalAmt,customerId,paymentStatus} = await req.json()
     try{
         await connectToDb()
         const order = await Order.create({products,count,totalAmt,customerId})
