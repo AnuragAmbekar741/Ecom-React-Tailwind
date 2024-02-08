@@ -4,27 +4,30 @@ import React, { useEffect, useState } from "react";
 import { navLinks } from "@/lib/data";
 import Image from "next/image";
 import { cartState } from "../store/atoms/productDetails";
-import { useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { useRouter } from "next/navigation";
+import { ProductDetails } from "../store/atoms/productDetails";
 
 const TopNavbar: React.FC = () => {
-  const cart = useRecoilValue(cartState);
+  const [cart, setCart] = useRecoilState<ProductDetails[]>(cartState);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      // Ensure code runs only on client side
+      const cartStr = sessionStorage.getItem("cart");
+      if (cartStr !== null && cartStr !== undefined) {
+        const ssCart = JSON.parse(cartStr);
+        setCart(ssCart);
+      }
+    }
+  }, []);
+
   const gsmcart =
     cart.length > 0
       ? cart.map((item) => item.quantity).reduce((a, b) => a + b)
       : 0;
 
-  const cartStr = sessionStorage.getItem("cart");
-  const sscartObj = JSON.parse(cartStr as string);
-
-  var sscart =
-    sscartObj.length > 0
-      ? sscartObj
-          .map((item: any) => item.quantity)
-          .reduce((a: number, b: number) => a + b)
-      : 0;
-
-  var cartLen = gsmcart > 0 ? gsmcart : sscart;
+  var cartLen = gsmcart > 0 ? gsmcart : 0;
 
   const router = useRouter();
 
