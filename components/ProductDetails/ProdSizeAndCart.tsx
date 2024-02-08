@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 
 import { StaticImageData } from "next/image";
 
-
 interface ProdDetails {
   id: string;
   name: string;
@@ -67,7 +66,6 @@ const ProdSizeAndCart = () => {
     let prodIndex = cart.findIndex(
       (prod) => prod.id == prodToAdd.id && prod.size == prodToAdd.size
     );
-    console.log();
     if (prodIndex !== -1) {
       const updatedCart = [...cart];
       updatedCart[prodIndex] = {
@@ -78,9 +76,7 @@ const ProdSizeAndCart = () => {
     } else {
       prodToAdd["quantity"] = 1;
       setCart([...cart, prodToAdd]);
-      console.log("diff size");
     }
-    console.log(cart);
   };
 
   const addSizeQuant = async () => {
@@ -106,8 +102,6 @@ const ProdSizeAndCart = () => {
           customSizes.waist +
           " Hip:" +
           customSizes.hip;
-        // var str = JSON.stringify({bust:customSizes.bust,waist:customSizes.waist,hip:customSizes.hip})
-        console.log(str);
         prodToAdd["size"] = str as string;
       } else return alert("Please add custom sizes for all the measurements.");
     }
@@ -122,6 +116,8 @@ const ProdSizeAndCart = () => {
     if (!prodToAdd) return;
     await checkSameSize(prodToAdd);
   };
+
+  useEffect(() => sessionStorage.setItem("cart", JSON.stringify(cart)), [cart]);
 
   return (
     <div className="w-full lg:w-1/3 p-2 pl-7 lg:pr-5 pt-5">
@@ -151,15 +147,17 @@ const ProdSizeAndCart = () => {
       </div>
 
       <p
-        className={`${toggle.customSize ? "block" : "hidden"
-          } text-sm md:text-md pt-5`}
+        className={`${
+          toggle.customSize ? "block" : "hidden"
+        } text-sm md:text-md pt-5`}
       >
         *Please provide your custom measurements in inches.
       </p>
 
       <div
-        className={`${toggle.customSize ? "block" : "hidden"
-          } flex border border-black p-3 mt-3  justify-between`}
+        className={`${
+          toggle.customSize ? "block" : "hidden"
+        } flex border border-black p-3 mt-3  justify-between`}
       >
         <div className="w-1/3 mr-5">
           <p className="text-xl font-light">Bust</p>
@@ -194,8 +192,9 @@ const ProdSizeAndCart = () => {
       </div>
 
       <div
-        className={`${toggle.sizeChart ? "grid" : "hidden"
-          } mt-8 border border-black p-2`}
+        className={`${
+          toggle.sizeChart ? "grid" : "hidden"
+        } mt-8 border border-black p-2`}
       >
         <div className="flex w-full justify-between pl-2 pr-5">
           <h3 className="text-md font-bold">Uk</h3>
@@ -250,7 +249,7 @@ const ProdSizeAndCart = () => {
         </button>
       )}
     </div>
-  )
+  );
 };
 
 export default ProdSizeAndCart;

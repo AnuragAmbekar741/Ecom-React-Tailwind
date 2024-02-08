@@ -7,18 +7,27 @@ import { cartState } from "../store/atoms/productDetails";
 import { useRecoilValue } from "recoil";
 import { useRouter } from "next/navigation";
 
-
-
-
 const TopNavbar: React.FC = () => {
   const cart = useRecoilValue(cartState);
-  var cartLen =
+  const gsmcart =
     cart.length > 0
       ? cart.map((item) => item.quantity).reduce((a, b) => a + b)
       : 0;
 
+  const cartStr = sessionStorage.getItem("cart");
+  const sscartObj = JSON.parse(cartStr as string);
+
+  var sscart =
+    sscartObj.length > 0
+      ? sscartObj
+          .map((item: any) => item.quantity)
+          .reduce((a: number, b: number) => a + b)
+      : 0;
+
+  var cartLen = gsmcart > 0 ? gsmcart : sscart;
+
   const router = useRouter();
-  
+
   const [isLogoHidden, setIsLogoHidden] = useState(false);
 
   const handleScroll = () => {
@@ -56,14 +65,20 @@ const TopNavbar: React.FC = () => {
           }`}
           onClick={() => router.push("/")}
         />
-        <div className={`flex justify-end ${isLogoHidden ? "pb-12" : "py-2 md:py-7"}`}>
+        <div
+          className={`flex justify-end ${
+            isLogoHidden ? "pb-12" : "py-2 md:py-7"
+          }`}
+        >
           {navLinks.map((link) => {
             return (
               <p
                 key={link.hash}
-                className={`hidden text-black text-sm font-light lg:text-[16px] mx-4 xl:mx-7 py-2 cursor-pointer ${isLogoHidden ? 'hidden' : 'flex'}`}
-                onClick ={()=>router.push("/")}
-             >
+                className={`hidden text-black text-sm font-light lg:text-[16px] mx-4 xl:mx-7 py-2 cursor-pointer ${
+                  isLogoHidden ? "hidden" : "flex"
+                }`}
+                onClick={() => router.push("/")}
+              >
                 {link.name}
               </p>
             );
@@ -73,18 +88,22 @@ const TopNavbar: React.FC = () => {
             alt="Cart-Icon"
             width={52}
             height={38}
-            className={`w-12 h-12 md:w-[3.5rem] md:h-[3.5rem] md:ml-7 xl:ml-20 cursor-pointer ${!isLogoHidden ? 'flex' : 'flex'}`}
+            className={`w-12 h-12 md:w-[3.5rem] md:h-[3.5rem] md:ml-7 xl:ml-20 cursor-pointer ${
+              !isLogoHidden ? "flex" : "flex"
+            }`}
             onClick={() => router.push("/CartPage")}
           />
           <p
-                className={`absolute ${
-                  isLogoHidden ? "top-7 right-8 md:top-[3.25rem] md:right-[4.4rem] lg:right-[6.4rem]" : "right-8 top-9 md:top-[5rem] md:right-[4.45rem] lg:right-[6.4rem]"
-                }
-                ${isLogoHidden ? 'flex' : 'flex'} 
+            className={`absolute ${
+              isLogoHidden
+                ? "top-7 right-8 md:top-[3.25rem] md:right-[4.4rem] lg:right-[6.4rem]"
+                : "right-8 top-9 md:top-[5rem] md:right-[4.45rem] lg:right-[6.4rem]"
+            }
+                ${isLogoHidden ? "flex" : "flex"} 
                 text-lg font-medium cursor-pointer`}
-                onClick={() => router.push("/CartPage")}
-              >
-                {cartLen}
+            onClick={() => router.push("/CartPage")}
+          >
+            {cartLen}
           </p>
         </div>
       </nav>
