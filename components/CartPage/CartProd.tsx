@@ -89,19 +89,22 @@ const CartProd: React.FC<CartProdProps> = ({ product }) => {
 
     if (alter === "sub") {
       if (quant == 1) {
-        setCart(cart.filter((item) => item.ID !== ID));
+        setCart([...cart.filter((item) => item.ID !== ID)]);
+        sessionStorage.removeItem("cart");
         return;
       }
-      if (quant > 1)
+      if (quant > 1) {
         updatedCart[index] = {
           ...cart[index],
           quantity: cart[index].quantity - 1,
         };
+      }
     }
 
     setCart(updatedCart);
-    sessionStorage.setItem("cart", JSON.stringify(updatedCart));
   };
+
+  useEffect(() => sessionStorage.setItem("cart", JSON.stringify(cart)), [cart]);
 
   return (
     <div className="flex p-3 rounded-lg w-full my-1 justify-between text-black">
