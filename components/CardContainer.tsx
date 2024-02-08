@@ -6,7 +6,7 @@ const CardContainer: React.FC = () => {
   return (
     <section className="flex w-full overflow-x-scroll px-5 pb-10 md:px-20">
       {productData.map((product) => {
-        return <ProductCard key={product.id} product={product} />;
+        return <ProductCard key={product.id} product={product as any} />;
       })}
     </section>
   );
