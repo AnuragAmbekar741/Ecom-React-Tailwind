@@ -90,7 +90,7 @@ const CartProd: React.FC<CartProdProps> = ({ product }) => {
     if (alter === "sub") {
       if (quant == 1) {
         setCart([...cart.filter((item) => item.ID !== ID)]);
-        sessionStorage.removeItem("cart");
+        localStorage.removeItem("cart");
         return;
       }
       if (quant > 1) {
@@ -104,7 +104,7 @@ const CartProd: React.FC<CartProdProps> = ({ product }) => {
     setCart(updatedCart);
   };
 
-  useEffect(() => sessionStorage.setItem("cart", JSON.stringify(cart)), [cart]);
+  useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
 
   return (
     <div className="flex p-3 rounded-lg w-full my-1 justify-between text-black">

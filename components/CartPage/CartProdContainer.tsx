@@ -13,7 +13,7 @@ const CartProductContainer: React.FC = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Ensure code runs only on client side
-      const cartStr = sessionStorage.getItem("cart");
+      const cartStr = localStorage.getItem("cart");
       if (cartStr !== null && cartStr !== undefined) {
         const ssCart = JSON.parse(cartStr);
         setCart(ssCart);

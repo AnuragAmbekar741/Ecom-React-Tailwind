@@ -117,7 +117,7 @@ const ProdSizeAndCart = () => {
     await checkSameSize(prodToAdd);
   };
 
-  useEffect(() => sessionStorage.setItem("cart", JSON.stringify(cart)), [cart]);
+  useEffect(() => localStorage.setItem("cart", JSON.stringify(cart)), [cart]);
 
   return (
     <div className="w-full lg:w-1/3 p-2 pl-7 lg:pr-5 pt-5">

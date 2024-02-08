@@ -14,10 +14,12 @@ const TopNavbar: React.FC = () => {
   useEffect(() => {
     if (typeof window !== "undefined") {
       // Ensure code runs only on client side
-      const cartStr = sessionStorage.getItem("cart");
-      if (cartStr !== null && cartStr !== undefined) {
-        const ssCart = JSON.parse(cartStr);
-        setCart(ssCart);
+      if (cart.length === 0) {
+        const cartStr = localStorage.getItem("cart");
+        if (cartStr !== null && cartStr !== undefined) {
+          const ssCart = JSON.parse(cartStr);
+          setCart(ssCart);
+        }
       }
     }
   }, []);
