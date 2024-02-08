@@ -5,7 +5,6 @@ import OrderModel from "@/models/orderDetails";
 
 export async function POST(req:NextRequest, res:NextResponse) {
   const data = await req.formData();
-  // console.log(data);
   const status = data.get("code");
   const merchantId = data.get("merchantId");
   const transactionId = data.get("transactionId");
@@ -13,11 +12,9 @@ export async function POST(req:NextRequest, res:NextResponse) {
   const st =
     `/pg/v1/status/${merchantId}/${transactionId}` +
     process.env.NEXT_PUBLIC_SALT_KEY;
-  // console.log(st)
   const dataSha256 = sha256(st);
 
   const checksum = dataSha256 + "###" + process.env.NEXT_PUBLIC_SALT_INDEX;
-  // console.log(checksum);
 
   const options = {
     method: "GET",
@@ -32,17 +29,13 @@ export async function POST(req:NextRequest, res:NextResponse) {
 
   // CHECK PAYMENT STATUS
   const response = await axios.request(options);
-  console.log("r===", response.data);
-  console.log(response.data.data.merchantTransactionId)
 
   if (response.data.code == "PAYMENT_SUCCESS"){
     const order = await OrderModel.findByIdAndUpdate(response.data.data.merchantTransactionId,{ $set: { paymentStatus: true } },{ new: true })
-    console.log(order)
     return NextResponse.redirect("http://localhost:3000/",{
     status: 301,
     });
   }
-  
   else return NextResponse.redirect("http://localhost:3000/",{
   status: 301,
 });

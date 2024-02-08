@@ -45,7 +45,6 @@ const UserForm: React.FC = () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     setReadOnly(true);
   };
-  console.log(order.totalAmt);
 
   const addCustomerAndOrder = async () => {
     if (order.totalAmt === 0 || order.count === 0) return;
@@ -56,10 +55,8 @@ const UserForm: React.FC = () => {
       customerId: customerId,
       // paymentStatus: false,
     };
-    console.log(orderWithCustomerId);
     const res2 = await axios.post("/api/orderDetails", orderWithCustomerId);
     const orderId = res2.data.orderId;
-    console.log(orderId);
     makePayment(orderId, order.totalAmt, userDetails.phone);
   };
 
@@ -72,7 +69,6 @@ const UserForm: React.FC = () => {
       reset({ phone: "" });
       return "Phone must be 10 digits";
     }
-    console.log(isValidPhone);
     return isValidPhone;
   };
 

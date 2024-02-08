@@ -67,7 +67,6 @@ const CartProd: React.FC<CartProdProps> = ({ product }) => {
 
   useEffect(() => {
     const Order = calculateCart();
-    console.log("effect called", order, Order);
   }, [cart]);
 
   const alterQuant = (quant: number, alter: string) => {
@@ -90,7 +89,6 @@ const CartProd: React.FC<CartProdProps> = ({ product }) => {
 
     if (alter === "sub") {
       if (quant == 1) {
-        console.log(id, size);
         setCart(cart.filter((item) => item.ID !== ID));
         return;
       }
